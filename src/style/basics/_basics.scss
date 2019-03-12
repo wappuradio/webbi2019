@@ -1,0 +1,24 @@
+a {
+  @include transition(color);
+  color: c(brand);
+  text-decoration: underline;
+  &:hover {
+    color: c(brand, 0.2);
+    text-decoration: none;
+  }
+}
+
+%inverted {
+  color: c(base);
+  background: c(alt);
+  a {
+    color: c(brand-alt);
+    &:hover {
+      color: c(brand-alt, 0.2);
+    }
+  }
+}
+
+:focus {
+  outline: 2px dotted c(brand);
+}

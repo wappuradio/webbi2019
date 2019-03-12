@@ -1,0 +1,14 @@
+.logo {
+  fill: currentColor;
+  &.-nav {
+    width: 7.75em;
+    height: 2em;
+  }
+  &.-side {
+    width: 23em;
+    height: 44em;
+    position: fixed;
+    right: 0.5em;
+    bottom: 6em;
+  }
+}

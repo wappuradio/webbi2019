@@ -8,34 +8,33 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
     <meta name="theme-color" content="#000000" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
+    <title>Rakkauden Wappuradio</title>
+    <style>
+      @keyframes pulse {
+        0% { transform: scale(0.9); }
+        5% { transform: scale(1); }
+        40% { transform: scale(0.8); }
+        45% { transform: scale(1); }
+        60% { transform: scale(0.9); }
+        100% { transform: scale(0.8); }
+      }
+      body {
+        background: #FFFDF9;
+      }
+      .spinner {
+        animation: pulse 1s infinite;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 19'%3E%3Cpath fill='%23292F36' opacity='.05' d='M22 7c0 4-4 6-6 7s-4 3-5 5c-1-2-3-4-5-5s-6-3-6-7c0-8 8-9 11-3 3-6 11-5 11 3z'/%3E%3C/svg%3E") center center/8em 8em no-repeat fixed;
+        width: 8em;
+        height: 8em;
+        margin: -4em;
+      }
+    </style>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
   </body>
 </html>

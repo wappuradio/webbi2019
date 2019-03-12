@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,800');
+
+$gilroy: 'files/gilroy-extrabold';
+@font-face {
+  font-family: 'Gilroy';
+  src: url('#{$gilroy}.woff2') format('woff2'),
+       url('#{$gilroy}.woff') format('woff');
+  font-weight: 800;
+  font-style: normal;
+}
+
+body {
+  @include t(body);
+  color: c(alt);
+  font-size: 100%;
+  background: c(base) url('./files/bg.svg') center center / cover no-repeat fixed;
+}
+
+h1 {
+  @include t((caps, level1));
+}
+
+h2 {
+  @include t((caps, level2));
+}
+
+h3 {
+  @include t((caps, level3));
+}
+
+strong {
+  font-weight: 600;
+}

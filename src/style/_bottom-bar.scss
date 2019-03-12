@@ -1,0 +1,33 @@
+$bottom-bar-border: 1px solid c(base, 0.8);
+
+.bottom-bar {
+  @extend %inverted;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  border-top: $bottom-bar-border;
+  :focus {
+    outline-color: c(brand-alt);
+  }
+  .info-item {
+    @extend %info-item-tiny;
+    border-right: $bottom-bar-border;
+    flex: 1;
+    max-width: 20em;
+    text-align: center;
+    &:first-child {
+      text-align: left;
+    }
+    &:last-child {
+      border: none;
+      text-align: right;
+      flex-direction: row-reverse;
+    }
+  }
+  .play-button {
+    @extend %play-button-inverted;
+  }
+}

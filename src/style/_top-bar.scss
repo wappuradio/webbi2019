@@ -1,0 +1,68 @@
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  background: c(brand);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  nav {
+    @include t(caps);
+    display: flex;
+    list-style: none;
+    line-height: 2rem;
+    &.-main {
+      a {
+        @include transition('background');
+        padding: 1em 2em;
+        &:hover {
+          background: c(alt, 0.9);
+        }
+        &:focus {
+          background: c(alt, 0.8);
+        }
+        &.active {
+          background: c(alt);
+        }
+      }
+    }
+    &.-social {
+      a {
+        padding: 1em 0.5em;
+      }
+      li:last-child {
+        padding-right: 0.5em;
+      }
+      .icontext {
+        background: currentColor;
+        padding: 0 0.5em;
+        margin: 1em 0.5em;
+        border-radius: 1em;
+        display: flex;
+        align-items: center;
+        span, .icon {
+          color: c(brand);
+        }
+        .icon {
+          width: 1.5em;
+          height: 1.5em;
+          padding-right: 0.25em;
+        }
+      }
+    }
+  }
+  a {
+    display: block;
+    color: c(base);
+    text-decoration: none;
+    &:hover {
+      color: c(base, 0.1);
+    }
+    &:focus {
+      color: c(base, 0.2);
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+}

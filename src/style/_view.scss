@@ -1,0 +1,35 @@
+.view-container {
+  padding: 5em 19em 6em 1em;
+  max-width: 40em;
+  margin: auto;
+  &.-start {
+    .play-button {
+      @extend %play-button-huge;
+      margin-right: 2em;
+    }
+  }
+  &.-programs {
+    nav {
+      display: flex;
+      list-style: none;
+      li {
+        &::after {
+          // en-space bullet en-space
+          content: '\2002\2022\2002';
+        }
+        &:last-child::after {
+          content: none;
+        }
+      }
+      a {
+        &:hover {
+          text-decoration: none;
+        }
+        &.active {
+          color: c(alt);
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}

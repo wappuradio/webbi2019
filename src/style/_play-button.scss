@@ -1,0 +1,31 @@
+.play-button {
+  @include transition('background');
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  padding: 0.25em;
+  color: c(base);
+  background: c(brand);
+  &:hover {
+    background: c(brand, 0.1);
+  }
+  .icon {
+    width: 2.5em;
+    height: 2.5em;
+  }
+
+  &%play-button-huge {
+    .icon {
+      width: 12em;
+      height: 12em;
+    }
+  }
+
+  &%play-button-inverted {
+    color: c(brand);
+    background: c(base);
+    &:hover {
+      background: c(base, 0.1);
+    }
+  }
+}

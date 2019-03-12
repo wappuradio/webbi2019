@@ -1,0 +1,89 @@
+$brand: 'default' !default;
+
+$colors: (
+    brand: #AC253B,
+    brand-alt: #F5D8DD,
+    base: #FFFDF9,
+    alt: #292F36
+) !default;
+
+@if $brand == 'aprilli' {
+  $colors: (
+    brand: #FF5A88,
+    brand-alt: #C9F2FF,
+    base: #C9F88D,
+    alt: #039AF5
+  );
+}
+
+$typography: (
+  body: (
+    font-weight: 400,
+    line-height: 1.25,
+    font-family: ('Open Sans', sans-serif)
+  ),
+  caps: (
+    text-transform: uppercase,
+    font-weight: 800,
+    letter-spacing: 0.05em,
+    font-family: ('Gilroy', 'Open Sans', sans-serif)
+  ),
+  level1: (
+    font-size: 2.25rem,
+    line-height: 2rem,
+    margin: 2rem 0 1rem
+  ),
+  level2: (
+    font-size: 1.25rem,
+    line-height: 1rem,
+    margin: 1rem 0
+  ),
+  level3: (
+    font-size: 1rem,
+    line-height: 1rem,
+    margin: 1rem 0
+  ),
+  level4: (
+    font-size: 0.75rem,
+    line-height: 0.75rem,
+    margin: 1rem 0
+  ),
+  small: (
+    font-size: 0.75rem,
+    line-height: 1rem
+  ),
+  paragraph: (
+    margin: 1rem 0
+  )
+);
+
+@function get-from-map($map, $name) {
+  @if map-has-key($map, $name) {
+    @return map-get($map, $name);
+  }
+  @else {
+    @warn "No value for `#{$name}`";
+  }
+}
+
+@function c($name, $transparency: 0) {
+  @return transparentize(get-from-map($colors, $name), $transparency);
+}
+
+@mixin transition($properties, $duration: 0.2) {
+  $list: ();
+
+  @each $property in $properties {
+    $list: append($list, #{$property} #{$duration}s ease-in-out, comma);
+  }
+
+  transition: $list;
+}
+
+@mixin t($names) {
+  @each $name in $names {
+    @each $property, $value in get-from-map($typography, $name) {
+      #{$property}: $value;
+    }
+  }
+}

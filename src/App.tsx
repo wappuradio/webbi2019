@@ -1,28 +1,20 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { FunctionComponent } from 'react';
+import Loadable from 'react-loadable';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.tsx</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
-}
+// set moment locale
+import moment from 'moment';
+import 'moment/locale/fi';
+moment.locale('fi');
+
+import Spinner from './components/Spinner';
+
+const APIWrapper = Loadable({
+  loader: () => import('./components/APIWrapper'),
+  loading: Spinner
+});
+
+const App: FunctionComponent = () => (
+  <APIWrapper />
+);
 
 export default App;
