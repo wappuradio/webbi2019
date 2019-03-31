@@ -14,10 +14,6 @@ export interface Program {
   thumbSrc: string
 }
 
-export interface Programs {
-  programs: Program[]
-}
-
 interface ProgramDate {
   start: Moment,
   end: Moment
@@ -80,44 +76,53 @@ export const sortAndGroupForAlphabetical = (programs: Program[]) => {
   return datesAsArrays;
 };
 
+interface ForTimetable {
+  programs: Program[],
+  date: Moment,
+  prev: Moment | null,
+  next: Moment | null
+}
+
 // TODO: Make this prettier
-export const sortAndGroupForTimetable =
-  (programs: Program[], date: Moment):
-  {programs: Program[], date: Moment, prev: Moment | null, next: Moment | null} => {
-    const isSameDate = (startDate: Moment, sameAs: Moment) => {
-      const start = moment(startDate);
-      return sameAs.isSame(start, 'day');
-    }
+export const sortAndGroupForTimetable = (programs: Program[], date: Moment): ForTimetable => {
+  const isSameDate = (startDate: Moment, sameAs: Moment) => {
+    const start = moment(startDate);
+    return sameAs.isSame(start, 'day');
+  }
 
-    if (programs.length > 0) {
-      const sorted = R.sort((a: Program, b: Program) =>
-        a.dates[0].start.isBefore(b.dates[0].start) ? -1 : 1, programs);
+  if (programs.length > 0) {
+    const sorted = R.sort((a: Program, b: Program) =>
+      a.dates[0].start.isBefore(b.dates[0].start) ? -1 : 1, programs);
 
-      const byDate = R.filter((a: Program) => isSameDate(a.dates[0].start, date), sorted);
+    const byDate = R.filter((a: Program) => isSameDate(a.dates[0].start, date), sorted);
 
-      if (byDate.length > 0) {
-        const prev = moment(date).subtract(1, 'days');
-        const next = moment(date).add(1, 'days');
-        const prevByDate = R.filter((a: Program) => isSameDate(a.dates[0].start, prev), sorted);
-        const nextByDate = R.filter((a: Program) => isSameDate(a.dates[0].start, next), sorted);
+    if (byDate.length > 0) {
+      const prev = moment(date).subtract(1, 'days');
+      const next = moment(date).add(1, 'days');
+      const prevByDate = R.filter((a: Program) => isSameDate(a.dates[0].start, prev), sorted);
+      const nextByDate = R.filter((a: Program) => isSameDate(a.dates[0].start, next), sorted);
 
-        return {
-          programs: byDate,
-          date: date,
-          prev: prevByDate.length > 0 ? prev : null,
-          next: nextByDate.length > 0 ? next : null
-        };
-      } else {
-        const first = sorted[0].dates[0].start;
-        const last = sorted[sorted.length - 1].dates[0].start;
-
-        if (date.isBefore(first)) {
-          return sortAndGroupForTimetable(programs, moment(first));
-        } else {
-          return sortAndGroupForTimetable(programs, moment(last));
-        }
-      }
+      return {
+        programs: byDate,
+        date: date,
+        prev: prevByDate.length > 0 ? prev : null,
+        next: nextByDate.length > 0 ? next : null
+      };
     } else {
-      return { programs: [], date: date, prev: null, next: null };
+      const first = sorted[0].dates[0].start;
+      const last = sorted[sorted.length - 1].dates[0].start;
+
+      if (date.isBefore(first)) {
+        return sortAndGroupForTimetable(programs, moment(first));
+      } else {
+        return sortAndGroupForTimetable(programs, moment(last));
+      }
     }
-  };
+  } else {
+    return { programs: [], date: date, prev: null, next: null };
+  }
+};
+
+export const getProgramByName = (name: string, programs: Program[]): Program => {
+  return R.find(R.propEq('name', name))(programs);
+}

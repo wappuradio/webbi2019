@@ -1,11 +1,11 @@
 import React, { FunctionComponent } from 'react';
-import { NavLink, Route, match, Switch, RouteComponentProps } from 'react-router-dom';
+import { NavLink, Route, match, Switch, RouteComponentProps, Redirect } from 'react-router-dom';
 import moment from 'moment';
 
-import { Program } from '../logic/Program';
+import { Program, getProgramByName, sortAndGroupForAlphabetical } from '../logic/Program';
 import ProgramList from '../components/Program/ProgramList';
 import ProgramTimetable from '../components/Program/ProgramTimetable';
-
+import { ProgramSingleItem } from '../components/Program/ProgramItem';
 
 interface ProgramsProps {
   programs: Program[]
@@ -16,14 +16,39 @@ interface ProgramsDateProps {
   match?: match<{date: string}>
 }
 interface ProgramSingleProps {
+  programs: Program[],
   match?: match<{name: string}>
 }
 
-const ProgramSingle: FunctionComponent<ProgramSingleProps> = ({ match }) => (
-  <div>todo {match && match.params.name}</div>
-);
+const ProgramAlphabetical: FunctionComponent<ProgramsProps> = ({ programs }) => {
+  const grouped = sortAndGroupForAlphabetical(programs);
 
-const ProgramTimetableDate: FunctionComponent<RouteComponentProps &ProgramsDateProps> = ({ match, programs }) => {
+  return (
+    <ProgramList programs={grouped} />
+  );
+}
+
+const ProgramSingle: FunctionComponent<RouteComponentProps & ProgramSingleProps> = ({ history, match, programs }) => {
+  if (match && match.params.name) {
+    const p = getProgramByName(match.params.name, programs);
+
+    if (p) {
+      console.log(history)
+      return (
+        <div>
+          <ProgramSingleItem {...p} />
+          <button className="back-button" onClick={() => history.goBack()}>
+            Takaisin
+          </button>
+        </div>
+      );
+    }
+  };
+
+  return (<Redirect to='/programs/' />);
+};
+
+const ProgramTimetableDate: FunctionComponent<RouteComponentProps & ProgramsDateProps> = ({ match, programs }) => {
   let date = moment();
 
   if (match && match.params.date) {
@@ -51,7 +76,7 @@ const Programs: FunctionComponent<ProgramsProps> = ({ programs }) => (
 
     <Switch>
       <Route path='/programs/' exact render={() =>
-        <ProgramList {...{programs}} />}
+        <ProgramAlphabetical {...{programs}} />}
       />
       <Route
         path='/programs/timetable/' exact
@@ -61,7 +86,10 @@ const Programs: FunctionComponent<ProgramsProps> = ({ programs }) => (
         path='/programs/timetable/:date'
         render={(route) => <ProgramTimetableDate {...route} {...{programs}} />}
       />
-      <Route path='/programs/:name' component={ProgramSingle} />
+      <Route
+        path='/programs/p/:name'
+        render={(route) => <ProgramSingle {...route} {...{programs}} />}
+      />
     </Switch>
   </section>
 );
