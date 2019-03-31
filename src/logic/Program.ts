@@ -40,17 +40,21 @@ export const fetchProgramArray: Promise<Program[]> =
   fetch('https://wappuradio.fi/api/programs')
     .then(results => results.json())
     .then((data: APIProgram[]) => {
-      const asPrograms: Program[] = data.map((d: APIProgram) => ({
-        name: d.title.toLowerCase().replace(/[^a-z]/g,''),
-        title: d.title,
-        host: d.host,
-        prod: d.prod,
-        desc: d.desc,
-        dates: [{start: moment(d.start), end: moment(d.end)}],
+      const aprilliUrl = process.env.PUBLIC_URL + '/kisu/kisu';
+      const asPrograms: Program[] = data.map((d: APIProgram, i: number) => {
+        const num = i % 20 + 1;
+        return {
+          name: d.title.toLowerCase().replace(/[^a-z]/g,''),
+          title: d.title,
+          host: d.host,
+          prod: d.prod,
+          desc: d.desc,
+          dates: [{start: moment(d.start), end: moment(d.end)}],
 
-        imgSrc: d.photo,
-        thumbSrc: d.thumb
-      }));
+          imgSrc: aprilliUrl + num + '.jpg',
+          thumbSrc: aprilliUrl + num + '-thumb.jpg'
+        }
+      });
 
       return asPrograms;
     });
