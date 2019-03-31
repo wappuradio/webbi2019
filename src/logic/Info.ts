@@ -3,24 +3,22 @@ export const fetchNews: Promise<string> =
         .then(response => {
             if (response.body != null) {
                 const reader = response.body.getReader();
-                var text = "";
-                var decoder = new TextDecoder();
+                const decoder = new TextDecoder();
 
-                var parseText = (text: string) => {
+                const parseText = (text: string) => {
                     // Uutiset webbiin -sivulla on ohjeteksti, joka ilmestyy myös API:iin, 
                     // joten parsetaan se pois. 
-                    const endText: string = "Markdownia.)"; 
-                    var index = text.indexOf(endText);
-                    // Poista tää kommentti ja alemman rivin - 10. On vaan tässä että näkyy että kaikki toimii
-                    return text.substring(index + endText.length - 10);
+                    const endText = "Markdownia.)"; 
+                    const index = text.indexOf(endText);
+                    return text.substring(index + endText.length);
                 };
 
-                var noniin: Promise<string> = reader.read().then((result) => {
-                    text = decoder.decode(result.value);
-                    return Promise.resolve(parseText(text));
+                const textFromIntra: Promise<string> = reader.read().then((result) => {
+                    const decodedText = decoder.decode(result.value);
+                    return Promise.resolve(parseText(decodedText));
                 })
 
-                return Promise.resolve(noniin);
+                return Promise.resolve(textFromIntra);
             }
             return Promise.resolve("Tietoja ei voitu ladata.");
 
