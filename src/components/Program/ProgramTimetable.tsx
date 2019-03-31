@@ -1,160 +1,51 @@
 import React, { FunctionComponent } from 'react';
+import { NavLink } from 'react-router-dom';
+import { Moment } from 'moment';
 
 import { Program, sortAndGroupForTimetable } from '../../logic/Program';
+import { ProgramListItem } from './ProgramItem';
 
-const ProgramTimetable: FunctionComponent<{programs: Program[]}> = ({ programs }) => {
-  const timetablePrograms = sortAndGroupForTimetable(programs);
+const TimetableNavItem: FunctionComponent<{date: Moment, text: string}> = ({ date, text }) => (
+  <NavLink to={`/programs/timetable/${date.format('DDMM')}`}>
+    {text} ({date.format('D.M.')})
+  </NavLink>
+);
 
-  return (
-    <div className='timetable-wrapper'>
-    <div className='timetable-container'>
-      {Object.keys(timetablePrograms).map((day: any, i) => {
-        const currentDay = timetablePrograms[day];
-        return (
-          <div className='day' key={ i }>
-            <h3 className='date'>{ day }</h3>
+const TimetableNav: FunctionComponent<{prev: Moment | null, next: Moment | null, title?: string}> = ({ prev, next, title }) => (
+  <ul className='timetable-nav'>
+    {title && (
+      <li className='navitem -title'>
+        <h3>{ title }</h3>
+      </li>
+    )}
+    <li className='navitem -prev'>
+      {prev && (<TimetableNavItem text='Edellinen päivä' date={ prev } />)}
+    </li>
+    <li className='navitem -next'>
+      {next && (<TimetableNavItem text='Seuraava päivä' date={ next } />)}
+    </li>
+  </ul>
+);
 
-            <div className='items'>
-              {Object.keys(currentDay).map((time: any, j) => {
-                const { title, dates } = currentDay[time];
-                const { start, end } = dates[0];
-
-                const lengthCls = end.diff(start, 'h');
-                const startCls = start.format('H');
-
-                return (
-                  <div className={`item -l${ lengthCls } -s${ startCls }`} key={ j }>
-                    <p className='time'>{ start.format('H:mm') }–{ end.format('H:mm') }</p>
-                    <p className='title'>{ title }</p>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        );
-      })}{Object.keys(timetablePrograms).map((day: any, i) => {
-        const currentDay = timetablePrograms[day];
-        return (
-          <div className='day' key={ i }>
-            <h3 className='date'>{ day }</h3>
-
-            <div className='items'>
-              {Object.keys(currentDay).map((time: any, j) => {
-                const { title, dates } = currentDay[time];
-                const { start, end } = dates[0];
-
-                const lengthCls = end.diff(start, 'h');
-                const startCls = start.format('H');
-
-                return (
-                  <div className={`item -l${ lengthCls } -s${ startCls }`} key={ j }>
-                    <p className='time'>{ start.format('H:mm') }–{ end.format('H:mm') }</p>
-                    <p className='title'>{ title }</p>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        );
-      })}{Object.keys(timetablePrograms).map((day: any, i) => {
-        const currentDay = timetablePrograms[day];
-        return (
-          <div className='day' key={ i }>
-            <h3 className='date'>{ day }</h3>
-
-            <div className='items'>
-              {Object.keys(currentDay).map((time: any, j) => {
-                const { title, dates } = currentDay[time];
-                const { start, end } = dates[0];
-
-                const lengthCls = end.diff(start, 'h');
-                const startCls = start.format('H');
-
-                return (
-                  <div className={`item -l${ lengthCls } -s${ startCls }`} key={ j }>
-                    <p className='time'>{ start.format('H:mm') }–{ end.format('H:mm') }</p>
-                    <p className='title'>{ title }</p>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        );
-      })}{Object.keys(timetablePrograms).map((day: any, i) => {
-        const currentDay = timetablePrograms[day];
-        return (
-          <div className='day' key={ i }>
-            <h3 className='date'>{ day }</h3>
-
-            <div className='items'>
-              {Object.keys(currentDay).map((time: any, j) => {
-                const { title, dates } = currentDay[time];
-                const { start, end } = dates[0];
-
-                const lengthCls = end.diff(start, 'h');
-                const startCls = start.format('H');
-
-                return (
-                  <div className={`item -l${ lengthCls } -s${ startCls }`} key={ j }>
-                    <p className='time'>{ start.format('H:mm') }–{ end.format('H:mm') }</p>
-                    <p className='title'>{ title }</p>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        );
-      })}{Object.keys(timetablePrograms).map((day: any, i) => {
-        const currentDay = timetablePrograms[day];
-        return (
-          <div className='day' key={ i }>
-            <h3 className='date'>{ day }</h3>
-
-            <div className='items'>
-              {Object.keys(currentDay).map((time: any, j) => {
-                const { title, dates } = currentDay[time];
-                const { start, end } = dates[0];
-
-                const lengthCls = end.diff(start, 'h');
-                const startCls = start.format('H');
-
-                return (
-                  <div className={`item -l${ lengthCls } -s${ startCls }`} key={ j }>
-                    <p className='time'>{ start.format('H:mm') }–{ end.format('H:mm') }</p>
-                    <p className='title'>{ title }</p>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        );
-      })}{Object.keys(timetablePrograms).map((day: any, i) => {
-        const currentDay = timetablePrograms[day];
-        return (
-          <div className='day' key={ i }>
-            <h3 className='date'>{ day }</h3>
-
-            <div className='items'>
-              {Object.keys(currentDay).map((time: any, j) => {
-                const { title, dates } = currentDay[time];
-                const { start, end } = dates[0];
-
-                const lengthCls = end.diff(start, 'h');
-                const startCls = start.format('H');
-
-                return (
-                  <div className={`item -l${ lengthCls } -s${ startCls }`} key={ j }>
-                    <p className='time'>{ start.format('H:mm') }–{ end.format('H:mm') }</p>
-                    <p className='title'>{ title }</p>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        );
-      })}
-    </div>
-    </div>
-)};
+const ProgramTimetable: FunctionComponent<{programs: Program[], date: Moment}> = ({ programs, date }) => {
+  if (programs && programs.length > 0) {
+    const toShow = sortAndGroupForTimetable(programs, date);
+    return (
+      <div>
+        <TimetableNav
+          prev={toShow.prev}
+          next={toShow.next}
+          title={ toShow.date.format('D.M.') }
+        />
+        {toShow.programs.map((p: Program, i: number) => (
+          <ProgramListItem key={i} {...p} />
+        ))}
+        <TimetableNav prev={toShow.prev} next={toShow.next} />
+      </div>
+    );
+  } else {
+    return (<div></div>);
+  }
+};
 
 export default ProgramTimetable;
