@@ -48,6 +48,21 @@ $typography: (
     line-height: 0.75rem,
     margin: 1rem 0
   ),
+  level1s: (
+    font-size: 2.25rem,
+    line-height: 1,
+    margin: 1rem 0 0.5rem
+  ),
+  level2s: (
+    font-size: 1.75rem,
+    line-height: 1,
+    margin: 1rem 0 0.5rem
+  ),
+  level3s: (
+    font-size: 1.25rem,
+    line-height: 1,
+    margin: 1rem 0 0.5rem
+  ),
   small: (
     font-size: 0.75rem,
     line-height: 1rem
@@ -55,6 +70,12 @@ $typography: (
   paragraph: (
     margin: 1rem 0
   )
+);
+
+$breakpoints: (
+  small: 26em,
+  medium: 40em,
+  large: 45em
 );
 
 @function get-from-map($map, $name) {
@@ -85,5 +106,17 @@ $typography: (
     @each $property, $value in get-from-map($typography, $name) {
       #{$property}: $value;
     }
+  }
+}
+
+@mixin responsive($breakpoint, $type: min) {
+  @media only screen and (#{$type}-width: get-from-map($breakpoints, $breakpoint)) {
+    @content;
+  }
+}
+
+@mixin responsive-to($breakpoint) {
+  @include responsive($breakpoint, max) {
+    @content;
   }
 }

@@ -9,6 +9,7 @@ $bottom-bar-border: 1px solid c(base, 0.8);
   display: flex;
   justify-content: center;
   border-top: $bottom-bar-border;
+  z-index: 1;
   :focus {
     outline-color: c(brand-alt);
   }

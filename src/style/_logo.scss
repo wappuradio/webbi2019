@@ -5,10 +5,14 @@
     height: 2em;
   }
   &.-side {
-    width: 23em;
-    height: 44em;
-    position: fixed;
-    right: 0.5em;
-    bottom: 6em;
+    display: none;
+    @include responsive(small) {
+      display: block;
+      width: 23em;
+      height: 44em;
+      right: 0.5em;
+      bottom: 1.5em;
+      position: fixed;
+    }
   }
 }

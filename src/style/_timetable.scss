@@ -1,31 +1,38 @@
 .timetable-nav {
-  display: flex;
   list-style: none;
-  margin: 2rem 0 0;
+  margin: 1rem 0;
   padding: 0;
-  align-items: flex-end;
-  justify-content: space-between;
+  text-align: center;
   h3 {
     margin: 0;
   }
-  .navitem {
-    flex: 1;
-    &.-title {
-      order: 2;
-      text-align: center;
-    }
-    &.-prev {
-      order: 1;
-      text-align: left;
-      a::before {
-        content: '\2039\00a0';
+  &:first-child {
+    margin-top: 2em;
+  }
+
+  @include responsive(small) {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    .navitem {
+      flex: 1;
+      &.-title {
+        order: 2;
+        text-align: center;
       }
-    }
-    &.-next {
-      order: 3;
-      text-align: right;
-      a::after {
-        content: '\00a0\203A';
+      &.-prev {
+        order: 1;
+        text-align: left;
+        a::before {
+          content: '\2039\00a0';
+        }
+      }
+      &.-next {
+        order: 3;
+        text-align: right;
+        a::after {
+          content: '\00a0\203A';
+        }
       }
     }
   }

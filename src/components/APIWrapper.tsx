@@ -48,7 +48,7 @@ export default class APIWrapper extends PureComponent<{}, APIWrapperState> {
           }/>
           <Route path="/info/" component={InfoView} />
 
-          <BottomBar />
+          {/* <BottomBar /> */}
           <Logo type='side' />
         </div>
       </Router>
