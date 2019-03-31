@@ -3,22 +3,20 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Loadable, { LoadableComponent, LoadableCaptureProps } from 'react-loadable';
 
 import { Program, fetchProgramArray } from '../logic/Program';
+import { fetchNews } from '../logic/Info';
 import Start from '../views/Start';
 import Programs from '../views/Programs';
+import Info from '../views/Info';
 
 import BottomBar from './BottomBar';
 import TopBar from './TopBar';
 import Logo from './Logo';
 import Spinner from './Spinner';
-
-const InfoView: FunctionComponent = () => (
-  <section className='view-container'>
-    <h1>Todo: Info</h1>
-  </section>
-);
+import { Data } from 'unist';
 
 interface APIWrapperState {
-  programs: Program[];
+  programs: Program[],
+  infoData: string
 }
 
 export default class APIWrapper extends PureComponent<{}, APIWrapperState> {
@@ -26,17 +24,20 @@ export default class APIWrapper extends PureComponent<{}, APIWrapperState> {
     super(props);
 
     this.state = {
-      programs: []
+      programs: [],
+      infoData: ""
     };
   };
 
   componentDidMount() {
     fetchProgramArray
-      .then((pArray: Program[]) => this.setState({programs: pArray}))
+      .then((pArray: Program[]) => this.setState({programs: pArray}));
+    fetchNews
+      .then((data: string) => this.setState({infoData: data}));
   }
 
   render() {
-    const { programs } = this.state;
+    const { programs, infoData } = this.state;
 
     return (
       <Router>
@@ -46,7 +47,9 @@ export default class APIWrapper extends PureComponent<{}, APIWrapperState> {
           <Route path="/programs/" render={() =>
             <Programs {...{programs}} />
           }/>
-          <Route path="/info/" component={InfoView} />
+          <Route path="/info/" render={() =>
+            <Info {...{infoData}} />
+          }/>
 
           <BottomBar />
           <Logo type='side' />
