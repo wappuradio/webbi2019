@@ -30,6 +30,18 @@ h3 {
 
 @include responsive(small) {
   h1 {
+    @include t((caps, level1m));
+  }
+  h2 {
+    @include t((caps, level2m));
+  }
+  h3 {
+    @include t((caps, level3m));
+  }
+}
+
+@include responsive(medium) {
+  h1 {
     @include t((caps, level1));
   }
   h2 {

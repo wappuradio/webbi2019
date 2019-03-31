@@ -1,5 +1,6 @@
 .view-container {
   padding: 6em 1em 4em;
+  max-width: 40em;
   margin: auto;
   &.-start {
     .play-button {
@@ -33,8 +34,13 @@
       }
     }
   }
-  @include responsive(small) {
-    padding: 5em 19em 6em 1em;
-    max-width: 40em;
+  @include responsive(medium) {
+    padding: 5em 20em 6em 1em;
+  }
+  @include responsive(large) {
+    padding: 5em 24em 6em 1em;
+  }
+  @include responsive(xlarge) {
+    padding: 5em 20em 6em 1em;
   }
 }

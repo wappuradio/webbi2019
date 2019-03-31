@@ -6,7 +6,7 @@
   right: 0;
   z-index: 1;
 
-  @include responsive(small) {
+  @include responsive(medium) {
     display: flex;
     justify-content: space-between;
   }
@@ -32,7 +32,7 @@
           background: c(alt);
         }
       }
-      @include responsive(small) {
+      @include responsive(medium) {
         a {
           padding: 1em 2em;
           margin: 0;
@@ -69,7 +69,7 @@
           font-size: 0.75em;
         }
       }
-      @include responsive(small) {
+      @include responsive(medium) {
         a {
           padding: 1em 0.5em;
         }

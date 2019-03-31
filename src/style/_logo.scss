@@ -6,13 +6,17 @@
   }
   &.-side {
     display: none;
-    @include responsive(small) {
+    @include responsive(medium) {
       display: block;
-      width: 23em;
-      height: 44em;
+      position: fixed;
+      width: 18.4em;
+      height: 35.2em;
       right: 0.5em;
       bottom: 1.5em;
-      position: fixed;
+    }
+    @include responsive(large) {
+      width: 23em;
+      height: 44em;
     }
   }
 }

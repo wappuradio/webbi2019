@@ -63,6 +63,21 @@ $typography: (
     line-height: 1,
     margin: 1rem 0 0.5rem
   ),
+  level1m: (
+    font-size: 2.25rem,
+    line-height: 1,
+    margin: 1rem 0 0.5rem
+  ),
+  level2m: (
+    font-size: 1.75rem,
+    line-height: 1,
+    margin: 1rem 0 0.5rem
+  ),
+  level3m: (
+    font-size: 1.25rem,
+    line-height: 1,
+    margin: 1rem 0 0.5rem
+  ),
   small: (
     font-size: 0.75rem,
     line-height: 1rem
@@ -73,9 +88,10 @@ $typography: (
 );
 
 $breakpoints: (
-  small: 26em,
-  medium: 40em,
-  large: 45em
+  small: 32em,
+  medium: 54em,
+  large: 60em,
+  xlarge: 72em
 );
 
 @function get-from-map($map, $name) {
