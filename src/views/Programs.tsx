@@ -29,23 +29,17 @@ const ProgramAlphabetical: FunctionComponent<ProgramsProps> = ({ programs }) => 
 }
 
 const ProgramSingle: FunctionComponent<RouteComponentProps & ProgramSingleProps> = ({ history, match, programs }) => {
-  if (match && match.params.name) {
+
     const p = getProgramByName(match.params.name, programs);
 
-    if (p) {
-      console.log(history)
-      return (
-        <div>
-          <ProgramSingleItem {...p} />
-          <button className="back-button" onClick={() => history.goBack()}>
-            Takaisin
-          </button>
-        </div>
-      );
-    }
-  };
-
-  return (<Redirect to='/programs/' />);
+    return (
+      <div>
+        {p && <ProgramSingleItem {...p} />}
+        <button className="back-button" onClick={() => history.goBack()}>
+          Takaisin
+        </button>
+      </div>
+    );
 };
 
 const ProgramTimetableDate: FunctionComponent<RouteComponentProps & ProgramsDateProps> = ({ match, programs }) => {

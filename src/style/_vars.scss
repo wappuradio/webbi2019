@@ -88,10 +88,10 @@ $typography: (
 );
 
 $breakpoints: (
-  small: 32em,
-  medium: 54em,
-  large: 60em,
-  xlarge: 72em
+  small: 32rem,
+  medium: 56rem,
+  large: 60rem,
+  xlarge: 72rem
 );
 
 @function get-from-map($map, $name) {
