@@ -5,10 +5,18 @@
     height: 2em;
   }
   &.-side {
-    width: 23em;
-    height: 44em;
-    position: fixed;
-    right: 0.5em;
-    bottom: 6em;
+    display: none;
+    @include responsive(medium) {
+      display: block;
+      position: fixed;
+      width: 18.4em;
+      height: 35.2em;
+      right: 0.5em;
+      bottom: 1.5em;
+    }
+    @include responsive(large) {
+      width: 23em;
+      height: 44em;
+    }
   }
 }

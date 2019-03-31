@@ -29,24 +29,54 @@ $typography: (
     font-family: ('Gilroy', 'Open Sans', sans-serif)
   ),
   level1: (
-    font-size: 2.25rem,
-    line-height: 2rem,
+    font-size: 4rem,
+    line-height: 1,
     margin: 2rem 0 1rem
   ),
   level2: (
-    font-size: 1.25rem,
-    line-height: 1rem,
-    margin: 1rem 0
+    font-size: 2rem,
+    line-height: 1,
+    margin: 1.5rem 0 1rem
   ),
   level3: (
-    font-size: 1rem,
-    line-height: 1rem,
-    margin: 1rem 0
+    font-size: 1.5rem,
+    line-height: 1,
+    margin: 1.5rem 0 1rem
   ),
   level4: (
     font-size: 0.75rem,
     line-height: 0.75rem,
     margin: 1rem 0
+  ),
+  level1s: (
+    font-size: 2.25rem,
+    line-height: 1,
+    margin: 1rem 0 0.5rem
+  ),
+  level2s: (
+    font-size: 1.75rem,
+    line-height: 1,
+    margin: 1rem 0 0.5rem
+  ),
+  level3s: (
+    font-size: 1.25rem,
+    line-height: 1,
+    margin: 1rem 0 0.5rem
+  ),
+  level1m: (
+    font-size: 2.25rem,
+    line-height: 1,
+    margin: 1rem 0 0.5rem
+  ),
+  level2m: (
+    font-size: 1.75rem,
+    line-height: 1,
+    margin: 1rem 0 0.5rem
+  ),
+  level3m: (
+    font-size: 1.25rem,
+    line-height: 1,
+    margin: 1rem 0 0.5rem
   ),
   small: (
     font-size: 0.75rem,
@@ -55,6 +85,13 @@ $typography: (
   paragraph: (
     margin: 1rem 0
   )
+);
+
+$breakpoints: (
+  small: 32rem,
+  medium: 56rem,
+  large: 60rem,
+  xlarge: 72rem
 );
 
 @function get-from-map($map, $name) {
@@ -85,5 +122,17 @@ $typography: (
     @each $property, $value in get-from-map($typography, $name) {
       #{$property}: $value;
     }
+  }
+}
+
+@mixin responsive($breakpoint, $type: min) {
+  @media only screen and (#{$type}-width: get-from-map($breakpoints, $breakpoint)) {
+    @content;
+  }
+}
+
+@mixin responsive-to($breakpoint) {
+  @include responsive($breakpoint, max) {
+    @content;
   }
 }

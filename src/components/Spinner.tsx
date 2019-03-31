@@ -3,9 +3,9 @@ import { LoadingComponentProps } from 'react-loadable';
 
 const Spinner: FunctionComponent<LoadingComponentProps> = ({ error, retry, timedOut, pastDelay}) => {
   if (error) {
-    return <div>Error! <button onClick={ retry }>Retry</button></div>;
+    return <div>Hups! <button onClick={ retry }>Yritä uudelleen</button></div>;
   } else if (timedOut) {
-    return <div>Taking a long time... <button onClick={ retry }>Retry</button></div>;
+    return <div>Kestää... <button onClick={ retry }>Yritä uudelleen</button></div>;
   } else if (pastDelay) {
     return <div className='spinner'>Ladataan</div>;
   } else {

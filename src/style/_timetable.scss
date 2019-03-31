@@ -1,64 +1,37 @@
-.timetable-wrapper {
-  width: 100%;
-  overflow-x: auto;
-  position: relative;
-}
+.timetable-nav {
+  list-style: none;
+  margin: 1rem 0;
+  padding: 0;
+  text-align: center;
+  h3 {
+    margin: 0;
+  }
+  &:first-child {
+    margin-top: 2em;
+  }
 
-.timetable-container {
-  position: absolute;
-  margin: 2em -0.125em;
-  display: flex;
-  >.day {
-    margin: 0 0.125em;
-    width: 8em;
-    >.date {
-      margin: 0 0 0.25em;
-    }
-    >.items {
-      display: grid;
-      grid-template: repeat(24, 1.5em) / 1fr;
-      >.item {
-        @extend %inverted;
-        border-radius: 0.125em;
-        margin: 0.125em 0;
-        padding: 0.5em;
-        overflow: hidden;
-        >.time {
-          @include t((caps, level4));
-          margin: 0;
+  @include responsive(small) {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    .navitem {
+      flex: 1;
+      &.-title {
+        order: 2;
+        text-align: center;
+      }
+      &.-prev {
+        order: 1;
+        text-align: left;
+        a::before {
+          content: '\2039\00a0';
         }
-        >.title {
-          @include t(small);
-          margin: 0.125rem 0 0;
-          white-space: nowrap;
-          overflow: hidden;
-          width: 100%;
-          text-overflow: ellipsis;
-        }
-        &.-l1 {
-          padding: 0.125em 0.5em;
-          >.time {
-            display: none;
-          }
-          >.title {
-            margin: 0;
-          }
-        }
-
-        @for $i from 1 through 7 {
-          &.-l#{$i} {
-            grid-row-end: span #{$i};
-          }
-        }
-
-        @for $i from 7 through 24 {
-          &.-s#{$i} {
-            grid-row-start: #{$i - 6};
-          }
-        }
-
-        &.-s0 {
-          grid-row-start: 24 - 6;
+      }
+      &.-next {
+        order: 3;
+        text-align: right;
+        a::after {
+          content: '\00a0\203A';
         }
       }
     }

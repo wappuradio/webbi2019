@@ -1,10 +1,23 @@
-a {
+a, .back-button {
   @include transition(color);
   color: c(brand);
   text-decoration: underline;
   &:hover {
     color: c(brand, 0.2);
     text-decoration: none;
+  }
+}
+
+.back-button {
+  @include t((caps, level3));
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+
+  &::before {
+    content: '\2039\00a0';
   }
 }
 

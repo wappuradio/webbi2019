@@ -1,5 +1,5 @@
 .view-container {
-  padding: 5em 19em 6em 1em;
+  padding: 6em 1em 4em;
   max-width: 40em;
   margin: auto;
   &.-start {
@@ -10,17 +10,7 @@
   }
   &.-programs {
     nav {
-      display: flex;
       list-style: none;
-      li {
-        &::after {
-          // en-space bullet en-space
-          content: '\2002\2022\2002';
-        }
-        &:last-child::after {
-          content: none;
-        }
-      }
       a {
         &:hover {
           text-decoration: none;
@@ -30,6 +20,27 @@
           text-decoration: none;
         }
       }
+      @include responsive(small) {
+        display: flex;
+        li {
+          &::after {
+            // en-space bullet en-space
+            content: '\2002\2022\2002';
+          }
+          &:last-child::after {
+            content: none;
+          }
+        }
+      }
     }
+  }
+  @include responsive(medium) {
+    padding: 5em 20em 6em 1em;
+  }
+  @include responsive(large) {
+    padding: 5em 24em 6em 1em;
+  }
+  @include responsive(xlarge) {
+    padding: 5em 20em 6em 1em;
   }
 }

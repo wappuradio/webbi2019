@@ -5,7 +5,7 @@ import { ProgramListItem } from './ProgramItem';
 
 const ProgramList: FunctionComponent<{programs: Program[]}> = ({ programs }) => (
   <div>
-    {sortAndGroupForAlphabetical(programs).map((p: Program, i: number) => (
+    {programs.map((p: Program, i: number) => (
       <ProgramListItem key={i} {...(p)} />
     ))}
   </div>

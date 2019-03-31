@@ -1,5 +1,5 @@
 import React, { FunctionComponent, PureComponent } from 'react';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, RouteComponentProps } from 'react-router-dom';
 import Loadable, { LoadableComponent, LoadableCaptureProps } from 'react-loadable';
 
 import { Program, fetchProgramArray } from '../logic/Program';
@@ -17,6 +17,13 @@ import { Data } from 'unist';
 interface APIWrapperState {
   programs: Program[],
   infoData: string
+}
+
+const LogoWrapper: FunctionComponent<RouteComponentProps> = ({ location }) => {
+  if (location.pathname.search('programs/p/') > 0) {
+    return (<div></div>);
+  }
+  return (<Logo type='side' />);
 }
 
 export default class APIWrapper extends PureComponent<{}, APIWrapperState> {
@@ -50,9 +57,10 @@ export default class APIWrapper extends PureComponent<{}, APIWrapperState> {
           <Route path="/info/" render={() =>
             <Info {...{infoData}} />
           }/>
-
-          <BottomBar />
-          <Logo type='side' />
+          {/* <BottomBar /> */}
+          <Route path='/' render={(route) => 
+            <LogoWrapper {...route} />
+          } />
         </div>
       </Router>
     );
