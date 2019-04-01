@@ -13,9 +13,9 @@ const MainNav: FunctionComponent = () => (
     <li>
       <NavLink to='/programs/'>Ohjelmat</NavLink>
     </li>
-    <li>
+    {/* <li>
       <NavLink to='/info/'>Info</NavLink>
-    </li>
+    </li> */}
   </nav>
 );
 
