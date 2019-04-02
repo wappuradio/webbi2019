@@ -60,10 +60,10 @@ const Programs: FunctionComponent<ProgramsProps> = ({ programs }) => (
     <h2>
       <nav>
         <li>
-          <NavLink to='/programs/' exact>Aakkosjärjestys</NavLink>
+          <NavLink to='/programs/timetable/'>Aikataulu</NavLink>
         </li>
         <li>
-          <NavLink to='/programs/timetable/'>Aikataulu</NavLink>
+          <NavLink to='/programs/' exact>Lista</NavLink>
         </li>
       </nav>
     </h2>

@@ -25,6 +25,7 @@ interface APIProgram {
   start: Date,
   end: Date,
 
+  name: string,
   title: string,
   host: string,
   prod: string,
@@ -40,11 +41,9 @@ export const fetchProgramArray: Promise<Program[]> =
   fetch('https://wappuradio.fi/api/programs')
     .then(results => results.json())
     .then((data: APIProgram[]) => {
-      const aprilliUrl = process.env.PUBLIC_URL + '/kisu/kisu';
       const asPrograms: Program[] = data.map((d: APIProgram, i: number) => {
-        const num = i % 20 + 1;
         return {
-          name: d.title.toLowerCase().replace(/[^a-z]/g,''),
+          name: d.name,
           title: d.title,
           host: d.host,
           prod: d.prod,
@@ -55,7 +54,6 @@ export const fetchProgramArray: Promise<Program[]> =
           thumbSrc: d.thumb
         }
       });
-
       return asPrograms;
     });
 
@@ -72,7 +70,10 @@ export const sortAndGroupForAlphabetical = (programs: Program[]) => {
   const datesAsArrays = byName.map(d => {
     let first = d.shift();
 
-    d.map((e: Program) => first.dates.push(...e.dates))
+    d.map((e: Program) => {
+      if (first.dates.indexOf(...e.dates) === -1)
+        first.dates.push(...e.dates)
+    })
 
     return first;
   })

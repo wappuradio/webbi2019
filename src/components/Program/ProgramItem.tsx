@@ -1,6 +1,11 @@
 import React, { FunctionComponent } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
+import { Redirect } from 'react-router';
 import LazyLoad from 'react-lazyload';
+
+var Hypher = require('hypher');
+var fiPatterns = require('hyphenation.fi');
+var hypher = new Hypher(fiPatterns);
 
 import { Program } from '../../logic/Program';
 
@@ -35,13 +40,12 @@ export const ProgramListItem: FunctionComponent<Program> =
     prod,
     thumbSrc
   }) => (
+  <Link to={`/programs/p/${name}`} className='program-box'>
     <div className='info-item -program'>
       <ProgramImg {...{title}} src={ thumbSrc } size={{w: 88, h: 88}} />
       <div className='content'>
         <p className='main'>
-          <NavLink to={`/programs/p/${name}`}>
-            { title }
-          </NavLink>
+          { title }
         </p>
         <p className='dates'>{ datesString(dates) }</p>
         <p className='sub'>
@@ -50,7 +54,9 @@ export const ProgramListItem: FunctionComponent<Program> =
           { prod && <span>Tuottaa: <strong>{ prod }</strong></span>}
         </p>
       </div>
-    </div> );
+    </div>
+  </Link>
+  );
 
 export const ProgramSingleItem: FunctionComponent<Program> =
   ({
@@ -65,7 +71,7 @@ export const ProgramSingleItem: FunctionComponent<Program> =
       <ProgramImg {...{title}} src={ imgSrc } size={{w: 480, h: 480}} />
       <div className='content'>
         <h2 className='main'>
-          { title }
+          { hypher.hyphenateText(title) }
         </h2>
         <p className='dates'>{ datesString(dates) }</p>
         <p className='sub'>
@@ -78,3 +84,4 @@ export const ProgramSingleItem: FunctionComponent<Program> =
         </p>
       </div>
     </div> );
+

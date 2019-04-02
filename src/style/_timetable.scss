@@ -3,35 +3,51 @@
   margin: 1rem 0;
   padding: 0;
   text-align: center;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
   h3 {
     margin: 0;
   }
   &:first-child {
     margin-top: 2em;
   }
-
-  @include responsive(small) {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    .navitem {
-      flex: 1;
-      &.-title {
-        order: 2;
-        text-align: center;
+  .text {
+    display: none;
+  }
+  .navitem {
+    flex: 1 1;
+    &.-title {
+      order: 2;
+      text-align: center;
+    }
+    &.-prev {
+      order: 1;
+      text-align: left;
+      a::before {
+        content: '\2039\00a0';
       }
+    }
+    &.-next {
+      order: 3;
+      text-align: right;
+      a::after {
+        content: '\00a0\203A';
+      }
+    }
+  }
+  @include responsive(small) {
+    .navitem {
       &.-prev {
-        order: 1;
-        text-align: left;
-        a::before {
-          content: '\2039\00a0';
+        flex: 2 1;
+        .text {
+          display: inline;
         }
       }
       &.-next {
-        order: 3;
-        text-align: right;
-        a::after {
-          content: '\00a0\203A';
+        flex: 2 1;
+        .text {
+          display: inline;
         }
       }
     }

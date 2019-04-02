@@ -4,6 +4,7 @@
   padding: 0.5em;
   >.content {
     flex: 1;
+    max-width: 100%;
     >h2 {
       @include t((caps, level2));
     }
@@ -73,6 +74,7 @@
       position: relative;
       margin-top: 2em;
       flex-direction: column;
+      hyphens: none;
       >.img {
         margin: 0 0 0.5em;
         border-radius: 0.5em;
@@ -89,6 +91,9 @@
         >.img {
           margin: 1em 0.5em 0.5em;
         }
+      }
+      @include responsive-to(small) {
+        hyphens: manual;
       }
       @include responsive(medium) {
         flex-direction: row;

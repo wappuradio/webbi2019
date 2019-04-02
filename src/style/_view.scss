@@ -20,7 +20,7 @@
           text-decoration: none;
         }
       }
-      @include responsive(small) {
+      //@include responsive(small) {
         display: flex;
         li {
           &::after {
@@ -31,7 +31,10 @@
             content: none;
           }
         }
-      }
+      //}
+    }
+    a.program-box {
+      text-decoration: none;
     }
   }
   @include responsive(medium) {

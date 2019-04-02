@@ -7,7 +7,7 @@ import { ProgramListItem } from './ProgramItem';
 
 const TimetableNavItem: FunctionComponent<{date: Moment, text: string}> = ({ date, text }) => (
   <NavLink to={`/programs/timetable/${date.format('DDMM')}`}>
-    {text} ({date.format('D.M.')})
+    <span className="text">{text}</span> ({date.format('D.M.')})
   </NavLink>
 );
 
@@ -35,7 +35,7 @@ const ProgramTimetable: FunctionComponent<{programs: Program[], date: Moment}> =
         <TimetableNav
           prev={toShow.prev}
           next={toShow.next}
-          title={ toShow.date.format('D.M.') }
+          title={ toShow.date.locale('fi').format('ddd D.M.') }
         />
         {toShow.programs.map((p: Program, i: number) => (
           <ProgramListItem key={i} {...p} />

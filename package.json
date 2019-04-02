@@ -11,6 +11,8 @@
     "@types/react-lazyload": "^2.3.2",
     "@types/react-loadable": "^5.5.0",
     "@types/react-router-dom": "^4.3.1",
+    "hyphenation.fi": "^0.2.1",
+    "hypher": "^0.2.5",
     "moment": "^2.24.0",
     "node-sass": "^4.11.0",
     "ramda": "^0.26.1",
