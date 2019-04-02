@@ -87,8 +87,11 @@
           text-decoration: underline;
         }
         >.desc {
+          &:not(:empty) {
+            margin-top: 1em;
+          }
           position: relative;
-          max-height: 2.5em;
+          max-height: 3.75em;
           overflow: hidden;
           word-break: break-word;
         }
@@ -148,6 +151,23 @@
         }
       }
     }
+  }
+}
+
+.timetable {
+  .info-item {
+    align-items: flex-start;
+    @include responsive-to(small) {
+      .desc {
+        margin-left: -6.5em;
+      }
+    }
+  }
+}
+
+.alphabetical {
+  .desc {
+    display: none;
   }
 }
 

@@ -4,7 +4,7 @@ import { Program, sortAndGroupForAlphabetical } from '../../logic/Program';
 import { ProgramListItem } from './ProgramItem';
 
 const ProgramList: FunctionComponent<{programs: Program[]}> = ({ programs }) => (
-  <div>
+  <div className='alphabetical'>
     {programs.map((p: Program, i: number) => (
       <ProgramListItem key={i} {...(p)} />
     ))}

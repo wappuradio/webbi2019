@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { Moment } from 'moment';
 
 import { Program, sortAndGroupForTimetable } from '../../logic/Program';
-import { ProgramListItem } from './ProgramItem';
+import { ProgramListItem, ProgramTimetableItem } from './ProgramItem';
 
 const TimetableNavItem: FunctionComponent<{date: Moment, text: string}> = ({ date, text }) => (
   <NavLink to={`/programs/timetable/${date.format('DDMM')}`}>
@@ -31,14 +31,14 @@ const ProgramTimetable: FunctionComponent<{programs: Program[], date: Moment}> =
   if (programs && programs.length > 0) {
     const toShow = sortAndGroupForTimetable(programs, date);
     return (
-      <div>
+      <div className='timetable'>
         <TimetableNav
           prev={toShow.prev}
           next={toShow.next}
           title={ toShow.date.locale('fi').format('ddd D.M.') }
         />
         {toShow.programs.map((p: Program, i: number) => (
-          <ProgramListItem key={i} {...p} />
+          <ProgramTimetableItem key={i} {...p} />
         ))}
         <TimetableNav prev={toShow.prev} next={toShow.next} />
       </div>

@@ -45,7 +45,7 @@ export const ProgramListItem: FunctionComponent<Program> =
     desc,
     thumbSrc
   }) => (
-  <Link to={`/programs/p/${name}`} className='program-box'>
+  <Link to={`/programs/p/${name}`} className='program-link'>
     <div className='info-item -program -many'>
       <ProgramImg {...{title}} src={ thumbSrc } size={{w: 88, h: 88}} />
       <div className='content'>
@@ -53,6 +53,39 @@ export const ProgramListItem: FunctionComponent<Program> =
           { title }
         </p>
         <p className='dates'>{ datesString(dates) }</p>
+        <p className='sub'>
+          { host && <span>Toimittaa: <strong>{ host }</strong></span> }
+          { (host && prod) && <br />}
+          { prod && <span>Tuottaa: <strong>{ prod }</strong></span>}
+        </p>
+      </div>
+    </div>
+  </Link>
+  );
+
+export const ProgramTimetableItem: FunctionComponent<Program> =
+  ({
+    name,
+    title,
+    dates,
+    host,
+    prod,
+    desc,
+    thumbSrc
+  }) => (
+  <Link to={`/programs/p/${name}`} className='program-link'>
+    <div className='info-item -program -many'>
+      <ProgramImg {...{title}} src={ thumbSrc } size={{w: 88, h: 88}} />
+      <div className='content'>
+        <p className='main'>
+          { title }
+        </p>
+        <p className='dates'>{ datesString(dates) }</p>
+        <p className='sub'>
+          { host && <span>Toimittaa: <strong>{ host }</strong></span> }
+          { (host && prod) && <br />}
+          { prod && <span>Tuottaa: <strong>{ prod }</strong></span>}
+        </p>
         <p className='desc' dangerouslySetInnerHTML={htmlDesc(desc?desc:'')} />
       </div>
     </div>
