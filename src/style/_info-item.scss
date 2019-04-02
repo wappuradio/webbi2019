@@ -47,6 +47,7 @@
       background: c(brand);
       border-radius: 50%;
       overflow: hidden;
+      flex-shrink: 0;
       >img {
         width: 100%;
         height: auto;
@@ -70,6 +71,39 @@
         }
       }
     }
+    &.-many {
+      &:hover {
+        >.content {
+          >.main {
+            color: c(brand-alt, 0.2);
+            text-decoration: none;
+          }
+        }
+      }
+      >.content {
+        >.main {
+          @include transition(color);
+          color: c(brand-alt);
+          text-decoration: underline;
+        }
+        >.desc {
+          position: relative;
+          max-height: 2.5em;
+          overflow: hidden;
+          word-break: break-word;
+        }
+        >.desc:after {
+          content: "\2026";
+          text-align: right;
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          width: 50%;
+          height: 1.2em;
+          background: linear-gradient(to right, c(alt, 1), c(alt, 0));
+        }
+      }
+    }
     &.-single {
       position: relative;
       margin-top: 2em;
@@ -85,6 +119,8 @@
       >.content {
         >.desc {
           margin-top: 1em;
+          white-space: pre-wrap;
+          word-break: break-word;
         }
       }
       @include responsive(small) {
@@ -99,7 +135,7 @@
         flex-direction: row;
         flex-direction: row-reverse;
         margin-right: -19em;
-        margin-top: 8em;
+        //margin-top: 8em;
         >.img {
           margin: -6em 0.5em;
         }

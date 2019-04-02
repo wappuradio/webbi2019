@@ -23,6 +23,10 @@ const datesString = (dates: Program["dates"]) =>
     (<span key={i} className='date'>{`${d.start.format('dd D.M. H:mm')}–${d.end.format('H:mm')}`}</span>)
   );
 
+const htmlDesc = (desc: string) => {
+  return { __html: desc }
+}
+
 const ProgramImg: FunctionComponent<ProgramImgProps> =
   ({ title, src }) => (
     <div className='img'>
@@ -38,21 +42,18 @@ export const ProgramListItem: FunctionComponent<Program> =
     dates,
     host,
     prod,
+    desc,
     thumbSrc
   }) => (
   <Link to={`/programs/p/${name}`} className='program-box'>
-    <div className='info-item -program'>
+    <div className='info-item -program -many'>
       <ProgramImg {...{title}} src={ thumbSrc } size={{w: 88, h: 88}} />
       <div className='content'>
         <p className='main'>
           { title }
         </p>
         <p className='dates'>{ datesString(dates) }</p>
-        <p className='sub'>
-          { host && <span>Toimittaa: <strong>{ host }</strong></span> }
-          { (host && prod) && <br />}
-          { prod && <span>Tuottaa: <strong>{ prod }</strong></span>}
-        </p>
+        <p className='desc' dangerouslySetInnerHTML={htmlDesc(desc?desc:'')} />
       </div>
     </div>
   </Link>
@@ -79,9 +80,7 @@ export const ProgramSingleItem: FunctionComponent<Program> =
           { (host && prod) && <br />}
           { prod && <span>Tuottaa: <strong>{ prod }</strong></span>}
         </p>
-        <p className='desc'>
-          { desc }
-        </p>
+        <p className='desc' dangerouslySetInnerHTML={htmlDesc(desc?desc:'')} />
       </div>
     </div> );
 
