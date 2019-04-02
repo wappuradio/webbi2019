@@ -54,9 +54,8 @@ export const ProgramListItem: FunctionComponent<Program> =
         </p>
         <p className='dates'>{ datesString(dates) }</p>
         <p className='sub'>
-          { host && <span>Toimittaa: <strong>{ host }</strong></span> }
-          { (host && prod) && <br />}
-          { prod && <span>Tuottaa: <strong>{ prod }</strong></span>}
+          { host && <span><span className='label'>Studiossa</span> <strong>{ host }</strong></span> }
+          { prod && <span><span className='label'>Tuottaja</span> <strong>{ prod }</strong></span> }
         </p>
       </div>
     </div>
@@ -82,11 +81,10 @@ export const ProgramTimetableItem: FunctionComponent<Program> =
         </p>
         <p className='dates'>{ datesString(dates) }</p>
         <p className='sub'>
-          { host && <span>Toimittaa: <strong>{ host }</strong></span> }
-          { (host && prod) && <br />}
-          { prod && <span>Tuottaa: <strong>{ prod }</strong></span>}
+          { host && <span><span className='label'>Studiossa</span> <strong>{ host }</strong></span> }
+          { prod && <span><span className='label'>Tuottaja</span> <strong>{ prod }</strong></span> }
         </p>
-        <p className='desc' dangerouslySetInnerHTML={htmlDesc(desc?desc:'')} />
+        <p className='desc'><span dangerouslySetInnerHTML={htmlDesc(desc?desc:'')} /></p>
       </div>
     </div>
   </Link>
@@ -109,11 +107,10 @@ export const ProgramSingleItem: FunctionComponent<Program> =
         </h2>
         <p className='dates'>{ datesString(dates) }</p>
         <p className='sub'>
-          { host && <span>Toimittaa: <strong>{ host }</strong></span> }
-          { (host && prod) && <br />}
-          { prod && <span>Tuottaa: <strong>{ prod }</strong></span>}
+          { host && <span><span className='label'>Studiossa</span> <strong>{ host }</strong></span> }
+          { prod && <span><span className='label'>Tuottaja</span> <strong>{ prod }</strong></span> }
         </p>
-        <p className='desc' dangerouslySetInnerHTML={htmlDesc(desc?desc:'')} />
+        <p className='desc'><span dangerouslySetInnerHTML={htmlDesc(desc?desc:'')} /></p>
       </div>
     </div> );
 

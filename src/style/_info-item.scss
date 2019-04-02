@@ -86,24 +86,56 @@
           color: c(brand-alt);
           text-decoration: underline;
         }
+        >.sub {
+          >span {
+            display: block;
+            >.label {
+              display: inline-block;
+              min-width: 4.6em;
+              color: c(base, 0.5);
+            }
+            @include responsive-to(small) {
+              .label {
+                display: none;
+              }
+              display: inline;
+              &:nth-child(2):before {
+                content: " + ";
+              }
+            }
+          }
+        }
         >.desc {
           &:not(:empty) {
             margin-top: 1em;
+          }
+          @supports not (-webkit-line-clamp: 3) {
+            &:after {
+              content: "";
+              width: 20%;
+              height: 1.2em;
+              background: linear-gradient(to right, c(alt, 0.75), c(alt, 0));
+              position: absolute;
+              right: 0;
+              bottom: 0;
+            };
           }
           position: relative;
           max-height: 3.75em;
           overflow: hidden;
           word-break: break-word;
-        }
-        >.desc:after {
-          content: "\2026";
-          text-align: right;
-          position: absolute;
-          bottom: 0;
-          right: 0;
-          width: 50%;
-          height: 1.2em;
-          background: linear-gradient(to right, c(alt, 1), c(alt, 0));
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          /* autoprefixer: ignore next */
+          -webkit-box-orient: vertical;
+          /* ...idiot */
+          -webkit-line-clamp: 3;
+          font-weight: 800;
+          color: c(base, 0.66);
+          >span {
+            font-weight: 400;
+            color: c(base);
+          }
         }
       }
     }
@@ -120,6 +152,16 @@
         height: auto;
       }
       >.content {
+        >.sub {
+          >span {
+            display: block;
+            >.label {
+              display: inline-block;
+              min-width: 4.6em;
+              color: c(base, 0.5);
+            }
+          }
+        }
         >.desc {
           margin-top: 1em;
           white-space: pre-wrap;
@@ -162,12 +204,6 @@
         margin-left: -6.5em;
       }
     }
-  }
-}
-
-.alphabetical {
-  .desc {
-    display: none;
   }
 }
 
