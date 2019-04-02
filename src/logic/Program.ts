@@ -51,8 +51,8 @@ export const fetchProgramArray: Promise<Program[]> =
           desc: d.desc,
           dates: [{start: moment(d.start), end: moment(d.end)}],
 
-          imgSrc: aprilliUrl + num + '.jpg',
-          thumbSrc: aprilliUrl + num + '-thumb.jpg'
+          imgSrc: d.photo,
+          thumbSrc: d.thumb
         }
       });
 

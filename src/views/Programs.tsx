@@ -57,7 +57,6 @@ const ProgramTimetableDate: FunctionComponent<RouteComponentProps & ProgramsDate
 const Programs: FunctionComponent<ProgramsProps> = ({ programs }) => (
   <section className='view-container -programs'>
     <h1>Ohjelmat</h1>
-    <p>Meillä pääsi vahingossa maanantaina livahtamaan joukko kulkukissoja palvelinsaliin ja koko ohjelmakartta on vieläkin ihan vinksin vonksin, voi surku!😅 Lähetimme kuitenkin joukon apinoita korjaamaan tilanteen hyvissä ajoin ennen Wappua, joten tarkkaile tätä sivua, Wappuradion somea ja vesilukon kuplimistiheyttä odotellessa!</p>
     <h2>
       <nav>
         <li>
