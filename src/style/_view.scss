@@ -33,8 +33,13 @@
         }
       //}
     }
-    a.program-link {
-      text-decoration: none;
+  }
+  a.program-link {
+    text-decoration: none;
+  }
+  .licenses {
+    li {
+      font-size: 0.75rem;
     }
   }
   @include responsive(medium) {

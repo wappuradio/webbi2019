@@ -4,6 +4,7 @@ import Loadable, { LoadableComponent, LoadableCaptureProps } from 'react-loadabl
 
 import { Program, fetchProgramArray } from '../logic/Program';
 import { fetchNews } from '../logic/Info';
+import { fetchLicenses } from '../logic/License';
 import Start from '../views/Start';
 import Programs from '../views/Programs';
 import Info from '../views/Info';
@@ -16,7 +17,8 @@ import { Data } from 'unist';
 
 interface APIWrapperState {
   programs: Program[],
-  infoData: string
+  infoData: string,
+  licenseData: string
 }
 
 const LogoWrapper: FunctionComponent<RouteComponentProps> = ({ location }) => {
@@ -32,7 +34,8 @@ export default class APIWrapper extends PureComponent<{}, APIWrapperState> {
 
     this.state = {
       programs: [],
-      infoData: ""
+      infoData: "",
+      licenseData: ""
     };
   };
 
@@ -41,23 +44,27 @@ export default class APIWrapper extends PureComponent<{}, APIWrapperState> {
       .then((pArray: Program[]) => this.setState({programs: pArray}));
     fetchNews
       .then((data: string) => this.setState({infoData: data}));
+    fetchLicenses
+      .then((data: string) => this.setState({licenseData: data}));
   }
 
   render() {
-    const { programs, infoData } = this.state;
+    const { programs, infoData, licenseData } = this.state;
 
     return (
       <Router>
         <div className='layout-container'>
           <TopBar />
-          {/* <Route path="/" exact component={Start} /> */}
           <Route path="/" exact render={() =>
-            <Info {...{infoData}} />
+            <Start {...{infoData}} />
+           }/>
+          <Route path="/info/" exact render={() =>
+            <Info {...{infoData}} {...{licenseData}} />
           }/>
           <Route path="/programs/" render={() =>
             <Programs {...{programs}} />
           }/>
-          {/* <BottomBar /> */}
+          <BottomBar />
           <Route path='/' render={(route) =>
             <LogoWrapper {...route} />
           } />

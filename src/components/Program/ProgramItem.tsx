@@ -3,11 +3,13 @@ import { NavLink, Link } from 'react-router-dom';
 import { Redirect } from 'react-router';
 import LazyLoad from 'react-lazyload';
 
-var Hypher = require('hypher');
-var fiPatterns = require('hyphenation.fi');
-var hypher = new Hypher(fiPatterns);
+const Hypher = require('hypher');
+const fiPatterns = require('hyphenation.fi');
+const hypher = new Hypher(fiPatterns);
+const ReactMarkdown = require('react-markdown');
 
 import { Program } from '../../logic/Program';
+
 
 interface ProgramImgProps {
   title: string,
@@ -54,7 +56,7 @@ export const ProgramListItem: FunctionComponent<Program> =
         </p>
         <p className='dates'>{ datesString(dates) }</p>
         <p className='sub'>
-          { host && <span><span className='label'>Studiossa</span> <strong>{ host }</strong></span> }
+          { host && <span><span className='label'>Äänessä</span> <strong>{ host }</strong></span> }
           { prod && <span><span className='label'>Tuottaja</span> <strong>{ prod }</strong></span> }
         </p>
       </div>
@@ -81,10 +83,12 @@ export const ProgramTimetableItem: FunctionComponent<Program> =
         </p>
         <p className='dates'>{ datesString(dates) }</p>
         <p className='sub'>
-          { host && <span><span className='label'>Studiossa</span> <strong>{ host }</strong></span> }
+          { host && <span><span className='label'>Äänessä</span> <strong>{ host }</strong></span> }
           { prod && <span><span className='label'>Tuottaja</span> <strong>{ prod }</strong></span> }
         </p>
-        <p className='desc'><span dangerouslySetInnerHTML={htmlDesc(desc?desc:'')} /></p>
+        { desc && <div className='desc'>
+          <ReactMarkdown source={desc} disallowedTypes={['link']} unwrapDisallowed={true} />
+        </div> }
       </div>
     </div>
   </Link>
@@ -107,10 +111,12 @@ export const ProgramSingleItem: FunctionComponent<Program> =
         </h2>
         <p className='dates'>{ datesString(dates) }</p>
         <p className='sub'>
-          { host && <span><span className='label'>Studiossa</span> <strong>{ host }</strong></span> }
+          { host && <span><span className='label'>Äänessä</span> <strong>{ host }</strong></span> }
           { prod && <span><span className='label'>Tuottaja</span> <strong>{ prod }</strong></span> }
         </p>
-        <p className='desc'><span dangerouslySetInnerHTML={htmlDesc(desc?desc:'')} /></p>
+        { desc && <div className='desc'>
+          <ReactMarkdown source={desc} />
+        </div> }
       </div>
     </div> );
 

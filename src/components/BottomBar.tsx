@@ -12,7 +12,7 @@ const BottomBar: FunctionComponent<BottomBarProps> = (props) => (
     <InfoItem
       title='Rakkauden Wappuradio'
       content='15.4.&ndash;30.4.'
-      subcontent='107,1 MHz &bull; wappuradio.fi'
+      subcontent='106,4 MHz &bull; wappuradio.fi'
     >
       <PlayButton />
     </InfoItem>

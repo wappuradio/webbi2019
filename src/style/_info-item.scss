@@ -14,6 +14,12 @@
     >.main {
       font-weight: 600;
     }
+    >.desc {
+      >p {
+        margin: 0;
+        margin-top: 0.75em;
+      }
+    }
   }
   >.content, >.action, >.img {
     margin: 0.5em;
@@ -91,7 +97,7 @@
             display: block;
             >.label {
               display: inline-block;
-              min-width: 4.6em;
+              min-width: 4.4em;
               color: c(base, 0.5);
             }
             @include responsive-to(small) {
@@ -101,16 +107,14 @@
               display: inline;
               &:nth-child(2):before {
                 content: " + ";
+                color: c(base, 0.5);
               }
             }
           }
         }
         >.desc {
-          &:not(:empty) {
-            margin-top: 1em;
-          }
           @supports not (-webkit-line-clamp: 3) {
-            &:after {
+            &::after {
               content: "";
               width: 20%;
               height: 1.2em;
@@ -121,7 +125,7 @@
             };
           }
           position: relative;
-          max-height: 3.75em;
+          max-height: 4.8em;
           overflow: hidden;
           word-break: break-word;
           text-overflow: ellipsis;
@@ -130,12 +134,6 @@
           -webkit-box-orient: vertical;
           /* ...idiot */
           -webkit-line-clamp: 3;
-          font-weight: 800;
-          color: c(base, 0.66);
-          >span {
-            font-weight: 400;
-            color: c(base);
-          }
         }
       }
     }
@@ -157,7 +155,7 @@
             display: block;
             >.label {
               display: inline-block;
-              min-width: 4.6em;
+              min-width: 4.4em;
               color: c(base, 0.5);
             }
           }
@@ -202,6 +200,9 @@
     @include responsive-to(small) {
       .desc {
         margin-left: -6.5em;
+      }
+      .sub {
+        min-height: 2em;
       }
     }
   }
