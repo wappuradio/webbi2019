@@ -13,6 +13,13 @@ interface StartProps {
 const Start: FunctionComponent<StartProps> = ({infoData}) => (
   <section className='view-container -start'>
     <h1>Rakkauden Wappuradio</h1>
+    <p><strong>Rakkauden Wappuradio&trade;</strong> lähettää ohjelmaa taas <strong>15.4.2019&nbsp;klo&nbsp;14</strong> alkaen ympäri vuorokauden aina wappuaattoon asti. Kuuntele Tampereen alueella taajuudella <strong>106,4&nbsp;MHz</strong> tai netissä. Meillä on tänä vuonna nopeesti laskien kymmenes lähetys, joten se on varmaan sitten jotenkin juhlavampi! Liity siis hypetysjoukkoihin <a href='https://t.me/wappuradio' target='_blank'>Telegram</a>-ryhmässä tai IRCnetissä kanavalla <strong>#wappuradio</strong>.</p>
+  </section>
+);
+
+  {/*
+  <section className='view-container -start'>
+    <h1>Rakkauden Wappuradio</h1>
     <section className='radio-player'>
       <PlayButton />
       <div className='info'>
@@ -56,5 +63,6 @@ const Start: FunctionComponent<StartProps> = ({infoData}) => (
     </ul>
   </section>
 );
+*/}
 
 export default Start;

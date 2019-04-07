@@ -64,7 +64,7 @@ export default class APIWrapper extends PureComponent<{}, APIWrapperState> {
           <Route path="/programs/" render={() =>
             <Programs {...{programs}} />
           }/>
-          <BottomBar />
+          {/*<BottomBar />*/}
           <Route path='/' render={(route) =>
             <LogoWrapper {...route} />
           } />
