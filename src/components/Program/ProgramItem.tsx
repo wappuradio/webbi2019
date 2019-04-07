@@ -85,7 +85,7 @@ export const ProgramTimetableItem: FunctionComponent<Program> =
           { prod && <span><span className='label'>Tuottaja</span> <strong>{ prod }</strong></span> }
         </p>
         { desc && <div className='desc'>
-          <ReactMarkdown source={desc} disallowedTypes={['link']} unwrapDisallowed={true} />
+          <ReactMarkdown source={desc} disallowedTypes={['link', 'paragraph']} unwrapDisallowed={true} />
         </div> }
       </div>
     </div>
