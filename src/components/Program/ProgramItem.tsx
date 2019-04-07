@@ -25,10 +25,6 @@ const datesString = (dates: Program["dates"]) =>
     (<span key={i} className='date'>{`${d.start.format('dd D.M. H:mm')}–${d.end.format('H:mm')}`}</span>)
   );
 
-const htmlDesc = (desc: string) => {
-  return { __html: desc }
-}
-
 const ProgramImg: FunctionComponent<ProgramImgProps> =
   ({ title, src }) => (
     <div className='img'>
@@ -41,6 +37,7 @@ export const ProgramListItem: FunctionComponent<Program> =
   ({
     name,
     title,
+    date,
     dates,
     host,
     prod,
@@ -68,6 +65,7 @@ export const ProgramTimetableItem: FunctionComponent<Program> =
   ({
     name,
     title,
+    date,
     dates,
     host,
     prod,
@@ -97,6 +95,7 @@ export const ProgramTimetableItem: FunctionComponent<Program> =
 export const ProgramSingleItem: FunctionComponent<Program> =
   ({
     title,
+    date,
     dates,
     host,
     prod,

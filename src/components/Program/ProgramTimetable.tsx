@@ -30,6 +30,7 @@ const TimetableNav: FunctionComponent<{prev: Moment | null, next: Moment | null,
 const ProgramTimetable: FunctionComponent<{programs: Program[], date: Moment}> = ({ programs, date }) => {
   if (programs && programs.length > 0) {
     const toShow = sortAndGroupForTimetable(programs, date);
+    window.scrollTo(0, 0);
     return (
       <div className='timetable'>
         <TimetableNav
