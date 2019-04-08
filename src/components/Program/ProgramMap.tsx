@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { Moment } from 'moment';
+import moment, { Moment } from 'moment';
 import { Link } from 'react-router-dom';
 
 import { Program, sortAndGroupForMap } from '../../logic/Program';
@@ -7,6 +7,7 @@ import { ProgramListItem } from './ProgramItem';
 
 const hours:Array<number> = [];
 for(var i:number = 0; i < 24; i++) hours.push(i);
+
 
 const ProgramMap: FunctionComponent<{programs: Program[], date: Moment}> = ({ programs, date }) => {
   var colRow = (colStart:number, colEnd:number, rowStart:number, rowEnd:number) =>{
@@ -17,6 +18,8 @@ const ProgramMap: FunctionComponent<{programs: Program[], date: Moment}> = ({ pr
 	  "gridRowEnd":rowEnd
 	}
   };
+  
+  var now = moment();
   
   var weekPrograms = sortAndGroupForMap(programs, date);
   
@@ -34,7 +37,7 @@ const ProgramMap: FunctionComponent<{programs: Program[], date: Moment}> = ({ pr
     {hours.map((h:number, i:number) => (<div className='map-hour' key={h} style={colRow(1,2,h+2,h+3)}>{h}</div>))}
 	{weekPrograms.programs.map((program:Program, i:number) => (
 		
-		<div key={program.name + i} className='map-program' style={
+		<div key={program.name + i} className={now.isBetween(program.date.start, program.date.end)?"map-program map-program-active":"map-program"} style={
 			colRow(program.date.start.isoWeekday()+1,program.date.start.isoWeekday()+2,program.date.start.hours()+2,program.date.end.hours()==0? 26 :program.date.end.hours()+2)
 		}>
 		<Link to={`/programs/p/${program.name}`} className='program-link'>

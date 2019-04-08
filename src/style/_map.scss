@@ -35,6 +35,20 @@
 	font-weight:200;
   }
   
+  .map-program-active
+  {
+	  animation-name:active-program;
+	  animation-duration:5s;
+	  animation-iteration-count:infinite;
+	  animation-direction:alternate;
+  }
+  
+  @keyframes active-program
+  {
+	  from{background-color:#a1243c;}
+	  to{background-color:#a4243c;}
+  }
+  
   .map-program a
   {
 	  color:white;
