@@ -102,12 +102,19 @@
 		user-select: none;
 		pointer-events: none;
 		display: block;
-		min-width:250px;
+		min-width:220px;
+		
 		@include responsive-to(small){
 			display:none;
 		}
 	}
-
+	@include responsive-to(medium){
+			.map-tooltip .map-tooltip-content.right{
+				left:auto;
+				right:100%;
+			}
+		}
+		
 	.map-tooltip .map-tooltip-content > div {
 		border: 4px solid white;
 		margin-bottom:0px;
