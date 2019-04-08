@@ -8,7 +8,11 @@
   
   .map-day
   {
-	  font-weight:800;
+	  color:white;
+	  background:#ac253a;
+	  width:100%;
+	  text-align:center;
+	  border-radius:1em;
   }
   
   .map-weekday 
@@ -25,7 +29,7 @@
   
   .map-hour
   {
-    background:#292f36;
+    background:#ac253a;
 	border-radius:1em;
 	color:white;
 	width:100%;
@@ -38,7 +42,7 @@
   .map-program
   {
 	background:#292f36;
-	border-radius:1em;
+	border-radius:0em;
 	color:white;
 	
     display:inline-grid;
