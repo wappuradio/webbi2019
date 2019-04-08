@@ -6,6 +6,18 @@
   justify-items:center;
   align-items:center;
   
+  .map-weekday 
+  {
+	display:none;  
+	margin-right:3px;
+	@include responsive(medium) {
+      display:inline-block;
+	}
+	@include responsive(large) {
+	  display:inline-block;
+	}
+  }
+  
   .map-hour
   {
     background:#292f36;

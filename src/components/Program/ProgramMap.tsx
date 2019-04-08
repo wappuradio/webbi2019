@@ -25,15 +25,18 @@ const ProgramMap: FunctionComponent<{programs: Program[], date: Moment}> = ({ pr
   
   const weekStart = date.startOf("isoWeek");
   
-  var weekdays:Array<String> = [];
+  var weekdays:Array<any> = [];
   for( var i = 0; i < 7; i++)
   {
-	  weekdays.push(weekStart.format("dd D.M"));
+	  weekdays.push({
+		  weekday:weekStart.format("dd"),
+		  date:weekStart.format("D.M")
+	  });
 	  weekStart.add(1, "days");
   }
   
   return <div className='map'>
-    {weekdays.map((date:String, i:number) => (<div className='map-day' key={i} style={colRow(i+2,i+3,1,2)}>{date}</div>))}
+    {weekdays.map((date:any, i:number) => (<div className='map-day' key={i} style={colRow(i+2,i+3,1,2)}><span className="map-weekday">{date.weekday}</span><span className="map-date">{date.date}</span></div>))}
     {hours.map((h:number, i:number) => (<div className='map-hour' key={h} style={colRow(1,2,h+2,h+3)}>{h}</div>))}
 	{weekPrograms.programs.map((program:Program, i:number) => (
 		
