@@ -3,7 +3,7 @@ import moment from 'moment';
 import { NavLink, Link } from 'react-router-dom';
 
 import { Program, sortAndGroupForMap } from '../../logic/Program';
-import ToolTip from './Tooltip';
+import ProgramMapTooltip from './ProgramMapTooltip';
 
 const hours: Array<number> = [];
 for (var i: number = 0; i < 24; i++) hours.push(i);
@@ -64,11 +64,11 @@ const ProgramMap: FunctionComponent<{ programs: Program[], week: string }> = ({ 
           const gridPositionStyle = colRow(program.date.start.isoWeekday() + 1, program.date.start.isoWeekday() + 2, program.date.start.hours() + 2, program.date.end.hours() == 0 ? 26 : program.date.end.hours() + 2);
           return (
             <div key={program.name + i} className={className} style={gridPositionStyle}>
-              <ToolTip tooltip={program.desc} host={program.host} prod={program.prod}>
+              <ProgramMapTooltip program={program}>
                 <Link to={`/programs/p/${program.name}`} className='program-link'>
                   <div className="map-content">{program.title}</div>
                 </Link>
-              </ToolTip>
+              </ProgramMapTooltip>
             </div>
           )
         }
