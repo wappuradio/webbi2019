@@ -99,7 +99,7 @@
 		position: absolute;
 		z-index: 1;
 		left:10%;
-		
+		user-select: none;
 	}
 	
 	.map-program:hover{
@@ -113,10 +113,10 @@
 	.map-tooltip .map-tooltip-tooltiptext::after {
 		content: " ";
 		position: absolute;
-		bottom: 100%;  /* At the top of the tooltip */
+		bottom: 100%;
 		left: 8%;
-		margin-left: -5px;
-		border-width: 5px;
+		margin-left: -8px;
+		border-width: 8px;
 		border-style: solid;
 		border-color: transparent transparent black transparent;
 	}
