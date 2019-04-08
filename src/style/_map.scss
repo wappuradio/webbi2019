@@ -98,7 +98,7 @@
 		user-select: none;
 		pointer-events: none;
 		display: block;
-		min-width:280px;
+		min-width:350px;
 		
 		@include responsive-to(small){
 			display:none;
