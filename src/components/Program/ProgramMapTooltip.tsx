@@ -10,12 +10,10 @@ interface TooltipProps {
 const ProgramMapTooltip: FunctionComponent<{ program: Program, children: ReactNode }> = ({ program, children }) => (
   <>
   {children}
-  <div className="map-tooltip">    
     <div className="map-tooltip-content">
      <ProgramSingleItem {...program} showImg={false} />
     </div>
     
-  </div>
   </>
 );
 

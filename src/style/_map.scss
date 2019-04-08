@@ -41,6 +41,7 @@
   
   .map-program
   {
+	position:relative;
 	background:#292f36;
 	border-radius:0em;
 	color:white;
@@ -83,12 +84,7 @@
 	  padding: 0.4em;
 	}
 
-	.map-tooltip{
-		width:100%;
-		position: relative;
-	}
-
-	.map-tooltip .map-tooltip-content {
+	.map-tooltip-content {
 		visibility: hidden;
 		padding: 0px;
 		margin:0px 0px 0px 5px;
@@ -102,7 +98,7 @@
 		user-select: none;
 		pointer-events: none;
 		display: block;
-		min-width:220px;
+		min-width:280px;
 		
 		@include responsive-to(small){
 			display:none;
@@ -115,12 +111,12 @@
 			}
 		}
 		
-	.map-tooltip .map-tooltip-content > div {
+	.map-tooltip-content > div {
 		border: 4px solid white;
 		margin-bottom:0px;
 	}
 	
-	.map-tooltip .map-tooltip-content > div h2 {
+	.map-tooltip-content > div h2 {
 		font-size:1.5rem;
 	}
 	
