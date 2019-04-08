@@ -77,10 +77,6 @@
 	  width:100%;
 	  height:100%;
   }
-  .map-program a:hover
-  {
-	  text-decoration:underline;
-  }
   
   .map-program .map-content
   {
@@ -107,6 +103,9 @@
 		pointer-events: none;
 		display: block;
 		min-width:250px;
+		@include responsive-to(small){
+			display:none;
+		}
 	}
 
 	.map-tooltip .map-tooltip-content > div {
@@ -121,6 +120,8 @@
 	
 	.map-program:hover{
 		background-color: #454545;
+		cursor:pointer;
+		text-decoration:underline;
 	}
 
 	.map-program:hover .map-tooltip-content{
