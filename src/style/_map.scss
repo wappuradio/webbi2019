@@ -104,6 +104,7 @@
 		left:10%;
 		user-select: none;
 		pointer-events: none;
+		display: block;
 	}
 	
 	.map-program:hover{
@@ -123,5 +124,10 @@
 		border-width: 8px;
 		border-style: solid;
 		border-color: transparent transparent black transparent;
+	}
+
+	.map-tooltip-info{
+		color:rgba(255, 253, 249, 0.5);
+		display: inline-block;
 	}
 }
