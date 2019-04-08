@@ -98,6 +98,10 @@ const Programs: FunctionComponent<ProgramsProps> = ({ programs }) => (
         render={() => <ProgramTimetable {...{programs}} date={moment()} />}
       />
 	  <Route
+        path='/programs/map/' exact 
+        render={(route) => <ProgramMapView {...route} {...{programs}} />}
+      />
+	  <Route
         path='/programs/map/:week' 
         render={(route) => <ProgramMapView {...route} {...{programs}} />}
       />

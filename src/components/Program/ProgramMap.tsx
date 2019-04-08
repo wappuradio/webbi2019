@@ -36,7 +36,7 @@ const ProgramMap: FunctionComponent<{programs: Program[], week:string}> = ({ pro
 	  weekStart.add(1, "days");
   }
    
-  return 
+  return (
   <div>
     <h3>
       <nav>
@@ -44,7 +44,7 @@ const ProgramMap: FunctionComponent<{programs: Program[], week:string}> = ({ pro
           <NavLink to='/programs/map/1' exact>Viikko 1</NavLink>
         </li>
 		<li>
-          <NavLink to='/programs/map/1' exact>Viikko 2</NavLink>
+          <NavLink to='/programs/map/2' exact>Viikko 2</NavLink>
         </li>
       </nav>
     </h3>
@@ -64,7 +64,7 @@ const ProgramMap: FunctionComponent<{programs: Program[], week:string}> = ({ pro
 	))}
 	
     </div>
-  </div>
+  </div>);
 };
 
 export default ProgramMap;
