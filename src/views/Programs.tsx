@@ -16,6 +16,12 @@ interface ProgramsDateProps {
   programs: Program[],
   match?: match<{date: string}>
 }
+
+interface ProgramsWeekProps {
+  programs: Program[],
+  match?: match<{week: string}>
+}
+
 interface ProgramSingleProps {
   programs: Program[],
   match?: match<{name: string}>
@@ -55,15 +61,14 @@ const ProgramTimetableDate: FunctionComponent<RouteComponentProps & ProgramsDate
   );
 };
 
-const ProgramMapView: FunctionComponent<RouteComponentProps & ProgramsDateProps> = ({ match, programs }) => {
-  const grouped = sortAndGroupForAlphabetical(programs);
-  let date = moment();
+const ProgramMapView: FunctionComponent<RouteComponentProps & ProgramsWeekProps> = ({ match, programs }) => {
+  let week = "1";
 
-  if (match && match.params.date) {
-    date = moment(match.params.date, 'DDMM')
+  if (match && match.params.week) {
+    week = match.params.week
   };
   return (
-    <ProgramMap {...{programs, date}} />
+    <ProgramMap {...{programs, week}} />
   );
 }
 
@@ -93,7 +98,7 @@ const Programs: FunctionComponent<ProgramsProps> = ({ programs }) => (
         render={() => <ProgramTimetable {...{programs}} date={moment()} />}
       />
 	  <Route
-        path='/programs/map' exact
+        path='/programs/map/:week' 
         render={(route) => <ProgramMapView {...route} {...{programs}} />}
       />
       <Route
