@@ -87,7 +87,7 @@
 	.map-tooltip-content {
 		visibility: hidden;
 		padding: 0px;
-		margin:0px 0px 0px 5px;
+		margin:0px 0px 0px 3px;
 		white-space: pre-wrap;
 		word-break: break-word;
 		border-radius: 10px; 
@@ -103,9 +103,12 @@
 		@include responsive-to(small){
 			display:none;
 		}
+		@include responsive-to(medium){
+			display:none;
+		}
 	}
-	@include responsive-to(medium){
-			.map-tooltip .map-tooltip-content.right{
+	@include responsive(medium){
+			.map-tooltip-content.right{
 				left:auto;
 				right:100%;
 			}
@@ -122,7 +125,7 @@
 	
 	
 	.map-program:hover{
-		background-color: #454545;
+		background-color: #ac253a;
 		cursor:pointer;
 		text-decoration:underline;
 	}
