@@ -142,6 +142,54 @@ export const sortAndGroupForTimetable = (programs: Program[], date: Moment): For
   }
 };
 
+interface ForMap {
+  programs: Program[],
+  date: Moment,
+  prev: Moment | null,
+  next: Moment | null
+}
+
+export const sortAndGroupForMap = (programs: Program[], date: Moment): ForMap => {
+  const isSameDate = (startDate: Moment, sameAs: Moment) => {
+    const start = moment(startDate);
+    return sameAs.isSame(start, 'week');
+  }
+
+  if (programs.length > 0) {
+    const sorted = R.sort((a: Program, b: Program) =>
+      a.date.start.isBefore(b.date.start) ? -1 : 1, programs);
+
+    const byWeek = R.filter((a: Program) => isSameDate(a.date.start, date), sorted);
+
+    if (byWeek.length > 0) {
+      const prev = moment(date).subtract(1, 'weeks');
+      const next = moment(date).add(1, 'weeks');
+      const prevByWeek = R.filter((a: Program) => isSameDate(a.date.start, prev), sorted);
+      const nextByWeek = R.filter((a: Program) => isSameDate(a.date.start, next), sorted);
+
+      return {
+        programs: byWeek,
+        date: date,
+        prev: prevByWeek.length > 0 ? prev : null,
+        next: nextByWeek.length > 0 ? next : null
+      };
+    } else {
+      const first = sorted[0].dates[0].start;
+      const last = sorted[sorted.length - 1].dates[0].start;
+
+      if (date.isBefore(first)) {
+        return sortAndGroupForMap(programs, moment(first));
+      } else {
+        return sortAndGroupForMap(programs, moment(last));
+      }
+    }
+  } else {
+    return { programs: [], date: date, prev: null, next: null };
+  }
+};
+
+
+
 export const getProgramByName = (name: string, programs: Program[]): Program => {
   return R.find(R.propEq('name', name))(programs);
 }

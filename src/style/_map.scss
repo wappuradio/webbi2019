@@ -1,0 +1,54 @@
+.map {
+  display:grid;
+  grid-template-columns: 40px repeat(auto-fit, minmax(20px, 1fr));
+  grid-template-rows: repeat(24, 20px);
+  grid-gap: 4px;
+  justify-items:center;
+  align-items:center;
+  
+  .map-hour
+  {
+    background:#292f36;
+	border-radius:1em;
+	color:white;
+	width:100%;
+	height:100%;
+	display:inline-grid;
+	justify-items:center;
+	
+  }
+  
+  .map-program
+  {
+	background:#292f36;
+	border-radius:1em;
+	color:white;
+	
+    display:inline-grid;
+	width:100%;
+	height:100%;
+	word-break:break-all;
+	
+	justify-items:start;
+	
+	font-size:70%;
+	font-weight:200;
+  }
+  
+  .map-program a
+  {
+	  color:white;
+	  display:block;
+	  width:100%;
+	  height:100%;
+  }
+  .map-program a:hover
+  {
+	  text-decoration:underline;
+  }
+  
+  .map-program .map-content
+  {
+	  padding: 0.4em;
+  }
+}

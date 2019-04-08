@@ -4,6 +4,7 @@ import moment from 'moment';
 
 import { Program, getProgramByName, sortAndGroupForAlphabetical } from '../logic/Program';
 import ProgramList from '../components/Program/ProgramList';
+import ProgramMap from '../components/Program/ProgramMap';
 import ProgramTimetable from '../components/Program/ProgramTimetable';
 import { ProgramSingleItem } from '../components/Program/ProgramItem';
 
@@ -54,6 +55,18 @@ const ProgramTimetableDate: FunctionComponent<RouteComponentProps & ProgramsDate
   );
 };
 
+const ProgramMapView: FunctionComponent<RouteComponentProps & ProgramsDateProps> = ({ match, programs }) => {
+  const grouped = sortAndGroupForAlphabetical(programs);
+  let date = moment();
+
+  if (match && match.params.date) {
+    date = moment(match.params.date, 'DDMM')
+  };
+  return (
+    <ProgramMap {...{programs, date}} />
+  );
+}
+
 const Programs: FunctionComponent<ProgramsProps> = ({ programs }) => (
   <section className='view-container -programs'>
     <h1>Ohjelmat</h1>
@@ -76,6 +89,10 @@ const Programs: FunctionComponent<ProgramsProps> = ({ programs }) => (
         path='/programs/timetable/' exact
         render={() => <ProgramTimetable {...{programs}} date={moment()} />}
       />
+	  <Route
+        path='/programs/map' exact
+        render={(route) => <ProgramMapView {...route} {...{programs}} />}
+      />
       <Route
         path='/programs/timetable/:date'
         render={(route) => <ProgramTimetableDate {...route} {...{programs}} />}
@@ -84,6 +101,8 @@ const Programs: FunctionComponent<ProgramsProps> = ({ programs }) => (
         path='/programs/p/:name'
         render={(route) => <ProgramSingle {...route} {...{programs}} />}
       />
+	  
+	  
     </Switch>
   </section>
 );
