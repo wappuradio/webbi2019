@@ -142,7 +142,7 @@
       position: relative;
       margin-top: 2em;
       flex-direction: column;
-      hyphens: none;
+      hyphens: manual;
       >.img {
         margin: 0 0 0.5em;
         border-radius: 0.5em;
