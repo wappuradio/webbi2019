@@ -5,7 +5,7 @@ interface TooltipProps {
   children: ReactNode
 }
 
-const ToolTip: FunctionComponent<{tooltip?: string, children:ReactNode}> = ({ tooltip, children }) => (
+const ToolTip: FunctionComponent<{ tooltip?: string, children: ReactNode }> = ({ tooltip, children }) => (
   <div className="map-tooltip">
     {children}
     <div className="map-tooltip-tooltiptext">
