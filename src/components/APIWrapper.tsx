@@ -8,6 +8,7 @@ import { fetchLicenses } from '../logic/License';
 import Start from '../views/Start';
 import Programs from '../views/Programs';
 import Info from '../views/Info';
+import English from '../views/English';
 
 import BottomBar from './BottomBar';
 import TopBar from './TopBar';
@@ -63,6 +64,9 @@ export default class APIWrapper extends PureComponent<{}, APIWrapperState> {
           }/>
           <Route path="/programs/" render={() =>
             <Programs {...{programs}} />
+          }/>
+          <Route path="/en" exact render={() =>
+            <English {...{ infoData }} />
           }/>
           {/*<BottomBar />*/}
           <Route path='/' render={(route) =>
