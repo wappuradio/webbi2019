@@ -64,7 +64,7 @@ const ProgramMap: FunctionComponent<{ programs: Program[], week: string }> = ({ 
           const gridPositionStyle = colRow(program.date.start.isoWeekday() + 1, program.date.start.isoWeekday() + 2, program.date.start.hours() + 2, program.date.end.hours() == 0 ? 26 : program.date.end.hours() + 2);
           return (
             <div key={program.name + i} className={className} style={gridPositionStyle}>
-              <ToolTip tooltip={program.desc}>
+              <ToolTip tooltip={program.desc} host={program.host} prod={program.prod}>
                 <Link to={`/programs/p/${program.name}`} className='program-link'>
                   <div className="map-content">{program.title}</div>
                 </Link>
