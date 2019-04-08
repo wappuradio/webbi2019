@@ -101,7 +101,8 @@
 		border-radius: 10px; 
 		position: absolute;
 		z-index: 1;
-		left:10%;
+		left:100%;
+		bottom:0%;
 		user-select: none;
 		pointer-events: none;
 		display: block;
@@ -113,17 +114,6 @@
 
 	.map-tooltip:hover .map-tooltip-tooltiptext{
 		visibility: visible;
-	}
-
-	.map-tooltip .map-tooltip-tooltiptext::after {
-		content: " ";
-		position: absolute;
-		bottom: 100%;
-		left: 8%;
-		margin-left: -8px;
-		border-width: 8px;
-		border-style: solid;
-		border-color: transparent transparent black transparent;
 	}
 
 	.map-tooltip-info{
