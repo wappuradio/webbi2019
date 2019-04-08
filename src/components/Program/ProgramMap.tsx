@@ -21,7 +21,8 @@ const ProgramMap: FunctionComponent<{programs: Program[], week:string}> = ({ pro
   
   var radioStart = moment("15.04.2019", "DD.MM.YYYY");
   //Second week of program. This could be done with dates also but week number sounded better for short time radio.
-  if(week == "2")	radioStart.add(7, "days");
+  if(week == "2") radioStart.add(7, "days");
+  else if(week == "3") radioStart.add(14, "days");
   var weekPrograms = sortAndGroupForMap(programs, radioStart);
   
   const weekStart = radioStart.startOf("isoWeek");
@@ -45,6 +46,9 @@ const ProgramMap: FunctionComponent<{programs: Program[], week:string}> = ({ pro
         </li>
 		<li>
           <NavLink to='/programs/map/2' exact>Viikko 2</NavLink>
+        </li>
+		<li>
+          <NavLink to='/programs/map/3' exact>Viikko 3</NavLink>
         </li>
       </nav>
     </h3>

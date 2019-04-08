@@ -63,7 +63,16 @@ const ProgramTimetableDate: FunctionComponent<RouteComponentProps & ProgramsDate
 
 const ProgramMapView: FunctionComponent<RouteComponentProps & ProgramsWeekProps> = ({ match, programs }) => {
   let week = "1";
-
+  let date = moment();
+  //Should moment-timezone be added?
+  //date.tz("Finland/Helsinki");
+  
+  //This could be made much better.
+  if(date.day() >= 29)
+	week = "3";
+  else if(date.day() >= 22)
+	week = "2";
+  
   if (match && match.params.week) {
     week = match.params.week
   };
