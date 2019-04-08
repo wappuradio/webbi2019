@@ -76,5 +76,48 @@
   .map-program .map-content
   {
 	  padding: 0.4em;
-  }
+	}
+
+	.map-tooltip{
+		width:100%;
+		position: relative;
+	}
+
+	.map-tooltip .map-tooltip-tooltiptext {
+		visibility: hidden;
+		width: 300px;
+		background-color: black;
+		color: #fff;
+		text-align: center;
+		padding: 15px 10px;
+		margin:5px;
+		white-space: pre-wrap;
+		word-break: break-word;
+
+		border-radius: 10px;
+	 
+		position: absolute;
+		z-index: 1;
+		left:10%;
+		
+	}
+	
+	.map-program:hover{
+		background-color: #454545;
+	}
+
+	.map-tooltip:hover .map-tooltip-tooltiptext{
+		visibility: visible;
+	}
+
+	.map-tooltip .map-tooltip-tooltiptext::after {
+		content: " ";
+		position: absolute;
+		bottom: 100%;  /* At the top of the tooltip */
+		left: 8%;
+		margin-left: -5px;
+		border-width: 5px;
+		border-style: solid;
+		border-color: transparent transparent black transparent;
+	}
 }
