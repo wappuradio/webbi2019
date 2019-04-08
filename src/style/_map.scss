@@ -87,7 +87,7 @@
 	.map-tooltip-content {
 		visibility: hidden;
 		padding: 0px;
-		margin:0px 0px 0px 3px;
+		margin:0px 0px 0px 0px;
 		white-space: pre-wrap;
 		word-break: break-word;
 		border-radius: 10px; 
@@ -103,9 +103,7 @@
 		@include responsive-to(small){
 			display:none;
 		}
-		@include responsive-to(medium){
-			display:none;
-		}
+		
 	}
 	@include responsive(medium){
 			.map-tooltip-content.right{
@@ -115,7 +113,7 @@
 		}
 		
 	.map-tooltip-content > div {
-		border: 4px solid white;
+		border: 8px solid #ac253a;
 		margin-bottom:0px;
 		margin-right:0em !important;
 		max-width:100%;
