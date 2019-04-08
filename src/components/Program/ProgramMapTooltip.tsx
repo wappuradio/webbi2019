@@ -10,7 +10,7 @@ interface TooltipProps {
 
 const ProgramMapTooltip: FunctionComponent<TooltipProps> = ({ program, left, children }) => 
 {
-  const className = left ? "map-tooltip-content right" : "map-tooltip-content left";
+  const className = left ? "map-tooltip-content" : "map-tooltip-content right";
   return (
   <>
   {children}

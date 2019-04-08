@@ -62,7 +62,7 @@ const ProgramMap: FunctionComponent<{ programs: Program[], week: string }> = ({ 
         {weekPrograms.programs.map((program: Program, i: number) => {
           const className = now.isBetween(program.date.start, program.date.end) ? "map-program map-program-active" : "map-program";
           const gridPositionStyle = colRow(program.date.start.isoWeekday() + 1, program.date.start.isoWeekday() + 2, program.date.start.hours() + 2, program.date.end.hours() == 0 ? 26 : program.date.end.hours() + 2);
-          const leftSide = program.date.start.isoWeekday() < 4;
+          const leftSide = program.date.start.isoWeekday() < 5;
           return (
             <div key={program.name + i} className={className} style={gridPositionStyle}>
               <ProgramMapTooltip program={program} left={leftSide}>
