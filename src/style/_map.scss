@@ -94,9 +94,8 @@
 
 	.map-tooltip .map-tooltip-content {
 		visibility: hidden;
-		padding: 5px 0px;
-		width: 300px;
-		margin:5px;
+		padding: 0px;
+		margin:0px 0px 0px 5px;
 		white-space: pre-wrap;
 		word-break: break-word;
 		border-radius: 10px; 
@@ -107,10 +106,12 @@
 		user-select: none;
 		pointer-events: none;
 		display: block;
+		min-width:250px;
 	}
 
 	.map-tooltip .map-tooltip-content > div {
-		border: 1px solid white;
+		border: 4px solid white;
+		margin-bottom:0px;
 	}
 	
 	.map-program:hover{
