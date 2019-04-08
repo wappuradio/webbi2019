@@ -33,6 +33,12 @@
         }
       //}
     }
+	
+	h2{
+		@include responsive-to(small){
+			font-size:1.4rem;
+		}
+	}
   }
   a.program-link {
     text-decoration: none;
