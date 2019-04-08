@@ -88,13 +88,10 @@
 		position: relative;
 	}
 
-	.map-tooltip .map-tooltip-tooltiptext {
+	.map-tooltip .map-tooltip-content {
 		visibility: hidden;
+		padding: 5px 0px;
 		width: 300px;
-		background-color: black;
-		color: #fff;
-		text-align: center;
-		padding: 15px 10px;
 		margin:5px;
 		white-space: pre-wrap;
 		word-break: break-word;
@@ -107,12 +104,16 @@
 		pointer-events: none;
 		display: block;
 	}
+
+	.map-tooltip .map-tooltip-content > div {
+		border: 1px solid white;
+	}
 	
 	.map-program:hover{
 		background-color: #454545;
 	}
 
-	.map-tooltip:hover .map-tooltip-tooltiptext{
+	.map-tooltip:hover .map-tooltip-content{
 		visibility: visible;
 	}
 
