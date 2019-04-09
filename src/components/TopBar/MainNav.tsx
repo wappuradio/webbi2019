@@ -16,6 +16,9 @@ const MainNav: FunctionComponent = () => (
     <li>
       <NavLink to='/info/'>Info</NavLink>
     </li>
+    <li>
+      <NavLink to='/en/'>English</NavLink>
+    </li>
   </nav>
 );
 

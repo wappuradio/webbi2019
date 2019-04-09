@@ -57,6 +57,7 @@
         align-items: center;
         span, .icon {
           color: c(brand);
+          white-space: nowrap;
         }
         .icon {
           width: 1.5em;
