@@ -32,6 +32,9 @@
           }
         }
       //}
+      @include responsive-to(small) {
+        font-size: 0.85em;
+      }
     }
 	
 	h2{
