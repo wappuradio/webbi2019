@@ -36,7 +36,7 @@ const ProgramMap: FunctionComponent<{ programs: Program[], week: string }> = ({ 
   for (var i = 0; i < 7; i++) {
     weekdays.push({
       weekday: weekStart.format("dd"),
-      date: weekStart.format("D.M")
+      date: weekStart.format("D.M.")
     });
     weekStart.add(1, "days");
   }

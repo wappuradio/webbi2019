@@ -120,9 +120,10 @@ const Programs: FunctionComponent<ProgramsProps> = ({ programs }) => (
         path='/programs/p/:name'
         render={(route) => <ProgramSingle {...route} {...{programs}} />}
       />
-	  
-	  
     </Switch>
+    <p>
+      <a href="https://wappuradio.fi/wappuradio.ics">Lataa ohjelmakartta vaikkapa Google-kalenteriin tästä!</a> (.ics)
+    </p>
   </section>
 );
 
