@@ -10,6 +10,9 @@ const ReactMarkdown = require('react-markdown');
 
 import { Program } from '../../logic/Program';
 
+interface ProgramSingleItemProps extends Program{
+  showImg?: boolean
+}
 
 interface ProgramImgProps {
   title: string,
@@ -92,7 +95,7 @@ export const ProgramTimetableItem: FunctionComponent<Program> =
   </Link>
   );
 
-export const ProgramSingleItem: FunctionComponent<Program> =
+export const ProgramSingleItem: FunctionComponent<ProgramSingleItemProps> =
   ({
     title,
     date,
@@ -100,10 +103,11 @@ export const ProgramSingleItem: FunctionComponent<Program> =
     host,
     prod,
     desc,
-    imgSrc
+    imgSrc,
+    showImg = true
   }) => (
     <div className='info-item -program -single'>
-      <ProgramImg {...{title}} src={ imgSrc } size={{w: 480, h: 480}} />
+      {showImg && <ProgramImg {...{title}} src={ imgSrc } size={{w: 480, h: 480}} />}
       <div className='content'>
         <h2 className='main'>
           { hypher.hyphenateText(title) }

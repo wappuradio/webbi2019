@@ -1,0 +1,141 @@
+.map {
+  display:grid;
+  grid-template-columns: 40px repeat(auto-fit, minmax(20px, 1fr));
+  grid-template-rows: repeat(24, 20px);
+  grid-gap: 4px;
+  justify-items:center;
+  align-items:center;
+  
+  .map-day
+  {
+	  color:white;
+	  background:#ac253a;
+	  width:100%;
+	  text-align:center;
+	  border-radius:1em;
+  }
+  
+  .map-weekday 
+  {
+	display:none;  
+	margin-right:3px;
+	@include responsive(medium) {
+      display:inline-block;
+	}
+	@include responsive(large) {
+	  display:inline-block;
+	}
+  }
+  
+  .map-hour
+  {
+    background:#ac253a;
+	border-radius:1em;
+	color:white;
+	width:100%;
+	height:100%;
+	display:inline-grid;
+	justify-items:center;
+	
+  }
+  
+  .map-program
+  {
+	position:relative;
+	background:#292f36;
+	border-radius:0em;
+	color:white;
+	
+    display:inline-grid;
+	width:100%;
+	height:100%;
+	word-break:break-word;
+	
+	justify-items:start;
+	
+	font-size:70%;
+	font-weight:200;
+  }
+  
+  .map-program-active
+  {
+	  animation-name:active-program;
+	  animation-duration:5s;
+	  animation-iteration-count:infinite;
+	  animation-direction:alternate;
+  }
+  
+  @keyframes active-program
+  {
+	  from{background-color:#a1243c;}
+	  to{background-color:#a4243c;}
+  }
+  
+  .map-program a
+  {
+	  color:white;
+	  display:block;
+	  width:100%;
+	  height:100%;
+  }
+  
+  .map-program .map-content
+  {
+	  padding: 0.4em;
+	}
+
+	.map-tooltip-content {
+		visibility: hidden;
+		padding: 0px;
+		margin:0px 0px 0px 0px;
+		white-space: pre-wrap;
+		word-break: break-word;
+		border-radius: 10px; 
+		position: absolute;
+		z-index: 1;
+		left:100%;
+		bottom:0%;
+		user-select: none;
+		pointer-events: none;
+		display: block;
+		min-width:350px;
+		
+		@include responsive-to(small){
+			display:none;
+		}
+		
+	}
+	@include responsive(small){
+			.map-tooltip-content.right{
+				left:auto;
+				right:100%;
+			}
+		}
+		
+	.map-tooltip-content > div {
+		border: 8px solid #ac253a;
+		margin-bottom:0px;
+		margin-right:0em !important;
+		max-width:100%;
+	}
+	
+	.map-tooltip-content > div h2 {
+		font-size:1.5rem;
+	}
+	
+	
+	.map-program:hover{
+		background-color: #ac253a;
+		cursor:pointer;
+		text-decoration:underline;
+	}
+
+	.map-program:hover .map-tooltip-content{
+		visibility: visible;
+	}
+
+	.map-tooltip-info{
+		color:rgba(255, 253, 249, 0.5);
+		display: inline-block;
+	}
+}

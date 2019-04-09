@@ -4,6 +4,7 @@ import moment from 'moment';
 
 import { Program, getProgramByName, sortAndGroupForAlphabetical } from '../logic/Program';
 import ProgramList from '../components/Program/ProgramList';
+import ProgramMap from '../components/Program/ProgramMap';
 import ProgramTimetable from '../components/Program/ProgramTimetable';
 import { ProgramSingleItem } from '../components/Program/ProgramItem';
 
@@ -15,6 +16,12 @@ interface ProgramsDateProps {
   programs: Program[],
   match?: match<{date: string}>
 }
+
+interface ProgramsWeekProps {
+  programs: Program[],
+  match?: match<{week: string}>
+}
+
 interface ProgramSingleProps {
   programs: Program[],
   match?: match<{name: string}>
@@ -54,6 +61,24 @@ const ProgramTimetableDate: FunctionComponent<RouteComponentProps & ProgramsDate
   );
 };
 
+const ProgramMapView: FunctionComponent<RouteComponentProps & ProgramsWeekProps> = ({ match, programs }) => {
+  let week = "1";
+  let date = moment();
+  
+  //This could be made much better.
+  if(date.day() >= 29)
+	week = "3";
+  else if(date.day() >= 22)
+	week = "2";
+  
+  if (match && match.params.week) {
+    week = match.params.week
+  };
+  return (
+    <ProgramMap {...{programs, week}} />
+  );
+}
+
 const Programs: FunctionComponent<ProgramsProps> = ({ programs }) => (
   <section className='view-container -programs'>
     <h1>Ohjelmat</h1>
@@ -64,6 +89,9 @@ const Programs: FunctionComponent<ProgramsProps> = ({ programs }) => (
         </li>
         <li>
           <NavLink to='/programs/' exact>Lista</NavLink>
+        </li>
+		<li>
+          <NavLink to='/programs/map' exact>Kartta</NavLink>
         </li>
       </nav>
     </h2>
@@ -76,6 +104,14 @@ const Programs: FunctionComponent<ProgramsProps> = ({ programs }) => (
         path='/programs/timetable/' exact
         render={() => <ProgramTimetable {...{programs}} date={moment()} />}
       />
+	  <Route
+        path='/programs/map/' exact 
+        render={(route) => <ProgramMapView {...route} {...{programs}} />}
+      />
+	  <Route
+        path='/programs/map/:week' 
+        render={(route) => <ProgramMapView {...route} {...{programs}} />}
+      />
       <Route
         path='/programs/timetable/:date'
         render={(route) => <ProgramTimetableDate {...route} {...{programs}} />}
@@ -84,6 +120,8 @@ const Programs: FunctionComponent<ProgramsProps> = ({ programs }) => (
         path='/programs/p/:name'
         render={(route) => <ProgramSingle {...route} {...{programs}} />}
       />
+	  
+	  
     </Switch>
   </section>
 );
