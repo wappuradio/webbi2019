@@ -49,6 +49,7 @@ const ProgramSingle: FunctionComponent<RouteComponentProps & ProgramSingleProps>
     );
 };
 
+
 const ProgramTimetableDate: FunctionComponent<RouteComponentProps & ProgramsDateProps> = ({ match, programs }) => {
   let date = moment();
 
@@ -64,13 +65,13 @@ const ProgramTimetableDate: FunctionComponent<RouteComponentProps & ProgramsDate
 const ProgramMapView: FunctionComponent<RouteComponentProps & ProgramsWeekProps> = ({ match, programs }) => {
   let week = "1";
   let date = moment();
-  
+
   //This could be made much better.
   if(date.day() >= 29)
 	week = "3";
   else if(date.day() >= 22)
 	week = "2";
-  
+
   if (match && match.params.week) {
     week = match.params.week
   };
@@ -90,8 +91,8 @@ const Programs: FunctionComponent<ProgramsProps> = ({ programs }) => (
         <li>
           <NavLink to='/programs/' exact>Lista</NavLink>
         </li>
-		<li>
-          <NavLink to='/programs/map' exact>Kartta</NavLink>
+        <li>
+          <NavLink to='/programs/map/' exact>Kartta</NavLink>
         </li>
       </nav>
     </h2>
@@ -104,12 +105,12 @@ const Programs: FunctionComponent<ProgramsProps> = ({ programs }) => (
         path='/programs/timetable/' exact
         render={() => <ProgramTimetable {...{programs}} date={moment()} />}
       />
-	  <Route
-        path='/programs/map/' exact 
+      <Route
+        path='/programs/map/' exact
         render={(route) => <ProgramMapView {...route} {...{programs}} />}
       />
-	  <Route
-        path='/programs/map/:week' 
+      <Route
+        path='/programs/map/:week'
         render={(route) => <ProgramMapView {...route} {...{programs}} />}
       />
       <Route

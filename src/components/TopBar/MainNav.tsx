@@ -16,9 +16,7 @@ const MainNav: FunctionComponent = () => (
     <li>
       <NavLink to='/info/'>Info</NavLink>
     </li>
-    <li>
-      <NavLink to='/en/'>English</NavLink>
-    </li>
+    <audio src='https://stream.wappuradio.fi/wappuradio.opus' controls preload='none' />
   </nav>
 );
 

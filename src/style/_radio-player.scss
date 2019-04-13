@@ -1,6 +1,9 @@
 .radio-player {
   display: flex;
   align-items: center;
+  @include responsive-to(medium) {
+    flex-wrap: wrap;
+  }
   .info {
     h3 {
       margin: 0;

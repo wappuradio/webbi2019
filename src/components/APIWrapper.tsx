@@ -9,6 +9,7 @@ import Start from '../views/Start';
 import Programs from '../views/Programs';
 import Info from '../views/Info';
 import English from '../views/English';
+import Cam from '../views/Cam';
 
 import BottomBar from './BottomBar';
 import TopBar from './TopBar';
@@ -57,7 +58,7 @@ export default class APIWrapper extends PureComponent<{}, APIWrapperState> {
         <div className='layout-container'>
           <TopBar />
           <Route path="/" exact render={() =>
-            <Start {...{infoData}} />
+            <Start {...{infoData}} {...{programs}} />
            }/>
           <Route path="/info/" exact render={() =>
             <Info {...{infoData}} {...{licenseData}} />
@@ -65,7 +66,10 @@ export default class APIWrapper extends PureComponent<{}, APIWrapperState> {
           <Route path="/programs/" render={() =>
             <Programs {...{programs}} />
           }/>
-          <Route path="/en" exact render={() =>
+          <Route path="/watch/" exact render={() =>
+            <Start {...{infoData}} {...{programs}} />
+          }/>
+          <Route path="/en/" exact render={() =>
             <English {...{ infoData }} />
           }/>
           {/*<BottomBar />*/}

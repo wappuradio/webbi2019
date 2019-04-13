@@ -188,8 +188,19 @@ export const sortAndGroupForMap = (programs: Program[], date: Moment): ForMap =>
   }
 };
 
-
-
 export const getProgramByName = (name: string, programs: Program[]): Program => {
   return R.find(R.propEq('name', name))(programs);
+}
+
+export const getCurrentProgram = (programs: Program[]): Program => {
+  if(!programs.length) return {name: '', title: '', date: {start: moment(), end: moment()}, dates: [], imgSrc: '', thumbSrc: '' };
+  const sorted = R.sort((a: Program, b: Program) =>
+    a.date.start.isBefore(b.date.start) ? -1 : 1, programs);
+  var p = sorted[0];
+  var now = moment();
+  for(var i of sorted) {
+    if(i.date.start <= now && i.date.end > now) p = i;
+  }
+  if(now > sorted[sorted.length-1].date.start) return sorted[sorted.length-1];
+  return p;
 }

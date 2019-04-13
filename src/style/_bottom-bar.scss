@@ -31,4 +31,7 @@ $bottom-bar-border: 1px solid c(base, 0.8);
   .play-button {
     @extend %play-button-inverted;
   }
+  @include responsive-to(small) {
+    display: none;
+  }
 }

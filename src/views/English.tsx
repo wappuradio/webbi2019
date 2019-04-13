@@ -16,7 +16,7 @@ const English: FunctionComponent<EnglishProps> = ({ infoData }) => (
         <p>Editors-in-chief: <a href='mailto:wappuradio@wappuradio.fi'>wappuradio@wappuradio.fi</a><br />
             Website: <a href='mailto:webmaster@wappuradio.fi'>webmaster@wappuradio.fi</a><br />
             Advertisements: <a href='mailto:mainosmyynti@wappuradio.fi'>mainosmyynti@wappuradio.fi</a></p>
-  </section>
+    </section>
 );
 
 export default English;
