@@ -46,7 +46,7 @@ const ProgramMap: FunctionComponent<{ programs: Program[], week: string }> = ({ 
       <h3>
         <nav>
           <li>
-            <NavLink to='/programs/map/1' exact>Viikko 1</NavLink>
+            <NavLink to='/programs/map/' exact>Viikko 1</NavLink>
           </li>
           <li>
             <NavLink to='/programs/map/2' exact>Viikko 2</NavLink>

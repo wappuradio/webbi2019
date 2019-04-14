@@ -92,7 +92,7 @@ const Programs: FunctionComponent<ProgramsProps> = ({ programs }) => (
           <NavLink to='/programs/' exact>Lista</NavLink>
         </li>
         <li>
-          <NavLink to='/programs/map/' exact>Kartta</NavLink>
+          <NavLink to='/programs/map/'>Kartta</NavLink>
         </li>
       </nav>
     </h2>
