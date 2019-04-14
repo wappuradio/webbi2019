@@ -16,6 +16,32 @@ interface StartProps {
   programs: Program[]
 }
 
+const friends = [
+    { filename: 'ambientia.png', url: 'http://www.ambientia.fi/' },
+    { filename: 'atostek.png', url: 'http://www.atostek.com/' },
+    { filename: 'bitwise.png', url: 'http://www.bitwise.fi/' },
+    { filename: 'cinia.png', url: 'http://www.cinia.fi/' },
+    { filename: 'cybercom.png', url: 'http://www.cybercom.com/' },
+    { filename: 'digia.png', url: 'http://www.digia.com/' },
+    { filename: 'eatech.png', url: 'http://www.eatech.fi/' },
+    { filename: 'etteplan.png', url: 'http://www.etteplan.com/' },
+    { filename: 'futurice.gif', url: 'http://www.futurice.com/' },
+    { filename: 'gofore.png', url: 'http://www.gofore.com/' },
+    { filename: 'intopalo.png', url: 'http://www.intopalo.com/' },
+    { filename: 'jussihanna.png', url: 'http://www.jussinhannanleipa.fi/' },
+    { filename: 'keisari.png', url: 'http://www.nokianpanimo.fi/' },
+    { filename: 'misnot.png', url: 'http://www.misnot.fi/' },
+    { filename: 'netum.png', url: 'http://www.netum.fi/' },
+    { filename: 'poas.png', url: 'http://www.poas.fi/' },
+    { filename: 'profit.png', url: 'http://www.profitsoftware.com/' },
+    { filename: 'pyynikki.png', url: 'http://www.pyynikin.com/' },
+    { filename: 'rdvelho.png', url: 'http://www.rdvelho.com/' },
+    { filename: 'riemurinne.png', url: 'http://www.riemurinne.fi/' },
+    { filename: 'solita.png', url: 'http://www.solita.fi/' },
+    { filename: 'vincit.jpg', url: 'http://www.vincit.fi/' },
+    { filename: 'wapice.png', url: 'http://www.wapice.com/' },
+    { filename: 'yit.png', url: 'http://www.yit.fi/' }]
+
 const Start: FunctionComponent<StartProps> = ({infoData, programs}) => (
   <section className='view-container -start'>
     <h1>Rakkauden Wappuradio</h1>
@@ -50,11 +76,11 @@ const Start: FunctionComponent<StartProps> = ({infoData, programs}) => (
       }/>
     </Switch>
     <div className='friends'>
-    { (['ambientia.png', 'atostek.png', 'bitwise.png', 'cinia.png', 'cybercom.png', 'digia.png', 'eatech.png', 'etteplan.png', 'futurice.gif', 'gofore.png', 'intopalo.png', 'jussihanna.png', 'keisari.png', 'misnot.png', 'netum.png', 'poas.png', 'profit.png', 'pyynikki.png', 'rdvelho.png', 'riemurinne.png', 'solita.png', 'vincit.jpg', 'wapice.png', 'yit.png']).map((logo) => {
-        logo = 'https://wappuradio.fi/files/img/friend/'+logo
+    { friends.map((friend) => {
+        var logo = 'https://wappuradio.fi/files/img/friend/'+friend.filename
         var lol = { order: Math.floor(Math.random()*100) }
         return (
-          <img src={logo} style={lol} width='240' height='70' />
+            <a href={friend.url} style={lol}><img src={logo} width='240' height='70' /></a>
         );
     }) }
     </div>
