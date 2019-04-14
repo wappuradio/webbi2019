@@ -57,7 +57,7 @@ const ProgramMap: FunctionComponent<{ programs: Program[], week: string }> = ({ 
         </nav>
       </h3>
       <div className='map'>
-        {weekdays.map((date: any, i: number) => (<div className='map-day' key={i} style={colRow(i + 2, i + 3, 1, 2)}><span className="map-weekday">{date.weekday}</span><span className="map-date">{date.date}</span></div>))}
+        {weekdays.map((date: any, i: number) => (<div className="map-day" key={i} style={colRow(i + 2, i + 3, 1, 2)}><Link to={`/programs/timetable/${date.date}`} style={{color: 'white'}}>{date.weekday} {date.date}</Link></div>))}
         {hours.map((h: number, i: number) => (<div className='map-hour' key={h} style={colRow(1, 2, h + 2, h + 3)}>{h}</div>))}
         {weekPrograms.programs.map((program: Program, i: number) => {
           const className = now.isBetween(program.date.start, program.date.end) ? "map-program map-program-active" : "map-program";
