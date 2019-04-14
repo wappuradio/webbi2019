@@ -1,5 +1,5 @@
 .view-container {
-  padding: 6em 1em 4em;
+  padding: 6em 1em 6em;
   max-width: 40em;
   margin: auto;
   &.-start {
@@ -49,17 +49,6 @@
   .licenses {
     li {
       font-size: 0.75rem;
-    }
-  }
-  .friends {
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 4em;
-    @include responsive(xlarge) {
-      margin: 4em -40px;
-    }
-    @include responsive-to(small) {
-      display: none;
     }
   }
   .player-area {
