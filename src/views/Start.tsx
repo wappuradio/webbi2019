@@ -23,7 +23,7 @@ const Start: FunctionComponent<StartProps> = ({infoData, programs}) => (
       <PlayButton />
       <div className='info'>
         <h2>Studiossa</h2>
-        <Interval delay={1000}>
+        <Interval delay={60000}>
           {() => { return <ProgramListItem {...getCurrentProgram(programs)} /> } }
         </Interval>
         {/*<InfoItem
