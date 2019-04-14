@@ -23,12 +23,10 @@ const friends = [
     { filename: 'cinia.png', url: 'http://www.cinia.fi/' },
     { filename: 'cybercom.png', url: 'http://www.cybercom.com/' },
     { filename: 'digia.png', url: 'http://www.digia.com/' },
-    { filename: 'eatech.png', url: 'http://www.eatech.fi/' },
     { filename: 'etteplan.png', url: 'http://www.etteplan.com/' },
     { filename: 'futurice.gif', url: 'http://www.futurice.com/' },
     { filename: 'gofore.png', url: 'http://www.gofore.com/' },
     { filename: 'intopalo.png', url: 'http://www.intopalo.com/' },
-    { filename: 'jussihanna.png', url: 'http://www.jussinhannanleipa.fi/' },
     { filename: 'keisari.png', url: 'http://www.nokianpanimo.fi/' },
     { filename: 'misnot.png', url: 'http://www.misnot.fi/' },
     { filename: 'netum.png', url: 'http://www.netum.fi/' },
@@ -36,7 +34,6 @@ const friends = [
     { filename: 'profit.png', url: 'http://www.profitsoftware.com/' },
     { filename: 'pyynikki.png', url: 'http://www.pyynikin.com/' },
     { filename: 'rdvelho.png', url: 'http://www.rdvelho.com/' },
-    { filename: 'riemurinne.png', url: 'http://www.riemurinne.fi/' },
     { filename: 'solita.png', url: 'http://www.solita.fi/' },
     { filename: 'vincit.jpg', url: 'http://www.vincit.fi/' },
     { filename: 'wapice.png', url: 'http://www.wapice.com/' },
@@ -83,7 +80,7 @@ const Start: FunctionComponent<StartProps> = ({infoData, programs}) => (
             <a href={friend.url} style={lol}><img src={logo} width='240' height='70' /></a>
         );
     }) }
-    </div>*/}
+    </div>
     <h2>Striimilinkit</h2>
     <ul>
       <li><a href="https://wappuradio.fi/wappuradio.m3u">M3U playlist</a></li>

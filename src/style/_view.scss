@@ -62,6 +62,9 @@
       display: none;
     }
   }
+  .player-area {
+    margin-top: 1em;
+  }
   @include responsive(medium) {
     padding: 5em 20em 6em 1em;
   }
