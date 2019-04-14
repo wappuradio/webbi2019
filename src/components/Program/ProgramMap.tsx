@@ -66,7 +66,7 @@ const ProgramMap: FunctionComponent<{ programs: Program[], week: string }> = ({ 
           return (
             <div key={program.name + i} className={className} style={gridPositionStyle}>
               <ProgramMapTooltip program={program} left={leftSide}>
-                <Link to={`/programs/p/${program.name}`} className='program-link'>
+                <Link to={`/programs/p/${program.name}/${program.date.start.format("DDMM")}`} className='program-link'>
                   <div className="map-content">{program.title}</div>
                 </Link>
               </ProgramMapTooltip>

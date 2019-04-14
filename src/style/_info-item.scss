@@ -20,11 +20,23 @@
         margin-top: 0.75em;
       }
     }
+	>.previousNextLink {
+	  margin-top:0.75em;
+    }
+    >.previousLink {
+	  float:left;
+	  text-align:left;
+    }
+    >.nextLink {
+      float:right;
+	  text-align:right;
+    }
   }
   >.content, >.action, >.img {
     margin: 0.5em;
   }
-
+  
+  
   &%info-item-tiny {
     >.content {
       >h2 {
@@ -40,6 +52,8 @@
       >h2, >p {
         margin: 0;
       }
+	  
+	  
     }
   }
   &.-program {
@@ -75,6 +89,10 @@
           border-radius: 1em;
           margin: 0 0.5em 0.5em 0;
         }
+		>.activeDate
+	    {
+		  background:c(brand-alt);
+	    }
       }
     }
     &.-many {
