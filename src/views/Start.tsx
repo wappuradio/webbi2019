@@ -49,7 +49,7 @@ const Start: FunctionComponent<StartProps> = ({infoData, programs}) => (
       <PlayButton />
       <div className='info'>
         <h2>Studiossa</h2>
-        <Interval delay={1000}>
+        <Interval delay={60000}>
           {() => { return <ProgramListItem {...getCurrentProgram(programs)} /> } }
         </Interval>
         {/*<InfoItem
@@ -83,10 +83,10 @@ const Start: FunctionComponent<StartProps> = ({infoData, programs}) => (
             <a href={friend.url} style={lol}><img src={logo} width='240' height='70' /></a>
         );
     }) }
-    </div>
+    </div>*/}
     <h2>Striimilinkit</h2>
     <ul>
-      <li><a href="/wappuradio.m3u">M3U playlist</a></li>
+      <li><a href="https://wappuradio.fi/wappuradio.m3u">M3U playlist</a></li>
       <li><a href="http://stream.wappuradio.fi/wappuradio.opus">Opus Audio</a></li>
       <li><a href="http://stream.wappuradio.fi/wappuradio.ogg">Vorbis Audio</a></li>
       <li><a href="http://stream.wappuradio.fi/wappuradio.mp3">MP3 Audio</a></li>
