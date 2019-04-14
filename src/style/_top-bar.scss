@@ -11,6 +11,16 @@
     justify-content: space-between;
   }
 
+  audio {
+    display: none;
+    height: 32px;
+    width: 224px;
+    margin: auto;
+    @include responsive-to(large) {
+      display: none;
+    }
+  }
+
   nav {
     @include t(caps);
     display: flex;

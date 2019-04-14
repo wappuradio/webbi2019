@@ -13,6 +13,10 @@ $bottom-bar-border: 1px solid c(base, 0.8);
   :focus {
     outline-color: c(brand-alt);
   }
+  a {
+    text-decoration: none!important;
+    color: c(base)!important;
+  }
   .info-item {
     @extend %info-item-tiny;
     border-right: $bottom-bar-border;

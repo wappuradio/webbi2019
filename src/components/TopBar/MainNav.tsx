@@ -16,7 +16,11 @@ const MainNav: FunctionComponent = () => (
     <li>
       <NavLink to='/info/'>Info</NavLink>
     </li>
-    <audio src='https://stream.wappuradio.fi/wappuradio.opus' controls preload='none' />
+    <audio id='audio' controls preload='none'>
+      <source src="https://stream.wappuradio.fi/wappuradio.opus" type="audio/ogg; codecs=opus"/>
+      <source src="https://stream.wappuradio.fi/wappuradio.ogg" type="audio/ogg; codecs=vorbis"/>
+      <source src="https://stream.wappuradio.fi/wappuradio.mp3" type="audio/mpeg"/>
+    </audio>
   </nav>
 );
 

@@ -49,7 +49,7 @@ const Start: FunctionComponent<StartProps> = ({infoData, programs}) => (
         <Cam url="https://mordor.wappuradio.fi/hls/wappuradio.m3u8" />
       }/>
     </Switch>
-    <div className='friends'>
+    {/*<div className='friends'>
     { (['ambientia.png', 'atostek.png', 'bitwise.png', 'cinia.png', 'cybercom.png', 'digia.png', 'eatech.png', 'etteplan.png', 'futurice.gif', 'gofore.png', 'intopalo.png', 'jussihanna.png', 'keisari.png', 'misnot.png', 'netum.png', 'poas.png', 'profit.png', 'pyynikki.png', 'rdvelho.png', 'riemurinne.png', 'solita.png', 'vincit.jpg', 'wapice.png', 'yit.png']).map((logo) => {
         logo = 'https://wappuradio.fi/files/img/friend/'+logo
         var lol = { order: Math.floor(Math.random()*100) }
@@ -57,7 +57,7 @@ const Start: FunctionComponent<StartProps> = ({infoData, programs}) => (
           <img src={logo} style={lol} width='240' height='70' />
         );
     }) }
-    </div>
+    </div>*/}
     <h2>Striimilinkit</h2>
     <ul>
       <li><a href="/wappuradio.m3u">M3U playlist</a></li>

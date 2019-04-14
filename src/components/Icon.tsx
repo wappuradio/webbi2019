@@ -9,6 +9,9 @@ const icons: { [index:string]: JSX.Element } = {
   'play': (
     <path d="M11 7v18l14-9z"/>
   ),
+  'stop': (
+    <path d="M8 8h16v16H8z"/>
+  ),
   'facebook': (
     <path d="M0 16a16 16 0 1 1 32 0 16 16 0 0 1-32 0zm17.7 9.4v-8.7H20l.3-3h-2.7v-1.5c0-.8 0-1.2 1.2-1.2h1.5V8H18c-3 0-4 1.5-4 3.9v1.8h-1.7v3H14v8.7h3.6z"/>
   ),
