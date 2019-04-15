@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react';
-import { NavLink, Route, match, Switch, RouteComponentProps, Redirect } from 'react-router-dom';
+import { NavLink, Link, Route, match, Switch, RouteComponentProps, Redirect } from 'react-router-dom';
 import moment from 'moment';
 
-import { Program, getProgramByName, sortAndGroupForAlphabetical } from '../logic/Program';
+import { Program, getProgramByName, sortAndGroupForAlphabetical, getNextProgram, getPreviousProgram } from '../logic/Program';
 import ProgramList from '../components/Program/ProgramList';
 import ProgramMap from '../components/Program/ProgramMap';
 import ProgramTimetable from '../components/Program/ProgramTimetable';
@@ -24,7 +24,7 @@ interface ProgramsWeekProps {
 
 interface ProgramSingleProps {
   programs: Program[],
-  match?: match<{name: string}>
+  match?: match<{name: string, date:string}>
 }
 
 const ProgramAlphabetical: FunctionComponent<ProgramsProps> = ({ programs }) => {
@@ -38,10 +38,24 @@ const ProgramAlphabetical: FunctionComponent<ProgramsProps> = ({ programs }) => 
 const ProgramSingle: FunctionComponent<RouteComponentProps & ProgramSingleProps> = ({ history, match, programs }) => {
 
     const p = getProgramByName(match.params.name, programs);
-
+	let previous = "";
+	let next = "";
+	let pDate = match.params.date;
+	if(pDate != null || (p!= null && p.dates.length == 1))
+	{
+		let date = pDate == null ? p.date.start : moment(pDate, "DDMM")
+		//Check next & previous program.
+		let PP = getPreviousProgram(programs, p, date);
+		let NP = getNextProgram(programs, p, date);
+		if(PP != null) previous = "/programs/p/"+PP.name+"/"+PP.date.start.format("DDMM");
+		if(NP != null) next = "/programs/p/"+NP.name+"/"+NP.date.start.format("DDMM");
+		
+	}
+	
     return (
       <div>
-        {p && <ProgramSingleItem {...p} />}
+	    {p && <ProgramSingleItem {...p} activeDay={pDate} previous={previous} next={next} />}
+		
         <button className="back-button" onClick={() => history.goBack()}>
           Takaisin
         </button>
@@ -118,7 +132,7 @@ const Programs: FunctionComponent<ProgramsProps> = ({ programs }) => (
         render={(route) => <ProgramTimetableDate {...route} {...{programs}} />}
       />
       <Route
-        path='/programs/p/:name'
+        path='/programs/p/:name/:date?'
         render={(route) => <ProgramSingle {...route} {...{programs}} />}
       />
     </Switch>

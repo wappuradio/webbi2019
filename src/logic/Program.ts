@@ -204,3 +204,34 @@ export const getCurrentProgram = (programs: Program[]): Program => {
   if(now > sorted[sorted.length-1].date.start) return sorted[sorted.length-1];
   return p;
 }
+
+export const getNextProgram = (programs: Program[], program: Program, date:Moment): Program | null => {
+  if(!programs.length) return null;
+  
+  let sorted = R.sort((a: Program, b: Program) =>
+    a.date.start.isBefore(b.date.start) ? -1 : 1, programs);
+  
+  sorted = sorted.filter( (a:Program) => a.date.start.isSameOrAfter(date, "date"));
+  if(sorted.length == null) return null;
+  
+  var ci = sorted.findIndex( (p) => p.name == program.name);
+  
+  if(ci+1 < sorted.length)
+	return sorted[ci+1];
+  return null;
+}
+
+export const getPreviousProgram = (programs:Program[], program: Program, date:Moment): Program | null => {
+  if(!programs.length) return null;
+  
+  let sorted = R.sort((a: Program, b: Program) =>
+    a.date.start.isBefore(b.date.start) ? -1 : 1, programs);
+  
+  sorted = sorted.filter( (a:Program) => a.date.start.isSameOrBefore(date, "date"));
+  if(sorted.length == null) return null;
+  
+  var ci = sorted.reverse().findIndex( (p) => p.name == program.name);
+  if(ci+1 < sorted.length)
+	return sorted[ci+1];
+  return null;
+}
