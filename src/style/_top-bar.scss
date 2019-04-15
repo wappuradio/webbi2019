@@ -14,10 +14,17 @@
   audio {
     display: none;
     height: 32px;
-    width: 224px;
-    margin: auto;
+    margin: auto 7px;
     @include responsive-to(large) {
       display: none;
+    }
+    @include responsive-to(small) {
+      position: absolute;
+      width: 94%;
+      top: 100px;
+      left: 47%;
+      margin-left: -47%;
+      padding: 0 3%;
     }
   }
 

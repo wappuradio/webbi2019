@@ -75,11 +75,8 @@ const Start: FunctionComponent<StartProps> = ({infoData, programs}) => (
     <Friends />
     <h2>Striimilinkit</h2>
     <ul>
-      <li><a href="https://wappuradio.fi/wappuradio.m3u">M3U playlist</a></li>
-      <li><a href="http://stream.wappuradio.fi/wappuradio.opus">Opus Audio</a></li>
-      <li><a href="http://stream.wappuradio.fi/wappuradio.ogg">Vorbis Audio</a></li>
-      <li><a href="http://stream.wappuradio.fi/wappuradio.mp3">MP3 Audio</a></li>
-      <li><a href="https://mordor.wappuradio.fi/hls/wappuradio.m3u8">HLS Video</a></li>
+      <li>Ääni: <a href="http://stream.wappuradio.fi/wappuradio.opus">Opus</a>, <a href="http://stream.wappuradio.fi/wappuradio.ogg">Vorbis</a>, <a href="http://stream.wappuradio.fi/wappuradio.mp3">MP3</a>, <a href="https://wappuradio.fi/wappuradio.m3u">M3U</a></li>
+      <li>Kuva: <a href="https://mordor.wappuradio.fi/hls/wappuradio.m3u8">HLS H264</a></li>
     </ul>
   </section>
 );

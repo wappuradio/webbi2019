@@ -14,6 +14,8 @@ $bottom-bar-border: 1px solid c(base, 0.8);
     outline-color: c(brand-alt);
   }
   a {
+    flex: 1 1;
+    max-width: 20em;
     text-decoration: none!important;
     color: c(base)!important;
   }

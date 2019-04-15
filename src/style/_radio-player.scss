@@ -4,6 +4,9 @@
   @include responsive-to(medium) {
     flex-wrap: wrap;
   }
+  @include responsive-to(small) {
+    justify-content: center;
+  }
   .info {
     h3 {
       margin: 0;

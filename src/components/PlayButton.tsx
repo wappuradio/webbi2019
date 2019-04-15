@@ -14,6 +14,7 @@ const startStream = () => {
         audio.play();
         audio.style.display = 'inline';
         for(var i = 0; i < buttons.length; i++) {
+            buttons[i].classList.remove('stopped');
             buttons[i].classList.add('playing');
         }
     } else {
@@ -21,13 +22,25 @@ const startStream = () => {
         audio.removeAttribute('src');
         for(var i = 0; i < buttons.length; i++) {
             buttons[i].classList.remove('playing');
+            buttons[i].classList.add('stopped');
         }
     }
 }
 
+const buttonState = () => {
+    var audio;
+    audio = document.getElementById('audio');
+    if(!audio || audio.paused) {
+        return 'play-button stopped';
+    } else {
+        return 'play-button playing';
+    }
+}
+
 const PlayButton: FunctionComponent<PlayButtonProps> = (props) => (
-  <button className='play-button' onClick={startStream}>
-    <Icon name='play' title='Kuuntele' />
+  <button className={buttonState()} onClick={startStream}>
+    <span className='play'><Icon name='play' title='Kuuntele' /></span>
+    <span className='stop'><Icon name='stop' title='Älä kuuntelekaan' /></span>
   </button>
 );
 

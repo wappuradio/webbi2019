@@ -30,15 +30,19 @@
   }
 }
 
-.play-button.playing {
-    animation: rotation 10s infinite linear;
+.play-button.stopped {
+  .stop {
+    display: none;
+  }
+  .play {
+    display: block;
+  }
 }
-
-@-webkit-keyframes rotation {
-    from {
-        -webkit-transform: rotate(0deg);
-    }
-    to {
-        -webkit-transform: rotate(359deg);
-    }
+.play-button.playing {
+  .stop {
+    display: block;
+  }
+  .play {
+    display: none;
+  }
 }
