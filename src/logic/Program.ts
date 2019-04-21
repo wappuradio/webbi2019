@@ -149,24 +149,57 @@ interface ForMap {
   next: Moment | null
 }
 
-export const sortAndGroupForMap = (programs: Program[], date: Moment): ForMap => {
-  const isSameDate = (startDate: Moment, sameAs: Moment) => {
-    const start = moment(startDate);
-    return sameAs.isSame(start, 'week');
-  }
+const splitProgramByMidnight = (programs: Program[]) =>
+{
+	var toAdd:Program[] = [];
+	for( var i = 0; i < programs.length; i++)
+	{
+		var p = programs[i];
+		var split = !p.date.start.isSame(p.date.end, "date") && p.date.end.hour() != 0;
+		if(split)
+		{
+			var ndStart = p.date.end.clone().startOf("day");
+			
+			toAdd.push( {
+				  name: p.name,
+				  title: p.title,
+				  host: p.host,
+				  prod: p.prod,
+				  desc: p.desc,
+				  date: {start: ndStart, end: p.date.end.clone()},
+				  dates: [{start: ndStart, end: p.date.end.clone()}],
 
+				  imgSrc: p.imgSrc,
+				  thumbSrc: p.thumbSrc
+				}
+			)
+			p.date.end.startOf("day");
+		}
+	}
+	for( var i =0; i < toAdd.length; i++)
+	{
+		programs.push(toAdd[i]);
+	}
+}
+
+export const sortAndGroupForMap = (programs: Program[], date: Moment): ForMap => {
+  const isSameWeek = (startDate: Moment, sameAs: Moment) => {
+    const start = moment(startDate);
+    return sameAs.isSame(start, 'isoWeek');
+  }
+  splitProgramByMidnight(programs);
   if (programs.length > 0) {
     const sorted = R.sort((a: Program, b: Program) =>
       a.date.start.isBefore(b.date.start) ? -1 : 1, programs);
 
-    const byWeek = R.filter((a: Program) => isSameDate(a.date.start, date), sorted);
+    const byWeek = R.filter((a: Program) => isSameWeek(a.date.start, date), sorted);
 
     if (byWeek.length > 0) {
       const prev = moment(date).subtract(1, 'weeks');
       const next = moment(date).add(1, 'weeks');
-      const prevByWeek = R.filter((a: Program) => isSameDate(a.date.start, prev), sorted);
-      const nextByWeek = R.filter((a: Program) => isSameDate(a.date.start, next), sorted);
-
+      const prevByWeek = R.filter((a: Program) => isSameWeek(a.date.start, prev), sorted);
+      const nextByWeek = R.filter((a: Program) => isSameWeek(a.date.start, next), sorted);
+	  
       return {
         programs: byWeek,
         date: date,

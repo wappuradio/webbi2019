@@ -13,37 +13,35 @@
     }
   }
   .logo {
-    @include transition((fill, opacity));
+    @include transition(fill);
     fill: c(alt, 0.25);
     fill-rule: evenodd;
-    .t {
-      opacity: 0;
-    }
-    &:hover .t {
-      opacity: 1;
-    }
   }
 }
 
 $friends: (
   ambientia: [#FF2457],
-  atostek: [#484D51, #8ABD23, #5AB031],
+  atostek: [#484D51,#8ABD23,#5AB031],
   bitwise: [#1D1D1B],
   cinia: [#DC5440,#050303],
   digia: [#D8001F],
+  cybercom: [#025599],
   etteplanmore: [#EF413D,#1CA4DD],
   futurice: [#0AB587],
   gofore: [#FF8551],
   intopalo: [#054E96,#05B2E1],
   netum: [#3AAA35],
   nokianpanimo: [#242021],
-  poas: [#FFF,#3A5DAE],
+  poas: [#3A5DAE],
   profit: [#001A70],
   pyynikin: [#000],
   rdvelho: [#84BC26,#4C4D4F],
-  solita: [#282828],
+  riemurinne: [#2C3795],
+  solita: [#DC1E32],
+  tek: [#009DC3,#797C82],
   vincit: [#F04E30],
-  wapice: [#006FAB]
+  wapice: [#006FAB],
+  yit: [#0487B4]
 );
 
 @each $name, $colors in $friends {
@@ -51,7 +49,7 @@ $friends: (
     &:hover, &:focus {
       @for $i from 1 through length($colors) {
         .f#{$i} {
-          @include transition((fill, opacity));
+          @include transition(fill);
           $c: nth($colors, $i);
           fill: $c;
         }
