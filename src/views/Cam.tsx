@@ -6,7 +6,7 @@ interface CamProps {
 }
 
 const Cam: FunctionComponent<CamProps> = ({url}) => (
-    <ReactHLS url={url} autoplay={true} width="100%" height="auto" } />
+    <ReactHLS url={url} autoplay={true} width="100%" height="auto" />
 );
 
 export default Cam;
