@@ -32,7 +32,6 @@ $bottom-bar-border: 1px solid c(base, 0.8);
       text-align: left;
 	  @include responsive-to(small) {
 		display: none;
-		border-right: none;
 	  }
     }
     &:last-child {
@@ -40,6 +39,9 @@ $bottom-bar-border: 1px solid c(base, 0.8);
       text-align: right;
       flex-direction: row-reverse;
     }
+	@include responsive-to(small){
+		  border-right: none;
+	}
   }
   .play-button {
     @extend %play-button-inverted;
