@@ -18,6 +18,9 @@ $bottom-bar-border: 1px solid c(base, 0.8);
     max-width: 20em;
     text-decoration: none!important;
     color: c(base)!important;
+	@include responsive-to(small) {
+	  display: none;
+	}
   }
   .info-item {
     @extend %info-item-tiny;
@@ -27,6 +30,10 @@ $bottom-bar-border: 1px solid c(base, 0.8);
     text-align: center;
     &:first-child {
       text-align: left;
+	  @include responsive-to(small) {
+		display: none;
+		border-right: none;
+	  }
     }
     &:last-child {
       border: none;
@@ -43,7 +50,5 @@ $bottom-bar-border: 1px solid c(base, 0.8);
     margin: -15px auto;
     border-radius: 50%;
   }
-  @include responsive-to(small) {
-    display: none;
-  }
+  
 }
