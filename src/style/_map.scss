@@ -57,7 +57,7 @@
 	font-weight:200;
   }
   
-  .map-program-active
+  .map-program-active, .map-program-active + .map-program-split
   {
 	  animation-name:active-program;
 	  animation-duration:5s;
@@ -133,7 +133,8 @@
 	.map-program:hover .map-tooltip-content{
 		visibility: visible;
 	}
-
+	
+	
 	.map-tooltip-info{
 		color:rgba(255, 253, 249, 0.5);
 		display: inline-block;

@@ -86,15 +86,19 @@ const ProgramMapView: FunctionComponent<RouteComponentProps & ProgramsWeekProps>
   else if(date.date() >= 22)
 	week = "2";
 	
-  if (match && match.params.week) {
-    week = match.params.week
-  };
+  week = match.params.week
+  
   return (
-    <ProgramMap {...{programs, week}} />
+	<ProgramMap {...{programs, week}} />
   );
+  
 }
 
-const Programs: FunctionComponent<ProgramsProps> = ({ programs }) => (
+const Programs: FunctionComponent<ProgramsProps> = ({ programs }) => 
+{
+  const mapWeek = "/programs/map/"+(moment().date() >= 29 ? "3" : moment().date() >= 22 ? "2" : "1");
+  
+  return (
   <section className='view-container -programs'>
     <h1>Ohjelmat</h1>
     <h2>
@@ -119,12 +123,14 @@ const Programs: FunctionComponent<ProgramsProps> = ({ programs }) => (
         path='/programs/timetable/' exact
         render={() => <ProgramTimetable {...{programs}} date={moment()} />}
       />
+      
+	  <Route
+        path='/programs/map/' exact>
+		<Redirect to={mapWeek}/>
+	  </Route>
+	  
       <Route
-        path='/programs/map/' exact
-        render={(route) => <ProgramMapView {...route} {...{programs}} />}
-      />
-      <Route
-        path='/programs/map/:week'
+        path='/programs/map/:week?'
         render={(route) => <ProgramMapView {...route} {...{programs}} />}
       />
       <Route
@@ -140,6 +146,6 @@ const Programs: FunctionComponent<ProgramsProps> = ({ programs }) => (
       <a href="https://wappuradio.fi/wappuradio.ics">Lataa ohjelmakartta vaikkapa Google-kalenteriin tästä!</a> (.ics)
     </p>
   </section>
-);
-
+  );
+}
 export default Programs;
