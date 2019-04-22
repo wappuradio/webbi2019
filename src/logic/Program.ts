@@ -158,6 +158,7 @@ const splitProgramByMidnight = (programs: Program[]) =>
 		var split = !p.date.start.isSame(p.date.end, "date") && p.date.end.hour() != 0;
 		if(split)
 		{
+			console.log("split " + p.name);
 			var ndStart = p.date.end.clone().startOf("day");
 			
 			toAdd.push( {
@@ -180,6 +181,9 @@ const splitProgramByMidnight = (programs: Program[]) =>
 	{
 		programs.push(toAdd[i]);
 	}
+	programs.sort((a: Program, b: Program) =>
+      a.date.start.isBefore(b.date.start) ? -1 : 1);
+	return programs;
 }
 
 export const sortAndGroupForMap = (programs: Program[], date: Moment): ForMap => {

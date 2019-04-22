@@ -26,7 +26,7 @@ const ProgramMap: FunctionComponent<{ programs: Program[], week: string }> = ({ 
   if (week == "2") radioStart.add(7, "days");
   else if (week == "3") radioStart.add(14, "days");
   var weekPrograms = sortAndGroupForMap(programs, radioStart);
-
+console.log(weekPrograms);
   const weekStart = radioStart.startOf("isoWeek");
 
   var weekdays: Array<any> = [];
@@ -43,13 +43,13 @@ const ProgramMap: FunctionComponent<{ programs: Program[], week: string }> = ({ 
       <h3>
         <nav>
           <li>
-            <NavLink to='/programs/map/' exact>Viikko 1</NavLink>
+            <NavLink to='/programs/map/1'>Viikko 1</NavLink>
           </li>
           <li>
-            <NavLink to='/programs/map/2' exact>Viikko 2</NavLink>
+            <NavLink to='/programs/map/2'>Viikko 2</NavLink>
           </li>
           <li>
-            <NavLink to='/programs/map/3' exact>Viikko 3</NavLink>
+            <NavLink to='/programs/map/3'>Viikko 3</NavLink>
           </li>
         </nav>
       </h3>
@@ -57,7 +57,10 @@ const ProgramMap: FunctionComponent<{ programs: Program[], week: string }> = ({ 
         {weekdays.map((date: any, i: number) => (<div className="map-day" key={i} style={colRow(i + 2, i + 3, 1, 2)}><Link to={`/programs/timetable/${date.date}`} style={{ color: 'white', textDecoration: 'none'}}>{date.weekday} {date.date}</Link></div>))}
         {hours.map((h: number, i: number) => (<div className='map-hour' key={h} style={colRow(1, 2, h + 2, h + 3)}>{h}</div>))}
         {weekPrograms.programs.map((program: Program, i: number) => {
-          const className = now.isBetween(program.date.start, program.date.end) ? "map-program map-program-active" : "map-program";
+          let className = now.isBetween(program.date.start, program.date.end) ? "map-program map-program-active" : "map-program";
+		  if(i > 0 && program.name == weekPrograms.programs[i-1].name){
+			className += " map-program-split";
+		  }
           const gridPositionStyle = colRow(program.date.start.isoWeekday() + 1, program.date.start.isoWeekday() + 2, program.date.start.hours() + 2, program.date.end.hours() == 0 ? 26 : program.date.end.hours() + 2);
           const leftSide = program.date.start.isoWeekday() < 5;
           return (
