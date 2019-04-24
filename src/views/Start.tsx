@@ -57,7 +57,6 @@ const Start: FunctionComponent<StartProps> = ({infoData, programs}) => (
     </section>
     {infoData.trim().length > 0 && (
       <div>
-        <h2>Uutineet</h2>
         <p>
           <ReactMarkdown source={infoData} />
         </p>
