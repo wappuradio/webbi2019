@@ -16,6 +16,15 @@ $colors: (
   );
 }
 
+@if $brand == 'assyt' {
+  $colors: (
+    brand: #002a7d,
+    brand-alt: #266eff,
+    base: #e3f1ff,
+    alt: #000B19
+  );
+}
+
 $typography: (
   body: (
     font-weight: 400,

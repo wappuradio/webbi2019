@@ -58,7 +58,7 @@ export const ProgramListItem: FunctionComponent<Program> =
   }) => (
   <Link to={`/programs/p/${name}`} className='program-link'>
     <div className='info-item -program -many'>
-      <ProgramImg {...{title}} src={ thumbSrc } size={{w: 88, h: 88}} />
+      {/* <ProgramImg {...{title}} src={ thumbSrc } size={{w: 88, h: 88}} /> */}
       <div className='content'>
         <p className='main'>
           { title }
@@ -86,7 +86,7 @@ export const ProgramTimetableItem: FunctionComponent<Program> =
   }) => (
   <Link to={`/programs/p/${name}/${date.start.format("DDMM")}`} className='program-link'>
     <div className='info-item -program -many'>
-      <ProgramImg {...{title}} src={ thumbSrc } size={{w: 88, h: 88}} />
+      {/* <ProgramImg {...{title}} src={ thumbSrc } size={{w: 88, h: 88}} /> */}
       <div className='content'>
         <p className='main'>
           { title }
@@ -119,8 +119,7 @@ export const ProgramSingleItem: FunctionComponent<ProgramSingleItemProps> =
 	previous = undefined
   }) => (
     <div className='info-item -program -single'>
-	  
-      {showImg && <ProgramImg {...{title}} src={ imgSrc } size={{w: 480, h: 480}} />}
+      {/* {showImg && <ProgramImg {...{title}} src={ imgSrc } size={{w: 480, h: 480}} />} */}
       <div className='content'>
         <h2 className='main'>
           { hypher.hyphenateText(title) }
@@ -137,4 +136,3 @@ export const ProgramSingleItem: FunctionComponent<ProgramSingleItemProps> =
         { next && <Link className="previousNextLink nextLink" to={next}>Seuraava</Link>}
       </div>
     </div> );
-

@@ -20,9 +20,9 @@ export const NowHosting: FunctionComponent<Program> =
   }) => (
     <NavLink to={`/programs/p/${name}`}>
       <InfoItem title={date.start > moment()?'HYPE':'Nyt esiintyy'} content={title} subcontent={dateString(date)}>
-        <div className='current'>
+        {/* <div className='current'>
           <img src={thumbSrc} />
-        </div>
+        </div> */}
       </InfoItem>
     </NavLink>
   );

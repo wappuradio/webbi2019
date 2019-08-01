@@ -1,9 +1,9 @@
 a, .back-button {
   @include transition(color);
-  color: c(brand);
+  color: c(brand-alt);
   text-decoration: underline;
   &:hover {
-    color: c(brand, 0.2);
+    color: c(brand-alt, 0.2);
     text-decoration: none;
   }
 }

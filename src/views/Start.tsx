@@ -55,6 +55,8 @@ const Start: FunctionComponent<StartProps> = ({infoData, programs}) => (
         />*/}
       </div>
     </section>
+    <p>Oletko miettinyt että kesästäsi puuttuu jotain? Himohelle hellii ja mansikat maistuvat, mutta lokkien kirkuna ei riitä tyydyttämään korviesi tarpeita... Wapusta ja Wappuradiosta on kulunut jo liian pitkä aika!</p>
+    <p>Älä huoli! Wappuradio on täällä taas! Tällä kertaa rohkea joukkomme on mukana Assembly Summer 2019 -tapahtumassa! Assyradio (powered by Rakkauden Wappuradio) soi ympäri vuorokauden 1.-4.8. ja on taattua Wappuradiolaatua.</p>
     <h2>Menossa mukana</h2>
     <Friends />
     <h2>Striimilinkit</h2>

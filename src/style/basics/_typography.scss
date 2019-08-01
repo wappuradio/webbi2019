@@ -11,9 +11,9 @@ $gilroy: 'files/gilroy-extrabold';
 
 body {
   @include t(body);
-  color: c(alt);
+  color: c(base);
   font-size: 100%;
-  background: c(base) url('./files/bg.svg') center center / cover no-repeat fixed;
+  background: lighten(c(alt),3%) url('./files/bg.svg') center center / cover no-repeat fixed;
 }
 
 h1 {
