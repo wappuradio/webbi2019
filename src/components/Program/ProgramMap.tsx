@@ -18,7 +18,7 @@ const ProgramMap: FunctionComponent<{ programs: Program[], week: string }> = ({ 
     }
   };
 
-  var radioStart = moment("15.04.2019", "DD.MM.YYYY");
+  var radioStart = moment("01.08.2019", "DD.MM.YYYY");
   
   var now = moment();
   
@@ -40,19 +40,6 @@ console.log(weekPrograms);
 
   return (
     <div>
-      <h3>
-        <nav>
-          <li>
-            <NavLink to='/programs/map/1'>Viikko 1</NavLink>
-          </li>
-          <li>
-            <NavLink to='/programs/map/2'>Viikko 2</NavLink>
-          </li>
-          <li>
-            <NavLink to='/programs/map/3'>Viikko 3</NavLink>
-          </li>
-        </nav>
-      </h3>
       <div className='map'>
         {weekdays.map((date: any, i: number) => (<div className="map-day" key={i} style={colRow(i + 2, i + 3, 1, 2)}><Link to={`/programs/timetable/${date.date}`} style={{ color: 'white', textDecoration: 'none'}}>{date.weekday} {date.date}</Link></div>))}
         {hours.map((h: number, i: number) => (<div className='map-hour' key={h} style={colRow(1, 2, h + 2, h + 3)}>{h}</div>))}
