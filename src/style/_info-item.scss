@@ -217,9 +217,9 @@
   .info-item {
     align-items: flex-start;
     @include responsive-to(small) {
-      .desc {
-        margin-left: -6.5em;
-      }
+//      .desc {
+//        margin-left: -6.5em;
+//      }
       .sub {
         min-height: 2em;
       }
