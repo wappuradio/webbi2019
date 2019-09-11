@@ -23,6 +23,9 @@ $colors: (
     base: #FFFDF9,
     alt: #292F36
   );
+  img {
+    filter: hue-rotate(-75deg)!important;
+  }
 }
 
 $typography: (
