@@ -10,9 +10,9 @@ const MainNav: FunctionComponent = () => (
         <Logo type='nav' />
       </NavLink>
     </li>
-    <li>
+    {/*<li>
       <NavLink to='/programs/timetable' isActive={(match, location) => {return (location.pathname.match("/programs/")?true:false)}}>Ohjelmat</NavLink>
-    </li>
+    </li>*/}
     <li>
       <NavLink to='/info/'>Info</NavLink>
     </li>

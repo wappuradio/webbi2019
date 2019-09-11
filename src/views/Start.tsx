@@ -41,19 +41,18 @@ interface StartProps {
 const Start: FunctionComponent<StartProps> = ({infoData, programs}) => (
   <section className='view-container -start'>
     <h1>Rakkauden Wappuradio</h1>
-    <section className='radio-player'>
+    {/*<section className='radio-player'>
       <PlayButton />
       <div className='info'>
         <h2>Studiossa</h2>
         <Interval delay={60000}>
           {() => <ProgramListItem {...getCurrentProgram(programs)} />}
         </Interval>
-        {/*<InfoItem
-          title='Nyt soi'
-          content='Tässä on kappaleen nimi'
-          subcontent='Artistin nimi taas tässä'
-        />*/}
       </div>
+    </section>*/}
+    <section>
+      <h2>Avajaisradio</h2>
+      <p>Tampereen korkeakouluyhteisö juhlii lukuvuoden avajaisia 9.-13.9.2019. Rakkauden&nbsp;Wappuradio lähettää avajaisviikon tunnelmia Sähkötalon aulasta Hervannan kampukselta <strong>torstaina 12.9. klo 10-13</strong>. Kuuntele meitä Radio Moreenin taajuudella <strong>98,4 MHz</strong>, <a href="https://radio.uta.fi/">Moreenin sivuilta</a> tai vaikka siellä Sähkötalossa!</p>
     </section>
     {infoData.trim().length > 0 && (
       <div>
@@ -62,7 +61,7 @@ const Start: FunctionComponent<StartProps> = ({infoData, programs}) => (
         </p>
       </div>
     )}
-    <Switch>
+    {/*<Switch>
       <Route path="/" exact render={() =>
         <h2><NavLink to='/watch/' exact>Kurkista studioon</NavLink></h2>
       }/>
@@ -76,7 +75,7 @@ const Start: FunctionComponent<StartProps> = ({infoData, programs}) => (
     <ul>
       <li>Ääni: <a href="http://stream.wappuradio.fi/wappuradio.opus">Opus</a>, <a href="http://stream.wappuradio.fi/wappuradio.ogg">Vorbis</a>, <a href="http://stream.wappuradio.fi/wappuradio.mp3">MP3</a>, <a href="https://wappuradio.fi/wappuradio.m3u">M3U</a></li>
       <li>Kuva: <a href="https://mordor.wappuradio.fi/hls/wappuradio.m3u8">HLS H264</a></li>
-    </ul>
+    </ul>*/}
   </section>
 );
 
