@@ -50,10 +50,6 @@ const Start: FunctionComponent<StartProps> = ({infoData, programs}) => (
         </Interval>
       </div>
     </section>*/}
-    <section>
-      <h2>Avajaisradio</h2>
-      <p>Tampereen korkeakouluyhteisö juhlii lukuvuoden avajaisia 9.-13.9.2019. Rakkauden&nbsp;Wappuradio lähettää avajaisviikon tunnelmia Sähkötalon aulasta Hervannan kampukselta <strong>torstaina 12.9. klo 10-13</strong>. Kuuntele meitä Radio Moreenin taajuudella <strong>98,4 MHz</strong>, <a href="https://radio.uta.fi/">Moreenin sivuilta</a> tai vaikka siellä Sähkötalossa!</p>
-    </section>
     {infoData.trim().length > 0 && (
       <div>
         <p>
