@@ -41,20 +41,15 @@ interface StartProps {
 const Start: FunctionComponent<StartProps> = ({infoData, programs}) => (
   <section className='view-container -start'>
     <h1>Rakkauden Wappuradio</h1>
-    <section className='radio-player'>
+    {/*<section className='radio-player'>
       <PlayButton />
       <div className='info'>
         <h2>Studiossa</h2>
         <Interval delay={60000}>
           {() => <ProgramListItem {...getCurrentProgram(programs)} />}
-        </Interval>
-        {/*<InfoItem
-          title='Nyt soi'
-          content='Tässä on kappaleen nimi'
-          subcontent='Artistin nimi taas tässä'
-        />*/}
+        </Interval>}
       </div>
-    </section>
+    </section>*/}
     {infoData.trim().length > 0 && (
       <div>
         <p>
@@ -64,7 +59,7 @@ const Start: FunctionComponent<StartProps> = ({infoData, programs}) => (
     )}
     <Switch>
       <Route path="/" exact render={() =>
-        <h2><NavLink to='/watch/' exact>Kurkista studioon</NavLink></h2>
+        <h2>{/*<NavLink to='/watch/' exact>Kurkista studioon</NavLink>*/}</h2>
       }/>
       <Route path="/watch/" exact render={() =>
         <Cam url="https://mordor.wappuradio.fi/hls/wappuradio.m3u8" />
@@ -75,7 +70,7 @@ const Start: FunctionComponent<StartProps> = ({infoData, programs}) => (
     <h2>Striimilinkit</h2>
     <ul>
       <li>Ääni: <a href="http://stream.wappuradio.fi/wappuradio.opus">Opus</a>, <a href="http://stream.wappuradio.fi/wappuradio.ogg">Vorbis</a>, <a href="http://stream.wappuradio.fi/wappuradio.mp3">MP3</a>, <a href="https://wappuradio.fi/wappuradio.m3u">M3U</a></li>
-      <li>Kuva: <a href="https://mordor.wappuradio.fi/hls/wappuradio.m3u8">HLS H264</a></li>
+      <li>Kuva: <a href="#">YouTube</a></li>
     </ul>
   </section>
 );

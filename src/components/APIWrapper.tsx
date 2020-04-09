@@ -9,6 +9,7 @@ import Start from '../views/Start';
 import Programs from '../views/Programs';
 import Info from '../views/Info';
 import English from '../views/English';
+import Association from '../views/Association';
 import Cam from '../views/Cam';
 
 import BottomBar from './BottomBar';
@@ -71,6 +72,9 @@ export default class APIWrapper extends PureComponent<{}, APIWrapperState> {
           }/>
           <Route path="/en/" exact render={() =>
             <English {...{ infoData }} />
+          }/>
+          <Route path="/ry/" exact render={() =>
+            <Association />
           }/>
           <BottomBar {...{programs}} />
           <Route path='/' render={(route) =>

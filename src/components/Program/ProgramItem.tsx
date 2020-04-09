@@ -119,7 +119,7 @@ export const ProgramSingleItem: FunctionComponent<ProgramSingleItemProps> =
 	previous = undefined
   }) => (
     <div className='info-item -program -single'>
-	  
+
       {showImg && <ProgramImg {...{title}} src={ imgSrc } size={{w: 480, h: 480}} />}
       <div className='content'>
         <h2 className='main'>

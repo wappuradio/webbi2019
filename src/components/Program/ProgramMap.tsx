@@ -18,10 +18,10 @@ const ProgramMap: FunctionComponent<{ programs: Program[], week: string }> = ({ 
     }
   };
 
-  var radioStart = moment("15.04.2019", "DD.MM.YYYY");
-  
+  var radioStart = moment("15.04.2020", "DD.MM.YYYY");
+
   var now = moment();
-  
+
   //Second week of program. This could be done with dates also but week number sounded better for short time radio.
   if (week == "2") radioStart.add(7, "days");
   else if (week == "3") radioStart.add(14, "days");
@@ -64,7 +64,7 @@ console.log(weekPrograms);
           const gridPositionStyle = colRow(program.date.start.isoWeekday() + 1, program.date.start.isoWeekday() + 2, program.date.start.hours() + 2, program.date.end.hours() == 0 ? 26 : program.date.end.hours() + 2);
           const leftSide = program.date.start.isoWeekday() < 5;
           return (
-		    
+
             <div key={program.name + i} className={className} style={gridPositionStyle}>
               <ProgramMapTooltip program={program} left={leftSide}>
                 <Link to={`/programs/p/${program.name}/${program.date.start.format("DDMM")}`} className='program-link'>
