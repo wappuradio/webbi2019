@@ -17,18 +17,10 @@
     fill: c(alt, 0.25);
     fill-rule: evenodd;
   }
-  .img {
-    filter: grayscale(100%);
-    width: 100%;
-    height: 100%;
-    background-size: 100%;
-    &:hover, &:focus {
-      filter: none;
-    }
-  }
 }
 
 $friends: (
+  agilekoulutus: [#365691,#17763e,#00233d,#000000],
   ambientia: [#FF2457],
   atostek: [#484D51,#8ABD23,#5AB031],
   bitwise: [#1D1D1B],
