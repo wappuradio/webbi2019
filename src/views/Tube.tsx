@@ -21,6 +21,7 @@ export default ({ videoId }) => {
         }}
         src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1`}
         frameBorder="0"
+        allowFullScreen
       />
     </div>
   );
