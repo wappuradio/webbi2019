@@ -17,6 +17,17 @@
     fill: c(alt, 0.25);
     fill-rule: evenodd;
   }
+  .img {
+    filter: grayscale(100%);
+    width: 100%;
+    height: 100%;
+    background-size: 100%;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    &:hover, &:focus {
+      filter: none;
+    }
+  }
 }
 
 $friends: (
@@ -42,6 +53,7 @@ $friends: (
   polarsquad: [#000000],
   profit: [#001A70],
   pyynikin: [#000],
+  ratekoulutus: [#2d519f],
   rdvelho: [#84BC26,#4C4D4F],
   riemurinne: [#2C3795],
   solita: [#DC1E32],
