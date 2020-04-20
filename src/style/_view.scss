@@ -10,13 +10,16 @@
       h1 {
         display: none;
       }
-      h2 {
+      h2, h3 {
         text-align: center;
       }
     }
     .play-button {
       @extend %play-button-huge;
       margin-right: 2em;
+      @include responsive-to(medium) {
+        margin-top: 3em;
+      }
       @include responsive-to(small) {
         margin-right: 0;
         margin-top: 1.5em;

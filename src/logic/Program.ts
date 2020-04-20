@@ -160,7 +160,7 @@ const splitProgramByMidnight = (programs: Program[]) =>
 		{
 			console.log("split " + p.name);
 			var ndStart = p.date.end.clone().startOf("day");
-			
+
 			toAdd.push( {
 				  name: p.name,
 				  title: p.title,
@@ -203,7 +203,7 @@ export const sortAndGroupForMap = (programs: Program[], date: Moment): ForMap =>
       const next = moment(date).add(1, 'weeks');
       const prevByWeek = R.filter((a: Program) => isSameWeek(a.date.start, prev), sorted);
       const nextByWeek = R.filter((a: Program) => isSameWeek(a.date.start, next), sorted);
-	  
+
       return {
         programs: byWeek,
         date: date,
@@ -242,17 +242,31 @@ export const getCurrentProgram = (programs: Program[]): Program => {
   return p;
 }
 
+export const getNextProgramItem = (programs: Program[]): Program => {
+  if(!programs.length) return {name: '', title: '', date: {start: moment(), end: moment()}, dates: [], imgSrc: '', thumbSrc: '' };
+  const sorted = R.sort((a: Program, b: Program) =>
+    a.date.start.isBefore(b.date.start) ? -1 : 1, programs);
+  var p = sorted[0];
+  var current = getCurrentProgram(programs);
+  var now = current.date.end;
+  for(var i of sorted) {
+    if(i.date.start <= now && i.date.end > now) p = i;
+  }
+  if(now > sorted[sorted.length-1].date.start) return sorted[sorted.length-1];
+  return p;
+}
+
 export const getNextProgram = (programs: Program[], program: Program, date:Moment): Program | null => {
   if(!programs.length) return null;
-  
+
   let sorted = R.sort((a: Program, b: Program) =>
     a.date.start.isBefore(b.date.start) ? -1 : 1, programs);
-  
+
   sorted = sorted.filter( (a:Program) => a.date.start.isSameOrAfter(date, "date"));
   if(sorted.length == null) return null;
-  
+
   var ci = sorted.findIndex( (p) => p.name == program.name);
-  
+
   if(ci+1 < sorted.length)
 	return sorted[ci+1];
   return null;
@@ -260,13 +274,13 @@ export const getNextProgram = (programs: Program[], program: Program, date:Momen
 
 export const getPreviousProgram = (programs:Program[], program: Program, date:Moment): Program | null => {
   if(!programs.length) return null;
-  
+
   let sorted = R.sort((a: Program, b: Program) =>
     a.date.start.isBefore(b.date.start) ? -1 : 1, programs);
-  
+
   sorted = sorted.filter( (a:Program) => a.date.start.isSameOrBefore(date, "date"));
   if(sorted.length == null) return null;
-  
+
   var ci = sorted.reverse().findIndex( (p) => p.name == program.name);
   if(ci+1 < sorted.length)
 	return sorted[ci+1];

@@ -8,7 +8,7 @@ import Cam from '../views/Cam';
 import Friends from '../components/Friends';
 import PlayButton from '../components/PlayButton';
 import { ProgramListItem } from '../components/Program/ProgramItem';
-import { Program, getCurrentProgram } from '../logic/Program';
+import { Program, getCurrentProgram, getNextProgramItem } from '../logic/Program';
 
 const ReactMarkdown = require('react-markdown');
 
@@ -23,9 +23,13 @@ const Start: FunctionComponent<StartProps> = ({infoData, programs}) => (
     <section className='radio-player'>
       <PlayButton />
       <div className='info'>
-        <h2>Studiossa</h2>
         <Interval delay={60000}>
-          {() => <ProgramListItem {...getCurrentProgram(programs)} />}
+          {() => <div>
+            <h2>Studiossa</h2>
+            <ProgramListItem {...getCurrentProgram(programs)} />
+            <h3>Seuraavaksi</h3>
+            <ProgramListItem {...getNextProgramItem(programs)} />
+          </div>}
         </Interval>
       </div>
     </section>

@@ -29,7 +29,7 @@ interface ProgramImgProps {
 
 const datesString = (dates: Program["dates"], activeDay?:string) =>
 {
-  let cmp = activeDay == undefined ? undefined : moment(activeDay, "DDMM");
+  let cmp = activeDay == undefined ? moment(moment(), "DDMM") : moment(activeDay, "DDMM");
   return dates.map((d, i) =>
     {
 	  var classes = cmp != undefined && cmp.isSame(d.start, "date")?"date activeDate" : "date";
