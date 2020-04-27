@@ -96,7 +96,10 @@ const ProgramMapView: FunctionComponent<RouteComponentProps & ProgramsWeekProps>
 
 const Programs: FunctionComponent<ProgramsProps> = ({ programs }) => 
 {
-  const mapWeek = "/programs/map/"+(moment().date() >= 29 ? "3" : moment().date() >= 22 ? "2" : "1");
+  const curWeek = moment().week();
+  const firstWeek = programs.length > 0 ? programs[0].date.start.week() : curWeek;
+  const delta = curWeek - firstWeek +1;
+  const mapWeek = "/programs/map/"+delta;
   
   return (
   <section className='view-container -programs'>
