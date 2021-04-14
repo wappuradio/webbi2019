@@ -36,9 +36,6 @@ const Start: FunctionComponent<StartProps> = ({infoData, programs}) => (
     <Switch>
       <Route path="/" exact render={() =>
         <div>
-          {
-            <h2><NavLink to='/watch/' exact>Kurkista studioon</NavLink></h2>
-          }
           {infoData.trim().length > 0 && (
             <div>
               <p>
@@ -46,14 +43,17 @@ const Start: FunctionComponent<StartProps> = ({infoData, programs}) => (
               </p>
             </div>
           )}
+          {
+            <h2><NavLink to='/watch/' exact>Kurkista studioon</NavLink></h2>
+          }
         </div>
       }/>
       <Route path="/watch/" exact render={() =>
         <Tube videoId="OjRUu4GVruc" />
       }/>
     </Switch>
-    <h2>Menossa mukana</h2>
-    <Friends />
+    {/*<h2>Menossa mukana</h2>
+    <Friends />*/}
     <h2>Striimilinkit</h2>
     <ul>
       <li>Ääni: <a href="http://stream.wappuradio.fi/wappuradio.opus">Opus</a>, <a href="http://stream.wappuradio.fi/wappuradio.ogg">Vorbis</a>, <a href="http://stream.wappuradio.fi/wappuradio.mp3">MP3</a>, <a href="https://wappuradio.fi/wappuradio.m3u">M3U</a></li>

@@ -9,17 +9,17 @@ const Association: FunctionComponent<AssociationProps> = () => (
         <h1>Wappuradion Tuki ry</h1>
         <p><strong>Wappuradion Tuki ry</strong> toimii Rakkauden Wappuradion taustalla.</p>
   <p>Sähköposti: <a href='mailto:hallitus@wappuradio.fi'>hallitus@wappuradio.fi</a></p>
-  <h2>Hallitus 2019-2020:</h2>
-  <p>Puheenjohtaja: Jaakko Airasmaa<br />
-  Varapuheenjohtaja: Veli Tapper<br />
-  Rahastonhoitaja: Valtteri Yli-Karro<br />
+  <h2>Hallitus 2020-2021:</h2>
+  <p>Puheenjohtaja: Veli Tapper<br />
+  Varapuheenjohtaja: Helky Kouri<br />
+  Rahastonhoitaja: Jaakko Airasmaa<br />
   Sihteeri: Tytti Hyvönen<br />
-  Hallituksen jäsen: Sami Hartala<br />
-  Hallituksen jäsen: Ansse Saarimäki</p>
-  <h2>Toimihenkilöt 2020:</h2>
-  <p>Petra Oksa<br />
-  Matti Tuomas<br />
-  Jukka-Pekka Venttola</p>
+  Hallituksen jäsen: Tuulia Kusmin<br />
+  Hallituksen jäsen: Hilppa Kouri<br />
+  Hallituksen jäsen: Saskia Simisker<br /></p>
+  <h2>Toimihenkilöt 2021:</h2>
+  <p>Maria Järvelin<br />
+  Tuomas Tinus</p>
     </section>
 );
 
