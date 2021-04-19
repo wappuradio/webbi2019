@@ -20,6 +20,12 @@ const MainNav: FunctionComponent = () => (
       <NavLink to='/ry/'>Yhdistys</NavLink>
     </li>
     <audio id='audio' controls preload='none'>
+      <source src="https://stream.wappuradio.fi/icecast/wappuradio-legacy-streamer1.opus" type="audio/ogg; codecs=opus"/>
+      <source src="https://stream.wappuradio.fi/icecast/wappuradio-legacy-streamer1.ogg" type="audio/ogg; codecs=vorbis"/>
+      <source src="https://stream.wappuradio.fi/icecast/wappuradio-legacy-streamer1.mp3" type="audio/mpeg"/>
+      <source src="https://stream.wappuradio.fi/icecast/wappuradio-legacy-streamer2.opus" type="audio/ogg; codecs=opus"/>
+      <source src="https://stream.wappuradio.fi/icecast/wappuradio-legacy-streamer2.ogg" type="audio/ogg; codecs=vorbis"/>
+      <source src="https://stream.wappuradio.fi/icecast/wappuradio-legacy-streamer2.mp3" type="audio/mpeg"/>
       <source src="https://stream.wappuradio.fi/wappuradio.opus" type="audio/ogg; codecs=opus"/>
       <source src="https://stream.wappuradio.fi/wappuradio.ogg" type="audio/ogg; codecs=vorbis"/>
       <source src="https://stream.wappuradio.fi/wappuradio.mp3" type="audio/mpeg"/>

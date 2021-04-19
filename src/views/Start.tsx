@@ -56,7 +56,19 @@ const Start: FunctionComponent<StartProps> = ({infoData, programs}) => (
     <Friends />
     <h2>Striimilinkit</h2>
     <ul>
-      <li>Ääni: <a href="http://stream.wappuradio.fi/wappuradio.opus">Opus</a>, <a href="http://stream.wappuradio.fi/wappuradio.ogg">Vorbis</a>, <a href="http://stream.wappuradio.fi/wappuradio.mp3">MP3</a>, <a href="https://wappuradio.fi/wappuradio.m3u">M3U</a></li>
+      <li>
+Ääni:
+<a href="http://stream.wappuradio.fi/icecast/wappuradio-legacy-streamer1.opus">Opus-1</a>, 
+<a href="http://stream.wappuradio.fi/icecast/wappuradio-legacy-streamer2.opus">Opus-2</a>, 
+<a href="http://stream.wappuradio.fi/icecast/wappuradio-legacy-streamer1.ogg">Vorbis-1</a>, 
+<a href="http://stream.wappuradio.fi/icecast/wappuradio-legacy-streamer2.ogg">Vorbis-2</a>, 
+<a href="http://stream.wappuradio.fi/icecast/wappuradio-legacy-streamer1.mp3">MP3-1</a>, 
+<a href="http://stream.wappuradio.fi/icecast/wappuradio-legacy-streamer2.mp3">MP3-2</a>, 
+<a href="http://stream.wappuradio.fi/wappuradio.opus">Opus-3</a>, 
+<a href="http://stream.wappuradio.fi/wappuradio.ogg">Vorbis-3</a>, 
+<a href="http://stream.wappuradio.fi/wappuradio.mp3">MP3-3</a>, 
+<a href="https://wappuradio.fi/wappuradio.m3u">M3U</a>
+</li>
       <li>Kuva: <a href="https://youtu.be/fg7O2aG23Jk">YouTube</a></li>
     </ul>
   </section>
