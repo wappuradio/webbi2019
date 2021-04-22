@@ -286,3 +286,39 @@ export const getPreviousProgram = (programs:Program[], program: Program, date:Mo
 	return sorted[ci+1];
   return null;
 }
+
+export const hasAlreadyAired = (program: Program): boolean => {
+  var now = moment();
+  if(program.date.start <= now) {
+    return true;
+  } 
+  return false;
+}
+
+export const submitFeedback = (e: React.SyntheticEvent): void => {
+    const target = e.target as typeof e.target & {
+        rating: { value: number }
+        feedback: { value: string }
+        show: { value: string }
+    }
+    const rating = target.rating.value;
+    const feedback = target.feedback.value;
+    const program = target.show.value;
+    sendFeedback(program, rating, feedback);
+    e.preventDefault();
+}
+
+export const sendFeedback = (title: string, rating: number, feedback?: string): boolean => {
+  if(title == undefined) {
+    return false;
+  }
+  if(rating > 10 || rating < 0) {
+    return false;
+  }
+  const req = {
+    method: "POST",
+    body: JSON.stringify({show: title, rating: rating, feedback: feedback})
+  };
+  fetch("/api/feedback", req);
+  return true;
+}

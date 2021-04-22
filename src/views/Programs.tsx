@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react';
 import { NavLink, Link, Route, match, Switch, RouteComponentProps, Redirect } from 'react-router-dom';
 import moment from 'moment';
 
-import { Program, getProgramByName, sortAndGroupForAlphabetical, getNextProgram, getPreviousProgram } from '../logic/Program';
+import { Program, getProgramByName, sortAndGroupForAlphabetical, getNextProgram, getPreviousProgram, hasAlreadyAired } from '../logic/Program';
 import ProgramList from '../components/Program/ProgramList';
 import ProgramMap from '../components/Program/ProgramMap';
 import ProgramTimetable from '../components/Program/ProgramTimetable';
@@ -41,6 +41,7 @@ const ProgramSingle: FunctionComponent<RouteComponentProps & ProgramSingleProps>
 	let previous = "";
 	let next = "";
 	let pDate = match.params.date;
+    let hasAired = false;
 	if(pDate != null || (p!= null && p.dates.length == 1))
 	{
 		let date = pDate == null ? p.date.start : moment(pDate, "DDMM")
@@ -49,12 +50,13 @@ const ProgramSingle: FunctionComponent<RouteComponentProps & ProgramSingleProps>
 		let NP = getNextProgram(programs, p, date);
 		if(PP != null) previous = "/programs/p/"+PP.name+"/"+PP.date.start.format("DDMM");
 		if(NP != null) next = "/programs/p/"+NP.name+"/"+NP.date.start.format("DDMM");
-		
 	}
-	
+	if(p != null) {
+        hasAired = hasAlreadyAired(p);
+    }
     return (
       <div>
-	    {p && <ProgramSingleItem {...p} activeDay={pDate} previous={previous} next={next} />}
+	    {p && <ProgramSingleItem {...p} activeDay={pDate} previous={previous} next={next} hasAired={hasAired} />}
 		
         <button className="back-button" onClick={() => history.goBack()}>
           Takaisin
