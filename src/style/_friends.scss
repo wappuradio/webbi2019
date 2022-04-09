@@ -18,7 +18,7 @@
     fill-rule: evenodd;
   }
   .img {
-    filter: grayscale(100%);
+    filter: grayscale(100%) brightness(35%);
     width: 100%;
     height: 100%;
     background-size: 100%;
@@ -32,35 +32,40 @@
 
 $friends: (
   agilekoulutus: [#365691,#17763e,#00233d,#000000],
+  ainsinoorit: [#60b47a,#057526, #000000],
   ambientia: [#FF2457],
   atostek: [#484D51,#8ABD23,#5AB031],
   bitwise: [#1D1D1B],
-  cinia: [#DC5440,#050303],
+  cinia: [#0C2340,#F4364C,#A50034],
   digia: [#D8001F],
   cybercom: [#025599],
   eficode: [#15007c],
   elisa: [#0012B4],
   eparking: [#0088e1,#343434],
   etteplanmore: [#EF413D,#1CA4DD],
+  fastems: [#414646,#ef3135,#fff],
   framery: [#0c8260],
   futurice: [#0AB587],
   gofore: [#FF8551],
   huld: [#00173A],
   innogiant: [#000000],
   intopalo: [#054E96,#05B2E1],
+  knowit: [#333333],
   multim: [#53b1e3,#0375b0,#343434],
   navigaattori: [#4E008E],
   netum: [#3AAA35],
   nokianpanimo: [#242021],
   poas: [#3A5DAE],
   polarsquad: [#000000],
+  poppankki: [#66c773],
   profit: [#001A70],
   pyynikin: [#000],
+  rare: [#000],
   ratekoulutus: [#2d519f],
   rdvelho: [#84BC26,#4C4D4F],
   riemurinne: [#2C3795],
   solita: [#DC1E32],
-  tek: [#009DC3,#797C82],
+  tek: [#354f63,#6bc],
   trey: [#FFCB03],
   tuni: [#4d008d],
   vincit: [#F04E30],
