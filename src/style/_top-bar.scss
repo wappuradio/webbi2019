@@ -1,5 +1,5 @@
 .top-bar {
-  background: c(brand);
+  background: c(alt);
   position: fixed;
   top: 0;
   left: 0;
@@ -40,13 +40,13 @@
         margin: 0.25em;
         border-radius: 0.25em;
         &:hover {
-          background: c(alt, 0.9);
+          background: c(brand3, 0.9);
         }
         &:focus {
-          background: c(alt, 0.8);
+          background: c(brand3, 0.8);
         }
         &.active {
-          background: c(alt);
+          background: c(brand3);
         }
       }
       @include responsive(medium) {
