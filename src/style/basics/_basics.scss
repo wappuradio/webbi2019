@@ -1,6 +1,6 @@
 a, .back-button {
   @include transition(color);
-  color: c(brand);
+  color: c(links);
   text-decoration: underline;
   &:hover {
     color: c(brand, 0.2);

@@ -5,9 +5,9 @@
   cursor: pointer;
   padding: 0.25em;
   color: c(base);
-  background: c(brand3);
+  background: c(brand-alt);
   &:hover {
-    background: c(brand3, 0.1);
+    background: c(brand-alt, 0.1);
   }
   .icon {
     width: 2.5em;
@@ -24,7 +24,7 @@
   }
 
   &%play-button-inverted {
-    color: c(brand3);
+    color: c(brand-alt);
     background: c(base);
     &:hover {
       background: c(base, 0.1);
