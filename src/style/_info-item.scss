@@ -41,8 +41,8 @@
   >.content, >.action, >.img {
     margin: 0.5em;
   }
-  
-  
+
+
   &%info-item-tiny {
     >.content {
       >h2 {
@@ -58,8 +58,8 @@
       >h2, >p {
         margin: 0;
       }
-	  
-	  
+
+
     }
   }
   &.-program {
@@ -70,7 +70,6 @@
     >.img {
       width: 5.5em;
       height: 5.5em;
-      background: c(brand);
       border-radius: 50%;
       overflow: hidden;
       flex-shrink: 0;
