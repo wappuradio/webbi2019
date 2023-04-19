@@ -18,7 +18,7 @@ const ProgramMap: FunctionComponent<{ programs: Program[], week: string }> = ({ 
     }
   };
 
-  var radioStart = moment("13.04.2022", "DD.MM.YYYY");
+  var radioStart = moment("13.04.2023", "DD.MM.YYYY");
 
   var now = moment();
 

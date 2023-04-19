@@ -1,13 +1,13 @@
 $brand: 'default' !default;
 
 $colors: (
-    brand: #353c9d,
-    brand-alt: #f88dda,
+    brand: #5095c7,
+    brand-alt: #cdaefc,
     base: #eaeff5,
-    alt: #353c9d,
-    links: #656ddf,
-    bg-start: #eff2a1,
-    bg-end: #fb38c28c,
+    alt: #5095c7,
+    links: #cdaefc,
+    bg-start: #d1ebffb3,
+    bg-end: #f4d0f98c,
 ) !default;
 
 @if $brand == 'aprilli' {

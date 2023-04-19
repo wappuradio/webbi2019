@@ -49,7 +49,7 @@ const Start: FunctionComponent<StartProps> = ({infoData, programs}) => (
         </div>
       }/>
       <Route path="/watch/" exact render={() =>
-        <Tube videoId="Q7_ECLuFBZs" />
+        <Tube videoId="VTDBDHPpdqQ" />
       }/>
     </Switch>
     <h2>Menossa mukana</h2>
@@ -58,18 +58,14 @@ const Start: FunctionComponent<StartProps> = ({infoData, programs}) => (
     <ul>
       <li>
 Ääni:
-<a href="http://stream.wappuradio.fi/icecast/wappuradio-legacy-streamer1.opus">Opus-1</a>, 
-<a href="http://stream.wappuradio.fi/icecast/wappuradio-legacy-streamer2.opus">Opus-2</a>, 
-<a href="http://stream.wappuradio.fi/icecast/wappuradio-legacy-streamer1.ogg">Vorbis-1</a>, 
-<a href="http://stream.wappuradio.fi/icecast/wappuradio-legacy-streamer2.ogg">Vorbis-2</a>, 
-<a href="http://stream.wappuradio.fi/icecast/wappuradio-legacy-streamer1.mp3">MP3-1</a>, 
-<a href="http://stream.wappuradio.fi/icecast/wappuradio-legacy-streamer2.mp3">MP3-2</a>, 
-<a href="http://stream.wappuradio.fi/wappuradio.opus">Opus-3</a>, 
-<a href="http://stream.wappuradio.fi/wappuradio.ogg">Vorbis-3</a>, 
-<a href="http://stream.wappuradio.fi/wappuradio.mp3">MP3-3</a>, 
-<a href="https://wappuradio.fi/wappuradio.m3u">M3U</a>
+<a href="http://stream.wappuradio.fi/wappuradio1.opus">Opus-1</a>, 
+<a href="http://stream.wappuradio.fi/wappuradio2.opus">Opus-2</a>, 
+<a href="http://stream.wappuradio.fi/wappuradio1.ogg">Vorbis-1</a>, 
+<a href="http://stream.wappuradio.fi/wappuradio2.ogg">Vorbis-2</a>, 
+<a href="http://stream.wappuradio.fi/wappuradio1.mp3">MP3-1</a>, 
+<a href="http://stream.wappuradio.fi/wappuradio2.mp3">MP3-2</a>, 
 </li>
-      <li>Kuva: <a href="https://youtu.be/Q7_ECLuFBZs">YouTube</a></li>
+      <li>Kuva: <a href="https://youtu.be/VTDBDHPpdqQ">YouTube</a></li>
     </ul>
   </section>
 );
