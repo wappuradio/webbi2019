@@ -3,13 +3,12 @@ import ReactModal from 'react-modal';
 import { NavLink, Link } from 'react-router-dom';
 import { Redirect } from 'react-router';
 import LazyLoad from 'react-lazyload';
+import { submitFeedback } from '../../logic/Program';
 
 const Hypher = require('hypher');
 const fiPatterns = require('hyphenation.fi');
 const hypher = new Hypher(fiPatterns);
 const ReactMarkdown = require('react-markdown');
-
-import { submitFeedback } from '../../logic/Program';
 
 ReactModal.setAppElement("#root");
 

@@ -3,14 +3,13 @@ import { NavLink, Link } from 'react-router-dom';
 import { Redirect } from 'react-router';
 import LazyLoad from 'react-lazyload';
 import moment from 'moment';
+import { Program, submitFeedback } from '../../logic/Program';
+import { FeedbackModal } from '../../components/Program/ProgramFeedback';
 
 const Hypher = require('hypher');
 const fiPatterns = require('hyphenation.fi');
 const hypher = new Hypher(fiPatterns);
 const ReactMarkdown = require('react-markdown');
-
-import { Program, submitFeedback } from '../../logic/Program';
-import { FeedbackModal } from '../../components/Program/ProgramFeedback';
 
 interface ProgramSingleItemProps extends Program{
   showImg?: boolean,

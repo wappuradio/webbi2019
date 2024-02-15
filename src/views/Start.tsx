@@ -1,10 +1,8 @@
 import React, { FunctionComponent } from 'react';
 import { NavLink, Route, Switch } from 'react-router-dom';
 import Interval from 'react-interval-rerender';
-import YouTube from 'react-youtube';
 
 import Tube from '../views/Tube';
-import Cam from '../views/Cam';
 import Friends from '../components/Friends';
 import PlayButton from '../components/PlayButton';
 import { ProgramListItem } from '../components/Program/ProgramItem';

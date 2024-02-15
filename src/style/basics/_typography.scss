@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,800');
 
-$gilroy: 'files/gilroy-extrabold';
+$gilroy: '../files/gilroy-extrabold';
 @font-face {
   font-family: 'Gilroy';
   src: url('#{$gilroy}.woff2') format('woff2'),
@@ -18,7 +18,7 @@ body {
   color: c(alt);
   font-size: 100%;
   min-height: 100%;
-  background: linear-gradient(0deg, c(bg-end) 0%, c(bg-start) 100%), url('./files/bg.svg') center center / cover no-repeat fixed;
+  background: linear-gradient(0deg, c(bg-end) 0%, c(bg-start) 100%), url('../files/bg.svg') center center / cover no-repeat fixed;
 }
 
 h1 {
