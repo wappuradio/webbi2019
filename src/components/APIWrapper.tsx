@@ -10,7 +10,6 @@ import Programs from '../views/Programs';
 import Info from '../views/Info';
 import English from '../views/English';
 import Association from '../views/Association';
-import Cam from '../views/Cam';
 
 import BottomBar from './BottomBar';
 import TopBar from './TopBar';

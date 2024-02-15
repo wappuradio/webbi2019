@@ -19,12 +19,12 @@ interface ProgramsDateProps {
 
 interface ProgramsWeekProps {
   programs: Program[],
-  match?: match<{week: string}>
+  match?: match<{week?: string}>
 }
 
 interface ProgramSingleProps {
   programs: Program[],
-  match?: match<{name: string, date:string}>
+  match?: match<{name?: string, date?:string}>
 }
 
 const ProgramAlphabetical: FunctionComponent<ProgramsProps> = ({ programs }) => {
@@ -37,7 +37,7 @@ const ProgramAlphabetical: FunctionComponent<ProgramsProps> = ({ programs }) => 
 
 const ProgramSingle: FunctionComponent<RouteComponentProps & ProgramSingleProps> = ({ history, match, programs }) => {
 
-    const p = getProgramByName(match.params.name, programs);
+  const p = getProgramByName(match.params.name!, programs);
 	let previous = "";
 	let next = "";
 	let pDate = match.params.date;
@@ -88,7 +88,7 @@ const ProgramMapView: FunctionComponent<RouteComponentProps & ProgramsWeekProps>
   else if(date.date() >= 19)
 	week = "2";
 	
-  week = match.params.week
+  week = match.params.week!
   
   return (
 	<ProgramMap {...{programs, week}} />
