@@ -28,7 +28,7 @@
     "react-youtube": "^10.1.0",
     "socket.io": "^4.7.4",
     "socket.io-client": "^4.7.4",
-    "typescript": "^5.1.0",
+    "typescript": "5.1.6",
     "yarn": "^1.22.4"
   },
   "scripts": {
