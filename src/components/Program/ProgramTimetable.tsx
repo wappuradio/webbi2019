@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { Moment } from 'moment';
 
 import { Program, sortAndGroupForTimetable } from '../../logic/Program';
-import { ProgramListItem, ProgramTimetableItem } from './ProgramItem';
+import { ProgramTimetableItem } from './ProgramItem';
 
 const TimetableNavItem: FunctionComponent<{date: Moment, text: string}> = ({ date, text }) => (
   <NavLink to={`/programs/timetable/${date.format('DDMM')}`}>

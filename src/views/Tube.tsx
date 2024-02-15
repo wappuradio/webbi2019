@@ -1,6 +1,6 @@
-import React, { FunctionComponent } from 'react';
+import React from 'react';
 
-export default ({ videoId }) => {
+const Tube = ({ videoId }) => {
   return (
     <div
       className="video"
@@ -26,3 +26,5 @@ export default ({ videoId }) => {
     </div>
   );
 };
+
+export default Tube;

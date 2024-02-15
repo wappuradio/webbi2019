@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { NavLink, Link, Route, match, Switch, RouteComponentProps, Redirect } from 'react-router-dom';
+import { NavLink, Route, match, Switch, RouteComponentProps, Redirect } from 'react-router-dom';
 import moment from 'moment';
 
 import { Program, getProgramByName, sortAndGroupForAlphabetical, getNextProgram, getPreviousProgram, hasAlreadyAired } from '../logic/Program';
@@ -42,9 +42,9 @@ const ProgramSingle: FunctionComponent<RouteComponentProps & ProgramSingleProps>
 	let next = "";
 	let pDate = match.params.date;
     let hasAired = false;
-	if(pDate != null || (p!= null && p.dates.length == 1))
+	if(pDate != null || (p!= null && p.dates.length === 1))
 	{
-		let date = pDate == null ? p.date.start : moment(pDate, "DDMM")
+		let date = pDate === null ? p.date.start : moment(pDate, "DDMM")
 		//Check next & previous program.
 		let PP = getPreviousProgram(programs, p, date);
 		let NP = getNextProgram(programs, p, date);

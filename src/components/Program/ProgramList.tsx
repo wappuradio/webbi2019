@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 
-import { Program, sortAndGroupForAlphabetical } from '../../logic/Program';
+import { Program } from '../../logic/Program';
 import { ProgramListItem } from './ProgramItem';
 
 const ProgramList: FunctionComponent<{programs: Program[]}> = ({ programs }) => (

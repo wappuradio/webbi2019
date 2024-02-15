@@ -1,15 +1,14 @@
 import React, { FunctionComponent, Component } from 'react';
-import { NavLink, Link } from 'react-router-dom';
-import { Redirect } from 'react-router';
+import { Link } from 'react-router-dom';
 import LazyLoad from 'react-lazyload';
 import moment from 'moment';
-import { Program, submitFeedback } from '../../logic/Program';
+import { Program } from '../../logic/Program';
 import { FeedbackModal } from '../../components/Program/ProgramFeedback';
+import ReactMarkdown from 'react-markdown';
 
 const Hypher = require('hypher');
 const fiPatterns = require('hyphenation.fi');
 const hypher = new Hypher(fiPatterns);
-const ReactMarkdown = require('react-markdown');
 
 interface ProgramSingleItemProps extends Program{
   showImg?: boolean,
@@ -34,10 +33,10 @@ interface ProgramImgProps {
 
 const datesString = (dates: Program["dates"], activeDay?:string) =>
 {
-  let cmp = activeDay == undefined ? moment(moment(), "DDMM") : moment(activeDay, "DDMM");
+  let cmp = activeDay === undefined ? moment(moment(), "DDMM") : moment(activeDay, "DDMM");
   return dates.map((d, i) =>
     {
-	  var classes = cmp != undefined && cmp.isSame(d.start, "date")?"date activeDate" : "date";
+	  var classes = cmp !== undefined && cmp.isSame(d.start, "date")?"date activeDate" : "date";
       return (<span key={i} className={classes}>{`${d.start.format('dd D.M. H:mm')}–${d.end.format('H:mm')}`}</span>);
     }
   );
@@ -102,7 +101,7 @@ export const ProgramTimetableItem: FunctionComponent<Program> =
           { prod && <span><span className='label'>Tuottaja</span> <strong>{ prod }</strong></span> }
         </p>
         { desc && <div className='desc'>
-          <ReactMarkdown source={desc} disallowedTypes={['link', 'paragraph']} unwrapDisallowed={true} />
+          <ReactMarkdown children={desc} disallowedElements={['link', 'paragraph']} unwrapDisallowed={true} />
         </div> }
       </div>
     </div>
@@ -144,7 +143,7 @@ export class ProgramSingleItem extends Component<ProgramSingleItemProps, Program
             { prod && <span><span className='label'>Tuottaja</span> <strong>{ prod }</strong></span> }
           </p>
           { desc && <div className='desc'>
-            <ReactMarkdown source={desc} />
+            <ReactMarkdown children={desc} />
           </div> }
           { previous && <Link className="previousNextLink previousLink" to={previous}>Edellinen</Link>}
           { hasAired && <a className="feedbackLink" onClick={showFeedback}>Anna palautetta</a> }

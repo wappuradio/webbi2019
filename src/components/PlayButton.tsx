@@ -13,14 +13,14 @@ const startStream = () => {
     if(audio.paused) {
         audio.play();
         audio.style.display = 'inline';
-        for(var i = 0; i < buttons.length; i++) {
+        for(let i = 0; i < buttons.length; i++) {
             buttons[i].classList.remove('stopped');
             buttons[i].classList.add('playing');
         }
     } else {
         audio.src = '';
         audio.removeAttribute('src');
-        for(var i = 0; i < buttons.length; i++) {
+        for(let i = 0; i < buttons.length; i++) {
             buttons[i].classList.remove('playing');
             buttons[i].classList.add('stopped');
         }

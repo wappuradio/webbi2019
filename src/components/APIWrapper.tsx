@@ -1,6 +1,5 @@
 import React, { FunctionComponent, PureComponent } from 'react';
-import { BrowserRouter as Router, Route, Switch, RouteComponentProps } from 'react-router-dom';
-import Loadable, { LoadableComponent, LoadableCaptureProps } from 'react-loadable';
+import { BrowserRouter as Router, Route, RouteComponentProps } from 'react-router-dom';
 
 import { Program, fetchProgramArray } from '../logic/Program';
 import { fetchNews } from '../logic/Info';
@@ -14,8 +13,6 @@ import Association from '../views/Association';
 import BottomBar from './BottomBar';
 import TopBar from './TopBar';
 import Logo from './Logo';
-import Spinner from './Spinner';
-import { Data } from 'unist';
 
 interface APIWrapperState {
   programs: Program[],
