@@ -1,14 +1,9 @@
-import React, { useState, FunctionComponent, Component } from 'react';
+import React, { Component } from 'react';
 import ReactModal from 'react-modal'; 
-import { NavLink, Link } from 'react-router-dom';
-import { Redirect } from 'react-router';
-import LazyLoad from 'react-lazyload';
 import { submitFeedback } from '../../logic/Program';
 
 const Hypher = require('hypher');
 const fiPatterns = require('hyphenation.fi');
-const hypher = new Hypher(fiPatterns);
-const ReactMarkdown = require('react-markdown');
 
 ReactModal.setAppElement("#root");
 
@@ -46,7 +41,7 @@ export class FeedbackModal extends Component<FeedbackProps, FeedbackState> {
             overlayClassName="layout_container"
            >
         <h3 className="modalTitle">Ohjelmapalaute</h3>
-        <button className="closeModal" onClick={(event) => this.props.closeModal()}>X</button>
+        <button className="closeModal" onClick={() => this.props.closeModal()}>X</button>
         <br /><br />
         <form onSubmit={(event) => {submitFeedback(event); this.props.closeModal()}}>
             <input type="hidden" name="show" value={this.props.title} />

@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from 'react';
-const ReactMarkdown = require('react-markdown');
 
 interface AssociationProps {
 }

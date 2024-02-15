@@ -353,39 +353,19 @@ const friendsInfo = [
 
 ];
 
-{/*
-  {
-    name: '',
-    title: '',
-    url: '',
-    logo: (
-
-    )
-  },
-
-  {
-    name: '',
-    title: '',
-    url: '',
-    logo: (
-      <div className='img' style={{ backgroundImage: "url('data:image/png;base64,...')" }}/>
-    )
-  }
-*/}
-
 const Friends: FunctionComponent = () => (
   <div className='friends-container'>
     { friendsInfo.map((f, i) => {
         const order = { order: Math.floor(Math.random()*100) }
-        if(f.logo.type == 'div') {
+        if(f.logo.type === 'div') {
           return (
-            <a key={i} style={order} id={f.name} className='friend' href={f.url} target='_blank'>
+            <a key={i} style={order} id={f.name} className='friend' href={f.url} target='_blank' rel="noreferrer">
               {f.logo}
             </a>
           );
         } else {
           return (
-            <a key={i} style={order} id={f.name} className='friend' href={f.url} target='_blank'>
+            <a key={i} style={order} id={f.name} className='friend' href={f.url} target='_blank' rel="noreferrer">
               <svg className='logo' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 150'>
                 <title>{f.title}</title>
                 {f.logo}

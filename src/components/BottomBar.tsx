@@ -12,7 +12,6 @@ interface BottomBarProps {
 }
 
 const BottomBar: FunctionComponent<BottomBarProps> = ({programs}) => {
-  var p = getCurrentProgram(programs);
   return (
   <section className='bottom-bar'>
     <InfoItem

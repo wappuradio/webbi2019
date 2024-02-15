@@ -58,7 +58,7 @@ export const fetchProgramArray: Promise<Program[]> =
       });
       asPrograms.map(p => {
         asPrograms.map(o => {
-          if(o.name == p.name && o.dates.indexOf(p.dates[0]) === -1) {
+          if(o.name===p.name && o.dates.indexOf(p.dates[0]) === -1) {
             o.dates.push(p.dates[0]);
           }
         });
@@ -152,10 +152,10 @@ interface ForMap {
 const splitProgramByMidnight = (programs: Program[]) =>
 {
 	var toAdd:Program[] = [];
-	for( var i = 0; i < programs.length; i++)
+	for (let i = 0; i < programs.length; i++)
 	{
 		var p = programs[i];
-		var split = !p.date.start.isSame(p.date.end, "date") && p.date.end.hour() != 0;
+		var split = !p.date.start.isSame(p.date.end, "date") && p.date.end.hour() !== 0;
 		if(split)
 		{
 			console.log("split " + p.name);
@@ -177,7 +177,7 @@ const splitProgramByMidnight = (programs: Program[]) =>
 			p.date.end.startOf("day");
 		}
 	}
-	for( var i =0; i < toAdd.length; i++)
+	for (let i =0; i < toAdd.length; i++)
 	{
 		programs.push(toAdd[i]);
 	}
@@ -226,7 +226,7 @@ export const sortAndGroupForMap = (programs: Program[], date: Moment): ForMap =>
 };
 
 export const getProgramByName = (name: string, programs: Program[]): Program => {
-  return R.find(R.propEq('name', name))(programs as any)! as unknown as Program;
+  return R.find(R.propEq(name, "name"))(programs as any) as any as Program;
 }
 
 export const getCurrentProgram = (programs: Program[]): Program => {
@@ -263,9 +263,9 @@ export const getNextProgram = (programs: Program[], program: Program, date:Momen
     a.date.start.isBefore(b.date.start) ? -1 : 1, programs);
 
   sorted = sorted.filter( (a:Program) => a.date.start.isSameOrAfter(date, "date"));
-  if(sorted.length == null) return null;
+  if(sorted.length===null) return null;
 
-  var ci = sorted.findIndex( (p) => p.name == program.name);
+  var ci = sorted.findIndex( (p) => p.name===program.name);
 
   if(ci+1 < sorted.length)
 	return sorted[ci+1];
@@ -279,9 +279,9 @@ export const getPreviousProgram = (programs:Program[], program: Program, date:Mo
     a.date.start.isBefore(b.date.start) ? -1 : 1, programs);
 
   sorted = sorted.filter( (a:Program) => a.date.start.isSameOrBefore(date, "date"));
-  if(sorted.length == null) return null;
+  if(sorted.length===null) return null;
 
-  var ci = sorted.reverse().findIndex( (p) => p.name == program.name);
+  var ci = sorted.reverse().findIndex( (p) => p.name===program.name);
   if(ci+1 < sorted.length)
 	return sorted[ci+1];
   return null;
@@ -309,7 +309,7 @@ export const submitFeedback = (e: React.SyntheticEvent): void => {
 }
 
 export const sendFeedback = (title: string, rating: number, feedback?: string): boolean => {
-  if(title == undefined) {
+  if(title===undefined) {
     return false;
   }
   if(rating > 10 || rating < 0) {

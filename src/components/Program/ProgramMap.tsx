@@ -23,8 +23,8 @@ const ProgramMap: FunctionComponent<{ programs: Program[], week: string }> = ({ 
   var now = moment();
 
   //Second week of program. This could be done with dates also but week number sounded better for short time radio.
-  if (week == "2") radioStart.add(7, "days");
-  else if (week == "3") radioStart.add(14, "days");
+  if (week === "2") radioStart.add(7, "days");
+  else if (week === "3") radioStart.add(14, "days");
   var weekPrograms = sortAndGroupForMap(programs, radioStart);
   //console.log(weekPrograms);
   const weekStart = radioStart.startOf("isoWeek");
@@ -58,10 +58,10 @@ const ProgramMap: FunctionComponent<{ programs: Program[], week: string }> = ({ 
         {hours.map((h: number, i: number) => (<div className='map-hour' key={h} style={colRow(1, 2, h + 2, h + 3)}>{h}</div>))}
         {weekPrograms.programs.map((program: Program, i: number) => {
           let className = now.isBetween(program.date.start, program.date.end) ? "map-program map-program-active" : "map-program";
-		  if(i > 0 && program.name == weekPrograms.programs[i-1].name){
+		  if(i > 0 && program.name === weekPrograms.programs[i-1].name){
 			className += " map-program-split";
 		  }
-          const gridPositionStyle = colRow(program.date.start.isoWeekday() + 1, program.date.start.isoWeekday() + 2, program.date.start.hours() + 2, program.date.end.hours() == 0 ? 26 : program.date.end.hours() + 2);
+          const gridPositionStyle = colRow(program.date.start.isoWeekday() + 1, program.date.start.isoWeekday() + 2, program.date.start.hours() + 2, program.date.end.hours() === 0 ? 26 : program.date.end.hours() + 2);
           const leftSide = program.date.start.isoWeekday() < 5;
           return (
 
