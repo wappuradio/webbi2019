@@ -67,6 +67,7 @@ const Start: FunctionComponent<StartProps> = ({infoData, programs}) => (
 </li>
       <li>Kuva: <a href="https://youtu.be/VTDBDHPpdqQ">YouTube</a></li>
     </ul>
+    <a rel="me" href="https://mementomori.social/@wappuradio"></a>
   </section>
 );
 
