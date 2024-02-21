@@ -18,13 +18,17 @@ const links: SocialLink[] = [{
   icon: 'instagram',
   title: 'Instagram'
 },{
-  url: 'https://twitter.com/@wappuradio',
-  icon: 'twitter',
-  title: 'Twitter'
+  url: 'https://mementomori.social/@wappuradio',
+  icon: 'mastodon',
+  title: 'Mastodon'
 },{
   url: 'https://t.me/wappuradio',
   icon: 'telegram',
   title: 'Telegram'
+},{
+  url: 'https://matrix.to/#/#wappuradio:hacklab.fi',
+  icon: 'matrix',
+  title: 'Matrix'
 },{
   url: 'tel:+358503772779',
   icon: 'phone',
