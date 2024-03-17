@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: webbi-ENV
+  name: webbi-ENV
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webbi-ENV
+  template:
+    metadata:
+      labels:
+        app: webbi-ENV
+    spec:
+      containers:
+      - name: webbi
+        image: IMAGE
+        ports:
+        - containerPort: 80
