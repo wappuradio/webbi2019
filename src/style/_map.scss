@@ -5,7 +5,17 @@
   grid-gap: 4px;
   justify-items:center;
   align-items:center;
+  
+  @include responsive(medium,max){
+	font-size: 80%;
+	grid-template-rows: repeat(25, 20px);
+  }
 
+  @include responsive(small,max){
+	font-size: 60%;
+	grid-template-rows: repeat(25, 16px);
+  }
+  
   .map-day
   {
 	  color:white;
@@ -36,7 +46,10 @@
 	height:100%;
 	display:inline-grid;
 	justify-items:center;
-
+	@include responsive(small,max){
+		line-height: 16px;
+	}
+	
   }
 
   .map-program
@@ -55,6 +68,13 @@
 
 	font-size:70%;
 	font-weight:200;
+	@include responsive(small,max){
+		font-size: 90%;
+	}
+	@include responsive(medium,max){
+		font-size: 90%;
+	}
+	
   }
 
   .map-program-active, .map-program-active + .map-program-split

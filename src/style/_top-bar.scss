@@ -5,12 +5,11 @@
   left: 0;
   right: 0;
   z-index: 1;
-
-  @include responsive(medium) {
-    display: flex;
-    justify-content: space-between;
-  }
-
+  max-width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  
   audio {
     display: none;
     height: 32px;
@@ -31,9 +30,12 @@
   nav {
     @include t(caps);
     display: flex;
+    flex:auto;
+    align-items: end;
     list-style: none;
     line-height: 2rem;
     &.-main {
+      max-width: 100%;
       a {
         @include transition('background');
         padding: 0.25em 0.5em;
@@ -56,6 +58,18 @@
           border-radius: 0;
         }
       }
+      @include responsive(small, max) {
+        li:first-child{
+          max-width: calc(100% - 277px);
+        }
+        li:first-child div{
+          display: flex;
+          align-items: center;
+          max-width: 100%;
+        }
+        justify-content: center;
+      }
+      
     }
     &.-social {
       justify-content: flex-end;
@@ -97,6 +111,9 @@
         .icontext {
           margin: 1em 0.5em;
         }
+      }
+      @include responsive(small, max){
+        justify-content: center;
       }
     }
   }
