@@ -3,11 +3,13 @@ import { NavLink, Route, Switch } from 'react-router-dom';
 import Interval from 'react-interval-rerender';
 import ReactMarkdown from 'react-markdown';
 
+
 import Tube from '../views/Tube';
 import Friends from '../components/Friends';
 import PlayButton from '../components/PlayButton';
 import { ProgramListItem } from '../components/Program/ProgramItem';
 import { Program, getCurrentProgram, getNextProgramItem } from '../logic/Program';
+import MastoFeed from '../components/MastoFeed';
 
 interface StartProps {
   infoData: string,
@@ -49,6 +51,7 @@ const Start: FunctionComponent<StartProps> = ({infoData, programs}) => (
         <Tube videoId="VTDBDHPpdqQ" />
       }/>
     </Switch>
+    <MastoFeed />
     <h2>Menossa mukana</h2>
     <Friends />
     <h2>Striimilinkit</h2>
