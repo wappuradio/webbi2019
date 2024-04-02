@@ -44,7 +44,7 @@ export const fetchProgramArray: Promise<Program[]> =
     .then((data: APIProgram[]) => {
       const asPrograms: Program[] = data.map((d: APIProgram, i: number) => {
         return {
-          name: d.name,
+          name: d.name ?? d.title,
           title: d.title,
           host: d.host,
           prod: d.prod,
@@ -258,14 +258,15 @@ export const getNextProgramItem = (programs: Program[]): Program => {
 
 export const getNextProgram = (programs: Program[], program: Program, date:Moment): Program | null => {
   if(!programs.length) return null;
-
+  if(!program) return null;
+  
   let sorted = R.sort((a: Program, b: Program) =>
     a.date.start.isBefore(b.date.start) ? -1 : 1, programs);
 
   sorted = sorted.filter( (a:Program) => a.date.start.isSameOrAfter(date, "date"));
   if(sorted.length===null) return null;
 
-  var ci = sorted.findIndex( (p) => p.name===program.name);
+  var ci = sorted.findIndex( (p) => p && p.name===program.name);
 
   if(ci+1 < sorted.length)
 	return sorted[ci+1];
@@ -274,6 +275,7 @@ export const getNextProgram = (programs: Program[], program: Program, date:Momen
 
 export const getPreviousProgram = (programs:Program[], program: Program, date:Moment): Program | null => {
   if(!programs.length) return null;
+  if(!program) return null;
 
   let sorted = R.sort((a: Program, b: Program) =>
     a.date.start.isBefore(b.date.start) ? -1 : 1, programs);
@@ -281,7 +283,7 @@ export const getPreviousProgram = (programs:Program[], program: Program, date:Mo
   sorted = sorted.filter( (a:Program) => a.date.start.isSameOrBefore(date, "date"));
   if(sorted.length===null) return null;
 
-  var ci = sorted.reverse().findIndex( (p) => p.name===program.name);
+  var ci = sorted.reverse().findIndex( (p) => p && p.name===program.name);
   if(ci+1 < sorted.length)
 	return sorted[ci+1];
   return null;
