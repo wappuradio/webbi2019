@@ -47,6 +47,7 @@
         }
         &.active {
           background: c(brand-alt);
+          color: c(brand);
         }
       }
       @include responsive(medium) {
