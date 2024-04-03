@@ -73,7 +73,8 @@ $friends: (
   tuni: [#4d008d],
   vincit: [#F04E30],
   wapice: [#006FAB],
-  yit: [#0487B4]
+  yit: [#0487B4],
+  fonum: [#000000],
 );
 
 @each $name, $colors in $friends {
