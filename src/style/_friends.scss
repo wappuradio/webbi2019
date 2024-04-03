@@ -55,7 +55,7 @@ $friends: (
   mfiles: [#0070ce,#555555],
   multim: [#53b1e3,#0375b0,#343434],
   navigaattori: [#4E008E],
-  netum: [#3AAA35],
+  netum: [#00a119],
   nokianpanimo: [#242021],
   poas: [#3A5DAE],
   polarsquad: [#000000],
@@ -66,14 +66,16 @@ $friends: (
   ratekoulutus: [#2d519f],
   rdvelho: [#84BC26,#4C4D4F],
   riemurinne: [#2C3795],
+  reaktor: [#000000],
   solita: [#DC1E32],
-  tek: [#354f63,#6bc],
+  tek: [#6bc],
   tamppi: [#000000],
   trey: [#FFCB03],
   tuni: [#4d008d],
   vincit: [#F04E30],
   wapice: [#006FAB],
-  yit: [#0487B4]
+  yit: [#0487B4],
+  fonum: [#000000],
 );
 
 @each $name, $colors in $friends {
