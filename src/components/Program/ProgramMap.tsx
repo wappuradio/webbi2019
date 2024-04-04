@@ -27,7 +27,6 @@ const ProgramMap: FunctionComponent<{ programs: Program[], week: string }> = ({ 
     }
   };
   const radioStart = moment("11.04.2024", "DD.MM.YYYY");
-
   const now = moment();
 
   //Second week of program. This could be done with dates also but week number sounded better for short time radio.
