@@ -4,10 +4,10 @@
   border: none;
   cursor: pointer;
   padding: 0.25em;
-  color: c(brand);
-  background: c(brand-alt);
+  color: c(brand-alt);
+  background: c(brand);
   &:hover {
-    background: c(brand-alt, 0.1);
+    background: c(brand, 0.1);
   }
   .icon {
     width: 2.5em;
