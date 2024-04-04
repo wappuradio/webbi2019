@@ -37,7 +37,13 @@ const ProgramAlphabetical: FunctionComponent<ProgramsProps> = ({ programs }) => 
 
 const ProgramSingle: FunctionComponent<RouteComponentProps & ProgramSingleProps> = ({ history, match, programs }) => {
 
-  const year = programs[0].date.start.year();
+  let year: number | undefined;
+  if (programs.length > 0) {
+    year = programs[0].date.start.year();
+  }
+  else {
+    year = moment().year();
+  }
   const dateFromUrl = match.params.date!;
   const date = moment(dateFromUrl + year, "DDMMYYYY");
   const p = getProgramByName(match.params.name!, programs, date)!;
