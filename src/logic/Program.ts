@@ -225,8 +225,8 @@ export const sortAndGroupForMap = (programs: Program[], date: Moment): ForMap =>
   }
 };
 
-export const getProgramByName = (name: string, programs: Program[]): Program => {
-  return R.find(R.propEq('name', name))(programs);
+export const getProgramByName = (name: string, programs: Program[], date: Moment): Program | undefined => {
+  return programs.find(p => p.name === name && p.date.start.date() === date.date() && p.date.start.month() === date.month());
 }
 
 export const getCurrentProgram = (programs: Program[]): Program => {
