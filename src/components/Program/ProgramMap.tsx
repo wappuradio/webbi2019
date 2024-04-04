@@ -9,6 +9,15 @@ const hours: Array<number> = [];
 for (var i: number = 0; i < 24; i++) hours.push(i);
 
 const ProgramMap: FunctionComponent<{ programs: Program[], week: string }> = ({ programs, week }) => {
+  const [, setRerender] = React.useState(0);
+  React.useEffect(()=>{
+    const forceRerender = () => setRerender(c => c + 1);
+    const timerId = setInterval(forceRerender, 60000);
+    return () => {
+      clearInterval(timerId);
+    };
+  });
+
   var colRow = (colStart: number, colEnd: number, rowStart: number, rowEnd: number) => {
     return {
       "gridColumnStart": colStart,

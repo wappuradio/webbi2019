@@ -96,11 +96,10 @@ const ProgramMapView: FunctionComponent<RouteComponentProps & ProgramsWeekProps>
   let date = moment();
 
   //This could be made much better.
-  if(date.date() >= 26)
-	week = "3";
-  else if(date.date() >= 19)
-	week = "2";
-	
+  if(date.date() >= 29) week = "4";
+  else if(date.date() >= 22) week = "3";
+  else if(date.date() >= 15) week = "2";
+	else week = "1";
   week = match.params.week!
   
   return (
