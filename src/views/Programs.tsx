@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { NavLink, Route, match, Switch, RouteComponentProps, Redirect } from 'react-router-dom';
-import moment from 'moment';
+import moment, { Moment } from 'moment';
 
 import { Program, getProgramByName, sortAndGroupForAlphabetical, getNextProgram, getPreviousProgram, hasAlreadyAired } from '../logic/Program';
 import ProgramList from '../components/Program/ProgramList';
@@ -44,8 +44,12 @@ const ProgramSingle: FunctionComponent<RouteComponentProps & ProgramSingleProps>
   else {
     year = moment().year();
   }
-  const dateFromUrl = match.params.date!;
-  const date = moment(dateFromUrl + year, "DDMMYYYY");
+  let date: Moment | undefined;
+  if (match.params.date) {
+    const dateFromUrl = match.params.date;
+    date = moment(dateFromUrl + year, "DDMMYYYY");
+  }
+  
   const p = getProgramByName(match.params.name!, programs, date)!;
 	let previous = "";
 	let next = "";

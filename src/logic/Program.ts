@@ -225,8 +225,15 @@ export const sortAndGroupForMap = (programs: Program[], date: Moment): ForMap =>
   }
 };
 
-export const getProgramByName = (name: string, programs: Program[], date: Moment): Program | undefined => {
-  return programs.find(p => p.name === name && p.date.start.date() === date.date() && p.date.start.month() === date.month());
+export const getProgramByName = (name: string, programs: Program[], date: Moment | undefined): Program | undefined => {
+  let program;
+  if (date) {
+    program = programs.find(p => p.name === name && p.date.start.date() === date.date() && p.date.start.month() === date.month() && p.date.start.year() === date.year());
+  } else {
+    program = programs.find(p => p.name === name);
+  }
+
+  return program;
 }
 
 export const getCurrentProgram = (programs: Program[]): Program => {
