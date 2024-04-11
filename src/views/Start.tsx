@@ -58,12 +58,12 @@ const Start: FunctionComponent<StartProps> = ({infoData, programs}) => (
     <ul>
       <li>
 Ääni:
-<a href="http://stream.wappuradio.fi/wappuradio1.opus">Opus-1</a>, 
-<a href="http://stream.wappuradio.fi/wappuradio2.opus">Opus-2</a>, 
-<a href="http://stream.wappuradio.fi/wappuradio1.ogg">Vorbis-1</a>, 
-<a href="http://stream.wappuradio.fi/wappuradio2.ogg">Vorbis-2</a>, 
-<a href="http://stream.wappuradio.fi/wappuradio1.mp3">MP3-1</a>, 
-<a href="http://stream.wappuradio.fi/wappuradio2.mp3">MP3-2</a>, 
+<a href="http://stream1.wappuradio.fi/wappuradio.opus">Opus-1</a>,
+<a href="http://stream2.wappuradio.fi/wappuradio.opus">Opus-2</a>,
+<a href="http://stream1.wappuradio.fi/wappuradio.ogg">Vorbis-1</a>,
+<a href="http://stream2.wappuradio.fi/wappuradio.ogg">Vorbis-2</a>,
+<a href="http://stream1.wappuradio.fi/wappuradio.mp3">MP3-1</a>,
+<a href="http://stream2.wappuradio.fi/wappuradio.mp3">MP3-2</a>,
 </li>
       <li>Kuva: <a href="https://youtu.be/VTDBDHPpdqQ">YouTube</a></li>
     </ul>
