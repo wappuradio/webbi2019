@@ -19,8 +19,20 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      # TODO: Skip build if registry already has commit hash tagged
+      - name: Check if commit already pushed to registry
+        id: check_registry
+        run: >
+          curl
+            -Ss
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}"
+            https://ghcr.io/v2/wappuradio/webbi/tags/list
+          | python3
+            -c "import sys; import json; sys.argv[1] in json.load(sys.stdin)['tags'] and print('exists=true') or print('exists=false')"
+            "${{ github.sha }}"
+            >> $GITHUB_OUTPUT
+
       - name: Build and push
+        if: steps.check_registry.outputs.exists == 'false'
         id: docker
         uses: docker/build-push-action@v5
         with:
@@ -30,7 +42,7 @@ jobs:
             ghcr.io/wappuradio/webbi:${{ github.sha }}
 
     outputs:
-      image: ghcr.io/wappuradio/webbi@${{ steps.docker.outputs.digest }}
+      image: ghcr.io/wappuradio/webbi:${{ github.sha }}
 
   deploy:
     runs-on: actions-runner
