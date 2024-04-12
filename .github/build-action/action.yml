@@ -1,5 +1,11 @@
 name: build-action
 
+inputs:
+  registry_username:
+    required: true
+  registry_password:
+    required: true
+
 runs:
   using: composite
   steps:
@@ -38,8 +44,8 @@ runs:
       uses: docker/login-action@v3
       with:
         registry: ghcr.io
-        username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}
+        username: ${{ inputs.registry_username }}
+        password: ${{ inputs.registry_password }}
 
     - name: Build and push
       if: steps.check_registry.outputs.exists == 'false'

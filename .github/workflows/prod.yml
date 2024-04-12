@@ -23,6 +23,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          registry_username: ${{ github.actor }}
+          registry_password: ${{ github.token }}
       - name: build-action
         uses: ./.github/build-action
         with:
