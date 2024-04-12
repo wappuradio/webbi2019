@@ -9,6 +9,8 @@ jobs:
   build:
     runs-on: actions-runner
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
       - name: build-action
         uses: ./.github/build-action
 
@@ -19,6 +21,8 @@ jobs:
       name: prod
       url: https://wappuradio.fi
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
       - name: build-action
         uses: ./.github/build-action
         with:
