@@ -10,6 +10,8 @@ jobs:
   build:
     runs-on: actions-runner
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
       - run: ls -lah
       - run: ls -lah ./.github/build-action
       - name: build-action
