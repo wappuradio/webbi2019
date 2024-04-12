@@ -30,7 +30,9 @@ jobs:
 
           req = urllib.request.Request(
               'https://ghcr.io/v2/wappuradio/webbi/tags/list',
-              headers={'Authorization': 'Basic ' + base64.b64encode(sys.argv[1])}
+              headers={
+                'Authorization': 'Basic ' + base64.b64encode(sys.argv[1].encode()).decode()
+              }
           )
 
           with urllib.request.urlopen(req) as f:
