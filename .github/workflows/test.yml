@@ -19,7 +19,7 @@ jobs:
 
   deploy:
     runs-on: actions-runner
-    needs: build
+    #needs: build
     environment:
       name: test
       url: https://webbi-test.wappuradio.fi
@@ -29,9 +29,9 @@ jobs:
 
       - run: echo "${{ secrets.KUBECONFIG_BASE64 }}" | base64 -d | grep -v token
 
-      - name: deploy-action
-        uses: ./.github/deploy-action
-        with:
-          kubeconfig: "${{ secrets.KUBECONFIG_BASE64 }}"
-          image: "ghcr.io/wappuradio/webbi:${{ github.sha }}"
-          env: "test"
+#     - name: deploy-action
+#       uses: ./.github/deploy-action
+#       with:
+#         kubeconfig: "${{ secrets.KUBECONFIG_BASE64 }}"
+#         image: "ghcr.io/wappuradio/webbi:${{ github.sha }}"
+#         env: "test"
