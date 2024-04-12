@@ -3,7 +3,7 @@ name: ci
 on:
   push:
     branches:
-      - "test"
+      - "master"
 
 jobs:
   build:
@@ -24,7 +24,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: ghcr.io/wappuradio/webbi:test
+          tags: ghcr.io/wappuradio/webbi:master
     outputs:
       image: ghcr.io/wappuradio/webbi@${{ steps.docker.outputs.digest }}
 
