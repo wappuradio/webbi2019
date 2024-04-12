@@ -3,7 +3,7 @@ name: ci
 on:
   push:
     branches:
-      - "master"
+      - "prod"
 
 jobs:
   build:
@@ -19,6 +19,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      # TODO: Skip build if registry already has commit hash tagged
       - name: Build and push
         id: docker
         uses: docker/build-push-action@v5
@@ -35,8 +36,8 @@ jobs:
     runs-on: actions-runner
     needs: build
     environment:
-      name: test
-      url: https://webbi-test.wappuradio.fi
+      name: prod
+      url: https://wappuradio.fi
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -45,4 +46,4 @@ jobs:
         with:
           base64-kube-config: ${{ secrets.KUBECONFIG_BASE64 }}
 
-      - run: cat deployment.yaml | sed 's;IMAGE;${{ needs.build.outputs.image }};' | sed 's/ENV/test/' | kubectl apply -n webbi-test -f -
+      - run: cat deployment.yaml | sed 's;IMAGE;${{ needs.build.outputs.image }};' | sed 's/ENV/prod/' | kubectl apply -n webbi-prod -f -
