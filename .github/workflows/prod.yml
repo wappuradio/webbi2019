@@ -38,16 +38,6 @@ jobs:
           "${{ github.sha }}" \
           >> $GITHUB_OUTPUT
 
-        run: >
-          curl
-            -Ss
-            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}"
-            https://ghcr.io/v2/wappuradio/webbi/tags/list
-          | python3
-            -c "import sys; import json; sys.argv[1] in json.load(sys.stdin)['tags'] and print('exists=true') or print('exists=false')"
-            "${{ github.sha }}"
-            >> $GITHUB_OUTPUT
-
       - name: Build and push
         if: steps.check_registry.outputs.exists == 'false'
         id: docker
