@@ -10,6 +10,8 @@ jobs:
   build:
     runs-on: actions-runner
     steps:
+      - run: ls -lah
+      - run: ls -lah ./.github/build-action
       - name: build-action
         uses: ./.github/build-action
 
