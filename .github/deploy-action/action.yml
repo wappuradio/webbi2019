@@ -18,4 +18,6 @@ runs:
       with:
         base64-kube-config: "${{ inputs.kubeconfig }}"
 
-    - run: cat deployment.yaml | sed 's;IMAGE;${{ inputs.image }};' | sed 's/ENV/${{ inputs.env }}/' | kubectl apply -n webbi-${{ inputs.env }} -f -
+    - name: Apply deployment.yaml
+      shell: bash
+      run: cat deployment.yaml | sed 's;IMAGE;${{ inputs.image }};' | sed 's/ENV/${{ inputs.env }}/' | kubectl apply -n webbi-${{ inputs.env }} -f -

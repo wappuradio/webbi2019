@@ -8,6 +8,7 @@ runs:
 
     - name: Check if commit already pushed to registry
       id: check_registry
+      shell: bash
       run: |
         python3 -c "
         import sys
