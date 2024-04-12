@@ -1,0 +1,21 @@
+name: deploy-action
+
+inputs:
+  kubeconfig:
+    required: true
+  image:
+    required: true
+  env:
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - uses: tale/kubectl-action@v1
+      with:
+        base64-kube-config: "${{ inputs.kubeconfig }}"
+
+    - run: cat deployment.yaml | sed 's;IMAGE;${{ inputs.image }};' | sed 's/ENV/${{ inputs.env }}/' | kubectl apply -n webbi-${{ inputs.env }} -f -
