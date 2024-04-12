@@ -21,6 +21,23 @@ jobs:
 
       - name: Check if commit already pushed to registry
         id: check_registry
+        run: |
+          python3 -c "
+          import sys
+          import urllib.request
+          import json
+
+          req = urllib.request.Request('https://ghcr.io/v2/wappuradio/webbi/tags/list', headers={'Authorization': sys.argv[1]})
+          with urllib.request.urlopen(req) as f:
+              if sys.argv[2] in json.load(f)['tags']:
+                  print('exists=true')
+              else:
+                  print('exists=false')" \
+          \
+          "Bearer ${{ secrets.GITHUB_TOKEN }}" \
+          "${{ github.sha }}" \
+          >> $GITHUB_OUTPUT
+
         run: >
           curl
             -Ss
