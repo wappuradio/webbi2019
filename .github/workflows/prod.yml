@@ -28,20 +28,20 @@ jobs:
           import json
           import base64
 
+          with urllib.request.urlopen('https://ghcr.io/token?scope=repository:wappuradio/webbi:pull') as f:
+              token = json.load(f)['token']
+
           req = urllib.request.Request(
               'https://ghcr.io/v2/wappuradio/webbi/tags/list',
-              headers={
-                'Authorization': 'Basic ' + base64.b64encode(sys.argv[1].encode()).decode()
-              }
+              headers={'Authorization': f'Bearer {token}'}
           )
 
           with urllib.request.urlopen(req) as f:
-              if sys.argv[2] in json.load(f)['tags']:
+              if sys.argv[1] in json.load(f)['tags']:
                   print('exists=true')
               else:
                   print('exists=false')" \
           \
-          "${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}" \
           "${{ github.sha }}" \
           >> $GITHUB_OUTPUT
 
