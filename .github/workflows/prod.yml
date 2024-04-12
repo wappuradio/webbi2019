@@ -10,7 +10,7 @@ jobs:
     runs-on: actions-runner
     steps:
       - name: build-action
-        uses: ./github/build-action
+        uses: ./.github/build-action
 
   deploy:
     runs-on: actions-runner
@@ -20,7 +20,7 @@ jobs:
       url: https://wappuradio.fi
     steps:
       - name: build-action
-        uses: ./github/build-action
+        uses: ./.github/build-action
         with:
           kubeconfig: "${{ secrets.KUBECONFIG_BASE64 }}"
           image: "ghcr.io/wappuradio/webbi:${{ github.sha }}"
