@@ -9,6 +9,15 @@ const hours: Array<number> = [];
 for (var i: number = 0; i < 24; i++) hours.push(i);
 
 const ProgramMap: FunctionComponent<{ programs: Program[], week: string }> = ({ programs, week }) => {
+  const [, setRerender] = React.useState(0);
+  React.useEffect(()=>{
+    const forceRerender = () => setRerender(c => c + 1);
+    const timerId = setInterval(forceRerender, 60000);
+    return () => {
+      clearInterval(timerId);
+    };
+  });
+
   var colRow = (colStart: number, colEnd: number, rowStart: number, rowEnd: number) => {
     return {
       "gridColumnStart": colStart,
@@ -24,6 +33,8 @@ const ProgramMap: FunctionComponent<{ programs: Program[], week: string }> = ({ 
   //Second week of program. This could be done with dates also but week number sounded better for short time radio.
   if (week === "2") radioStart.add(7, "days");
   else if (week === "3") radioStart.add(14, "days");
+  else if (week === "4") radioStart.add(21, "days");
+  
   const weekPrograms = sortAndGroupForMap(programs, radioStart);
   //console.log(weekPrograms);
   const weekStart = radioStart.startOf("isoWeek");
@@ -49,6 +60,9 @@ const ProgramMap: FunctionComponent<{ programs: Program[], week: string }> = ({ 
           </li>
           <li>
             <NavLink to='/programs/map/3'>Viikko 3</NavLink>
+          </li>
+          <li>
+            <NavLink to='/programs/map/4'>Viikko 4</NavLink>
           </li>
         </nav>
       </h3>
