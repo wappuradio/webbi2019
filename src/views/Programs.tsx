@@ -91,16 +91,7 @@ const ProgramTimetableDate: FunctionComponent<RouteComponentProps & ProgramsDate
 };
 
 const ProgramMapView: FunctionComponent<RouteComponentProps & ProgramsWeekProps> = ({ match, programs }) => {
-  let date = moment();
-
-  let week;
-  //This could be made much better.
-  if (date.date() >= 29) week = "4";
-  else if (date.date() >= 22) week = "3";
-  else if (date.date() >= 15) week = "2";
-  else week = "1";
-  week = match.params.week!
-
+  const week = match.params.week!
   return (
     <ProgramMap {...{ programs, week }} />
   );
