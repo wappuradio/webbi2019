@@ -14,17 +14,17 @@ interface ProgramsProps {
 
 interface ProgramsDateProps {
   programs: Program[],
-  match?: match<{date: string}>
+  match?: match<{ date: string }>
 }
 
 interface ProgramsWeekProps {
   programs: Program[],
-  match?: match<{week?: string}>
+  match?: match<{ week?: string }>
 }
 
 interface ProgramSingleProps {
   programs: Program[],
-  match?: match<{name?: string, date?:string}>
+  match?: match<{ name?: string, date?: string }>
 }
 
 const ProgramAlphabetical: FunctionComponent<ProgramsProps> = ({ programs }) => {
@@ -49,33 +49,32 @@ const ProgramSingle: FunctionComponent<RouteComponentProps & ProgramSingleProps>
     const dateFromUrl = match.params.date;
     date = moment(dateFromUrl + year, "DDMMYYYY");
   }
-  
+
   const p = getProgramByName(match.params.name!, programs, date)!;
-	let previous = "";
-	let next = "";
-	let pDate = match.params.date;
-    let hasAired = false;
-	if(pDate != null || (p!= null && p.dates.length === 1))
-	{
-		let date = pDate === null ? p.date.start : moment(pDate, "DDMM")
-		//Check next & previous program.
-		let PP = getPreviousProgram(programs, p, date);
-		let NP = getNextProgram(programs, p, date);
-		if(PP != null) previous = "/programs/p/"+PP.name+"/"+PP.date.start.format("DDMM");
-		if(NP != null) next = "/programs/p/"+NP.name+"/"+NP.date.start.format("DDMM");
-	}
-	if(p != null) {
-        hasAired = hasAlreadyAired(p);
-    }
-    return (
-      <div>
-	    {p && <ProgramSingleItem {...p} activeDay={pDate} previous={previous} next={next} hasAired={hasAired} />}
-		
-        <button className="back-button" onClick={() => history.goBack()}>
-          Takaisin
-        </button>
-      </div>
-    );
+  let previous = "";
+  let next = "";
+  let pDate = match.params.date;
+  let hasAired = false;
+  if (pDate != null || (p != null && p.dates.length === 1)) {
+    let date = pDate === null ? p.date.start : moment(pDate, "DDMM")
+    //Check next & previous program.
+    let PP = getPreviousProgram(programs, p, date);
+    let NP = getNextProgram(programs, p, date);
+    if (PP != null) previous = "/programs/p/" + PP.name + "/" + PP.date.start.format("DDMM");
+    if (NP != null) next = "/programs/p/" + NP.name + "/" + NP.date.start.format("DDMM");
+  }
+  if (p != null) {
+    hasAired = hasAlreadyAired(p);
+  }
+  return (
+    <div>
+      {p && <ProgramSingleItem {...p} activeDay={pDate} previous={previous} next={next} hasAired={hasAired} />}
+
+      <button className="back-button" onClick={() => history.goBack()}>
+        Takaisin
+      </button>
+    </div>
+  );
 };
 
 
@@ -87,7 +86,7 @@ const ProgramTimetableDate: FunctionComponent<RouteComponentProps & ProgramsDate
   };
 
   return (
-    <ProgramTimetable {...{programs, date}} />
+    <ProgramTimetable {...{ programs, date }} />
   );
 };
 
@@ -96,73 +95,72 @@ const ProgramMapView: FunctionComponent<RouteComponentProps & ProgramsWeekProps>
 
   let week;
   //This could be made much better.
-  if(date.date() >= 29) week = "4";
-  else if(date.date() >= 22) week = "3";
-  else if(date.date() >= 15) week = "2";
+  if (date.date() >= 29) week = "4";
+  else if (date.date() >= 22) week = "3";
+  else if (date.date() >= 15) week = "2";
   else week = "1";
   week = match.params.week!
-  
+
   return (
-	<ProgramMap {...{programs, week}} />
+    <ProgramMap {...{ programs, week }} />
   );
-  
+
 }
 
-const Programs: FunctionComponent<ProgramsProps> = ({ programs }) => 
-{
+const Programs: FunctionComponent<ProgramsProps> = ({ programs }) => {
   const curWeek = moment().week();
   const firstWeek = programs.length > 0 ? programs[0].date.start.week() : curWeek;
-  const delta = curWeek - firstWeek +1;
-  const mapWeek = "/programs/map/"+delta;
-  
-  return (
-  <section className='view-container -programs'>
-    <h1>Ohjelmat</h1>
-    <h2>
-      <nav>
-        <li>
-          <NavLink to='/programs/timetable/'>Aikataulu</NavLink>
-        </li>
-        <li>
-          <NavLink to='/programs/' exact>Lista</NavLink>
-        </li>
-        <li>
-          <NavLink to='/programs/map/'>Kartta</NavLink>
-        </li>
-      </nav>
-    </h2>
+  const delta = curWeek - firstWeek + 1;
+  const mapWeek = "/programs/map/" + delta;
 
-    <Switch>
-      <Route path='/programs/' exact render={() =>
-        <ProgramAlphabetical {...{programs}} />}
-      />
-      <Route
-        path='/programs/timetable/' exact
-        render={() => <ProgramTimetable {...{programs}} date={moment()} />}
-      />
-      
-	  <Route
-        path='/programs/map/' exact>
-		<Redirect to={mapWeek}/>
-	  </Route>
-	  
-      <Route
-        path='/programs/map/:week?'
-        render={(route) => <ProgramMapView {...route} {...{programs}} />}
-      />
-      <Route
-        path='/programs/timetable/:date'
-        render={(route) => <ProgramTimetableDate {...route} {...{programs}} />}
-      />
-      <Route
-        path='/programs/p/:name/:date?'
-        render={(route) => <ProgramSingle {...route} {...{programs}} />}
-      />
-    </Switch>
-    <p>
-      <a href="https://wappuradio.fi/wappuradio.ics">Lataa ohjelmakartta vaikkapa Google-kalenteriin tästä!</a> (.ics)
-    </p>
-  </section>
+  return (
+    <section className='view-container -programs'>
+      <h1>Ohjelmat</h1>
+      <h2>
+        <nav>
+          <li>
+            <NavLink to='/programs/timetable/'>Aikataulu</NavLink>
+          </li>
+          <li>
+            <NavLink to='/programs/' exact>Lista</NavLink>
+          </li>
+          <li>
+            <NavLink to='/programs/map/'>Kartta</NavLink>
+          </li>
+        </nav>
+      </h2>
+
+      <Switch>
+        <Route path='/programs/' exact render={() =>
+          <ProgramAlphabetical {...{ programs }} />}
+        />
+        <Route
+          path='/programs/timetable/' exact
+          render={() => <ProgramTimetable {...{ programs }} date={moment()} />}
+        />
+
+        <Route
+          path='/programs/map/' exact>
+          <Redirect to={mapWeek} />
+        </Route>
+
+        <Route
+          path='/programs/map/:week?'
+          render={(route) => <ProgramMapView {...route} {...{ programs }} />}
+        />
+        <Route
+          path='/programs/timetable/:date'
+          render={(route) => <ProgramTimetableDate {...route} {...{ programs }} />}
+        />
+        <Route
+          path='/programs/p/:name/:date?'
+          render={(route) => <ProgramSingle {...route} {...{ programs }} />}
+        />
+      </Switch>
+      <p>
+        <a href="https://wappuradio.fi/wappuradio.ics">Lataa ohjelmakartta vaikkapa Google-kalenteriin tästä!</a> (.ics)
+      </p>
+    </section>
   );
 }
 export default Programs;
