@@ -109,7 +109,8 @@ const ProgramMapView: FunctionComponent<RouteComponentProps & ProgramsWeekProps>
 
 const Programs: FunctionComponent<ProgramsProps> = ({ programs }) => {
   const curWeek = moment().week();
-  const firstWeek = programs.length > 0 ? programs[0].date.start.week() : curWeek;
+  const sortedPrograms = programs.sort((x, y) => x.date.start.toISOString().localeCompare(y.date.start.toISOString()));
+  const firstWeek = programs.length > 0 ? sortedPrograms[0].date.start.week() : curWeek;
   const delta = curWeek - firstWeek + 1;
   const mapWeek = "/programs/map/" + delta;
 
@@ -141,7 +142,9 @@ const Programs: FunctionComponent<ProgramsProps> = ({ programs }) => {
 
         <Route
           path='/programs/map/' exact>
-          <Redirect to={mapWeek} />
+          {programs.length > 0 ?
+            (<Redirect to={mapWeek} />) :
+            ""}
         </Route>
 
         <Route
