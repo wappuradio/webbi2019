@@ -3,31 +3,31 @@ name: ci
 on:
   push:
     branches:
-      - "test"
+      - "citunk"
 
 jobs:
-#  build:
-#    runs-on: actions-runner
-#    steps:
-#      - name: Checkout
-#        uses: actions/checkout@v4
-#      - name: build-action
-#        uses: ./.github/build-action
-#        with:
-#          registry_username: ${{ github.actor }}
-#          registry_password: ${{ github.token }}
-
-  deploy:
+  build:
     runs-on: actions-runner
-    #needs: build
-    environment:
-      name: test
-      url: https://webbi-test.wappuradio.fi
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: build-action
+        uses: ./.github/build-action
+        with:
+          registry_username: ${{ github.actor }}
+          registry_password: ${{ github.token }}
 
-      - run: echo "${{ secrets.KUBECONFIG_BASE64 }}" | base64 -d | grep -v token
+#  deploy:
+#    runs-on: actions-runner
+#    #needs: build
+#    environment:
+#      name: test
+#      url: https://webbi-test.wappuradio.fi
+#    steps:
+#      - name: Checkout
+#        uses: actions/checkout@v4
+#
+#      - run: echo "${{ secrets.KUBECONFIG_BASE64 }}" | base64 -d | grep -v token
 
 #     - name: deploy-action
 #       uses: ./.github/deploy-action
