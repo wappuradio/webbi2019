@@ -51,7 +51,7 @@ const Start: FunctionComponent<StartProps> = ({infoData, programs}) => (
         <Tube videoId="Iwa6X6BMqKw" />
       }/>
     </Switch>
-    <MastoFeed />
+    {/* <MastoFeed /> */}
     <h2>Menossa mukana</h2>
     <Friends />
     <h2>Striimilinkit</h2>
