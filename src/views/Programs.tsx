@@ -113,7 +113,8 @@ const Programs: FunctionComponent<ProgramsProps> = ({ programs }) => {
   const firstWeek = programs.length > 0 ? sortedPrograms[0].date.start.week() : curWeek;
   const delta = curWeek - firstWeek + 1;
   const mapWeek = "/programs/map/" + delta;
-
+  const timezone = `UTC+${new Date().getTimezoneOffset()/60}`;
+  
   return (
     <section className='view-container -programs'>
       <h1>Ohjelmat</h1>
@@ -162,6 +163,9 @@ const Programs: FunctionComponent<ProgramsProps> = ({ programs }) => {
       </Switch>
       <p>
         <a href="https://wappuradio.fi/wappuradio.ics">Lataa ohjelmakartta vaikkapa Google-kalenteriin tästä!</a> (.ics)
+      </p>
+      <p className='timezone-info'>
+      Ajat selaimen aikavyöhykkeellä / Times in browsers timezone: {timezone}
       </p>
     </section>
   );
