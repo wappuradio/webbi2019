@@ -135,8 +135,8 @@ export class ProgramSingleItem extends Component<ProgramSingleItemProps, Program
 
     return (
       <div className='info-item-container'>
-        { previous && <Link className="previousNextLink previousLink" to={previous}>Edellinen</Link>}
-        { next && <Link className="previousNextLink nextLink" to={next}>Seuraava</Link>}
+        { previous && <Link className="previousNextLink previousLink" to={previous}>◄Edellinen</Link>}
+        { next && <Link className="previousNextLink nextLink" to={next}>Seuraava►</Link>}
         <div className='info-item -program -single'>
           <FeedbackModal isOpen={this.state.isModalOpen} title={title} closeModal={closeFeedback} />
           {showImg && <ProgramImg {...{title}} src={ imgSrc } size={{w: 480, h: 480}} />}

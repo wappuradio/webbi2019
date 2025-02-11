@@ -5,15 +5,26 @@
     font-weight: bold;
     font-size: 1.25em;
     text-decoration: none;
+  }
+  >.previousLink {
+    float:left;
+    text-align:left;
+  }
+  >.nextLink {
+    float:right;
+    text-align:right;
+    @include responsive(medium) {
+      float: left;
+      margin-left: 4px;
     }
-    >.previousLink {
-	  float:left;
-	  text-align:left;
+  }
+  @include responsive(medium) {
+    .nextLink::before{
+      content: "█";
+      display: inline-block;
+      margin-right: 4px;
     }
-    >.nextLink {
-      float:right;
-	  text-align:right;
-    }
+  }
 }
 
 .info-item {
