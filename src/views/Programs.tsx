@@ -105,7 +105,7 @@ const Programs: FunctionComponent<ProgramsProps> = ({ programs }) => {
   const delta = curWeek - firstWeek + 1;
   const mapWeek = "/programs/map/" + delta;
   const timeZoneOffset = -new Date().getTimezoneOffset()/60
-  const timezone = `UTC${Math.sign(timeZoneOffset)<0?'-':'+'}${timeZoneOffset}`;
+  const timezone = `UTC${Math.sign(timeZoneOffset)<0?'':'+'}${timeZoneOffset}`;
   
   return (
     <section className='view-container -programs'>
