@@ -38,7 +38,9 @@ const datesString = (dates: Program["dates"], name:Program["name"], activeDay?:s
     {
 	  var classes = cmp !== undefined && cmp.isSame(d.start, "date")?"date activeDate" : "date";
       return <Link to={`/programs/p/${name}/${d.start.format("DDMM")}`} className={classes}>
-        <span key={i}>{`${d.start.format('dd D.M. H:mm')}–${d.end.format('H:mm')}`}</span>
+        <time dateTime={d.start.toISOString()} key={i}>{`${d.start.format('dd D.M. H:mm')}`}</time>
+        –
+        <time dateTime={d.end.toISOString()}>{`${d.end.format('H:mm')}`}</time>
       </Link>;
     }
   );
