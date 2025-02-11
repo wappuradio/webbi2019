@@ -20,7 +20,7 @@ const MainNav: FunctionComponent = () => (
       <NavLink to='/ry/'>Yhdistys</NavLink>
     </li>
     <li>
-      <NavLink to='/uutiset/'>Uutiset</NavLink>
+      <NavLink to='/news/'>Uutiset</NavLink>
     </li>
     <audio id='audio' controls preload='none'>
       <source src="https://stream1.wappuradio.fi/wappuradio.opus" type="audio/ogg; codecs=opus"/>
