@@ -158,7 +158,7 @@ const Programs: FunctionComponent<ProgramsProps> = ({ programs }) => {
       </p>
       
       <p className='timezone-info'>
-      Ajat selaimen aikavyöhykkeellä / Times in browsers timezone: {timezone}
+      Kellonajat selaimen aikavyöhykkeellä / Times in browser's timezone: {timezone}
       </p>
     </section>
   );
