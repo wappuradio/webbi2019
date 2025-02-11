@@ -39,7 +39,6 @@
 .toot .username {
   display: block;
   margin-right: 1em;
-  color: #999;
 }
 
 /* Boosting user is smaller and above the posting user. */
@@ -61,7 +60,6 @@
 .toot .permalink {
   text-decoration: none;
   display: block;
-  color: #999;
   float: right;
 }
 
