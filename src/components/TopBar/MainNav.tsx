@@ -19,6 +19,9 @@ const MainNav: FunctionComponent = () => (
     <li>
       <NavLink to='/ry/'>Yhdistys</NavLink>
     </li>
+    <li>
+      <NavLink to='/uutiset/'>Uutiset</NavLink>
+    </li>
     <audio id='audio' controls preload='none'>
       <source src="https://stream1.wappuradio.fi/wappuradio.opus" type="audio/ogg; codecs=opus"/>
       <source src="https://stream1.wappuradio.fi/wappuradio.ogg" type="audio/ogg; codecs=vorbis"/>

@@ -9,6 +9,7 @@ import Programs from '../views/Programs';
 import Info from '../views/Info';
 import English from '../views/English';
 import Association from '../views/Association';
+import News from '../views/News';
 
 import BottomBar from './BottomBar';
 import TopBar from './TopBar';
@@ -71,6 +72,9 @@ export default class APIWrapper extends PureComponent<{}, APIWrapperState> {
           }/>
           <Route path="/ry/" exact render={() =>
             <Association />
+          }/>
+          <Route path="/news/" exact render={() =>
+            <News />
           }/>
           <BottomBar {...{programs}} />
           <Route path='/' render={(route) =>
