@@ -91,20 +91,23 @@ $typography: (
 );
 
 $breakpoints: (
+  /** Generic breakpoints for whole site outlook */
   small: 52rem,
-  medium: 68rem,
+  medium: 60rem,
   large: 68rem,
-  xlarge: 72rem
+  xlarge: 72rem,
+  /** Breakpoints for top-bar */
+  extraSmallTop: 32rem,
+  smallTop: 56rem,
+  mediumTop: 72rem,
+  largeTop: 80rem,
+  /** Breakpoints for when audio is on */
+  hideAudioTop: 42rem,
+  extraSmallTopAudio: 32rem,
+  smallTopAudio: 76rem,
+  mediumTopAudio: 92rem,
+  largeTopAudio: 92rem,
 );
-
-.audio {
-  $breakpoints: (
-    small: 52rem,
-    medium: 83rem,
-    large: 83rem,
-    xlarge: 83rem
-  ) !global;
-}
 
 @function get-from-map($map, $name) {
   @if map-has-key($map, $name) {
