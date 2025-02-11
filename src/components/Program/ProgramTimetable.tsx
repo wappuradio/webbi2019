@@ -7,7 +7,7 @@ import { ProgramTimetableItem } from './ProgramItem';
 
 const TimetableNavItem: FunctionComponent<{date: Moment, text: string}> = ({ date, text }) => (
   <NavLink to={`/programs/timetable/${date.format('DDMM')}`}>
-    <span className="text">{text}</span> ({date.format('D.M.')})
+    <span className="text">{text}</span><time dateTime={date.toISOString()}>({date.format('D.M.')})</time>
   </NavLink>
 );
 
