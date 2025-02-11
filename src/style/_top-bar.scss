@@ -1,3 +1,23 @@
+.audio{
+  .top-bar{
+    audio {
+      display: block;
+      height: 32px;
+      margin: auto 7px;
+      @include responsive-to(medium) {
+        display: none;
+      }
+      @include responsive-to(small) {
+        position: absolute;
+        width: 94%;
+        top: 100px;
+        left: 47%;
+        margin-left: -47%;
+        padding: 0 3%;
+      }
+    }  
+  }
+}
 .top-bar {
   background: c(brand);
   position: fixed;
@@ -14,17 +34,6 @@
     display: none;
     height: 32px;
     margin: auto 7px;
-    @include responsive-to(large) {
-      display: none;
-    }
-    @include responsive-to(small) {
-      position: absolute;
-      width: 94%;
-      top: 100px;
-      left: 47%;
-      margin-left: -47%;
-      padding: 0 3%;
-    }
   }
 
   nav {

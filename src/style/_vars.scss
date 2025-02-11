@@ -97,6 +97,15 @@ $breakpoints: (
   xlarge: 72rem
 );
 
+.audio {
+  $breakpoints: (
+    small: 52rem,
+    medium: 83rem,
+    large: 83rem,
+    xlarge: 83rem
+  ) !global;
+}
+
 @function get-from-map($map, $name) {
   @if map-has-key($map, $name) {
     @return map-get($map, $name);
