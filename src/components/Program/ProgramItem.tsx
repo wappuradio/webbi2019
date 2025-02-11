@@ -134,24 +134,26 @@ export class ProgramSingleItem extends Component<ProgramSingleItemProps, Program
     const closeFeedback = () => { this.setState({ isModalOpen: false }) };
 
     return (
-      <div className='info-item -program -single'>
-        <FeedbackModal isOpen={this.state.isModalOpen} title={title} closeModal={closeFeedback} />
-        {showImg && <ProgramImg {...{title}} src={ imgSrc } size={{w: 480, h: 480}} />}
-        <div className='content'>
-          <h2 className='main'>
-            { hypher.hyphenateText(title) }
-          </h2>
-          <p className='dates'>{ datesString(dates, name, activeDay) }</p>
-          <p className='sub'>
-            { host && <span><span className='label'>Äänessä</span> <strong>{ host }</strong></span> }
-            { prod && <span><span className='label'>Tuottaja</span> <strong>{ prod }</strong></span> }
-          </p>
-          { desc && <div className='desc'>
-            <ReactMarkdown children={desc} />
-          </div> }
-          { previous && <Link className="previousNextLink previousLink" to={previous}>Edellinen</Link>}
-          { hasAired && <a className="feedbackLink" onClick={showFeedback}>Anna palautetta</a> }
-          { next && <Link className="previousNextLink nextLink" to={next}>Seuraava</Link>}
+      <div className='info-item-container'>
+        { previous && <Link className="previousNextLink previousLink" to={previous}>Edellinen</Link>}
+        { next && <Link className="previousNextLink nextLink" to={next}>Seuraava</Link>}
+        <div className='info-item -program -single'>
+          <FeedbackModal isOpen={this.state.isModalOpen} title={title} closeModal={closeFeedback} />
+          {showImg && <ProgramImg {...{title}} src={ imgSrc } size={{w: 480, h: 480}} />}
+          <div className='content'>
+            <h2 className='main'>
+              { hypher.hyphenateText(title) }
+            </h2>
+            <p className='dates'>{ datesString(dates, name, activeDay) }</p>
+            <p className='sub'>
+              { host && <span><span className='label'>Äänessä</span> <strong>{ host }</strong></span> }
+              { prod && <span><span className='label'>Tuottaja</span> <strong>{ prod }</strong></span> }
+            </p>
+            { desc && <div className='desc'>
+              <ReactMarkdown children={desc} />
+            </div> }
+            { hasAired && <a className="feedbackLink" onClick={showFeedback}>Anna palautetta</a> }
+          </div>
         </div>
       </div> );
         };
