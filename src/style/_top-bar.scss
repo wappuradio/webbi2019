@@ -1,4 +1,4 @@
-.top-bar:not(.audio) {
+.top-bar {
   background: c(brand);
   position: fixed;
   top: 0;
@@ -14,6 +14,15 @@
     display: none;
     height: 32px;
     margin: auto 7px;
+    
+    @include responsive-to(small2LinesTop) {
+      position: absolute;
+      width: 94%;
+      top: 100px;
+      left: 47%;
+      margin-left: -47%;
+      padding: 0 3%;
+    }
   }
 
   nav {
@@ -115,149 +124,6 @@
         }
       }
       @include responsive(smallTop, max){
-        justify-content: center;
-      }
-    }
-  }
-  a {
-    display: block;
-    color: c(base);
-    text-decoration: none;
-    &:hover {
-      color: c(base, 0.1);
-    }
-    &:focus {
-      color: c(base, 0.2);
-    }
-    &:focus {
-      outline: none;
-    }
-  }
-}
-
-/** Separate rule for when audio is on */
-.top-bar.audio{
-  background: c(brand);
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1;
-  max-width: 100%;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  audio {
-    display: list-item;
-    height: 32px;
-    margin: auto 7px;
-    @include responsive-to(smallTopAudio) {
-      //display: none;
-    }
-    @include responsive-to(hideAudioTop) {
-      display: none;
-    }
-  }
-  
-  nav {
-    @include t(caps);
-    display: flex;
-    flex:auto;
-    align-items: end;
-    list-style: none;
-    line-height: 2rem;
-    &.-main {
-      max-width: 100%;
-      a {
-        @include transition('background');
-        padding: 0.25em 0.5em;
-        margin: 0.25em;
-        border-radius: 0.25em;
-        &:hover {
-          background: c(brand-alt, 0.9);
-        }
-        &:focus {
-          background: c(brand-alt, 0.8);
-        }
-        &.active {
-          background: c(brand-alt);
-          color: c(brand);
-        }
-      }
-      @include responsive(mediumTopAudio) {
-        a {
-          padding: 1em 2em;
-          margin: 0;
-          border-radius: 0;
-        }
-      }
-      @include responsive(smallTopAudio, max) {
-        li:first-child{
-          max-width: calc(100% - 277px);
-        }
-        li:first-child div{
-          display: flex;
-          align-items: center;
-          max-width: 100%;
-        }
-        justify-content: center;
-      }
-      @include responsive(extraSmallTopAudio, max) {
-        font-size: 75%;
-        li:first-child{
-          display: block;
-          max-width: calc(100% - 277px);
-        }
-        li:first-child div{
-          display: flex;
-          align-items: center;
-          max-width: 100%;
-        }
-        justify-content: center;
-      }
-    }
-    &.-social {
-      justify-content: flex-end;
-      a {
-        padding: 0.25em 0.25em 0.5em;
-      }
-      li:last-child {
-        padding-right: 0.25em;
-      }
-      .icontext {
-        background: currentColor;
-        padding: 0 0.5em;
-        margin: 0.25em 0.25em 0.5em;
-        border-radius: 1em;
-        display: flex;
-        align-items: center;
-        span, .icon {
-          color: c(brand);
-          white-space: nowrap;
-        }
-        .icon {
-          width: 1.5em;
-          height: 1.5em;
-          padding-right: 0.25em;
-        }
-      }
-      @include responsive-to(smallTopAudio) {
-        .icontext span {
-          font-size: 0.75em;
-        }
-      }
-      @include responsive(mediumTopAudio) {
-        a {
-          padding: 1em 0.5em;
-        }
-        li:last-child {
-          padding-right: 0.5em;
-        }
-        .icontext {
-          margin: 1em 0.5em;
-        }
-      }
-      @include responsive(smallTopAudio, max){
         justify-content: center;
       }
     }

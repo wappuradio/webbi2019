@@ -97,10 +97,16 @@ $breakpoints: (
   large: 68rem,
   xlarge: 72rem,
   /** Breakpoints for top-bar */
-  extraSmallTop: 32rem,
-  smallTop: 56rem,
-  mediumTop: 72rem,
-  largeTop: 80rem,
+  // extraSmallTop: 32rem,
+  // smallTop: 56rem,
+  // mediumTop: 72rem,
+  // largeTop: 80rem,
+  // Above are values that would look good without audio bar.
+  extraSmallTop: 42rem,
+  small2LinesTop: 44rem,
+  smallTop: 76rem,
+  mediumTop: 92rem,
+  largeTop: 92rem,
   /** Breakpoints for when audio is on */
   hideAudioTop: 42rem,
   extraSmallTopAudio: 32rem,
