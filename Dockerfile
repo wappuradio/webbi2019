@@ -3,7 +3,7 @@ FROM node:20 AS build
 WORKDIR /app
 COPY . .
 
-RUN yarn install
+RUN yarn install --frozen-lockfile
 RUN yarn build
 
 FROM nginx:1.25
