@@ -2,9 +2,11 @@ name: build-action
 
 inputs:
   registry_username:
-    required: true
+    default: ''
   registry_password:
-    required: true
+    default: ''
+  push:
+    default: true
 
 runs:
   using: composite
@@ -52,7 +54,7 @@ runs:
       id: docker
       uses: docker/build-push-action@v5
       with:
-        push: true
+        push: ${{ inputs.push }}
         tags: |
           ghcr.io/wappuradio/webbi:${{ github.sha }}
           ${{ !endsWith(github.ref_name, '/merge') && format('ghcr.io/wappuradio/webbi:{0}', github.ref_name) }}
