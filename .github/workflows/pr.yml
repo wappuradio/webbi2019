@@ -14,7 +14,7 @@ jobs:
         id: pr-status
 
       - name: wait-for-approval
-        if: steps.pr-status.outputs.approved != 'true'
+        if: steps.pr-status.outputs.review_decision != 'APPROVED'
         run: exit 1
 
       - name: Checkout
