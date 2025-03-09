@@ -54,8 +54,8 @@ runs:
       with:
         push: true
         tags: |
-          ghcr.io/wappuradio/webbi:${{ github.ref_name }}
           ghcr.io/wappuradio/webbi:${{ github.sha }}
+          ${{ !endsWith(github.ref_name, "/merge") && format('ghcr.io/wappuradio/webbi:{0}', github.ref_name) }}
 
 outputs:
   image: 
