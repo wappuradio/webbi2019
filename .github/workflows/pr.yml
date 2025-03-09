@@ -1,0 +1,16 @@
+name: ci
+
+on:
+  pull_request: {}
+
+jobs:
+  build:
+    runs-on: actions-runner
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: build-action
+        uses: ./.github/build-action
+        with:
+          registry_username: ${{ github.actor }}
+          registry_password: ${{ github.token }}
