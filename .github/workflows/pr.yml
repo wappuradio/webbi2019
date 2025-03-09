@@ -6,19 +6,20 @@ on:
     types: [submitted]
 
 jobs:
-  waiting-for-approval:
-    if: ${{ github.event.review.state != 'approved' }}
-    runs-on: actions-runner
-    steps:
-      - name: Waiting for approval
-        run: exit 1
 
   build:
-    if: ${{ github.event.review.state == 'approved' }}
     runs-on: actions-runner
     steps:
+      - uses: GrantBirki/pr-status@v1.2.2
+        id: pr-status
+
+      - name: wait-for-approval:
+        if: "!steps.pr-status.outputs.approved"
+        run: exit 1
+
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: build-action
         uses: ./.github/build-action
         with:
