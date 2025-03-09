@@ -13,7 +13,7 @@ jobs:
       - uses: GrantBirki/pr-status@v1.2.2
         id: pr-status
 
-      - name: wait-for-approval:
+      - name: wait-for-approval
         if: "!steps.pr-status.outputs.approved"
         run: exit 1
 
