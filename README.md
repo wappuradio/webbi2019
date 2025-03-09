@@ -1,6 +1,6 @@
 # Wappuradio Front
 
-Use nodejs 10 (or preferably update the dependencies) in order to get a succesful build
+Use nodejs 20 (or preferably update the dependencies) in order to get a succesful build
 
 ## `yarn install`+ `yarn start`
 [http://localhost:3000](http://localhost:3000)
