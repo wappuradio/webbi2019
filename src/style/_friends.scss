@@ -76,6 +76,7 @@ $friends: (
   wapice: [#006FAB],
   yit: [#0487B4],
   fonum: [#000000],
+  opiskelijantampere: [#00aeef,#ec008c,#a6ce39,#6d6e71]
 );
 
 @each $name, $colors in $friends {
