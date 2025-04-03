@@ -140,7 +140,7 @@
             >.label {
               display: inline-block;
               min-width: 4.4em;
-              color: c(base, 0.5);
+              color: c(base, 0.2);
             }
             @include responsive-to(small) {
               .label {
@@ -149,7 +149,7 @@
               display: inline;
               &:nth-child(2):before {
                 content: " + ";
-                color: c(base, 0.5);
+                color: c(base, 0.2);
               }
             }
           }
@@ -200,7 +200,7 @@
             >.label {
               display: inline-block;
               min-width: 4.4em;
-              color: c(base, 0.5);
+              color: c(base, 0.2);
             }
           }
         }
