@@ -1,13 +1,36 @@
 $brand: 'default' !default;
 
+$dummycolors: (
+  kehys: #e84e96,
+  harmaalla: #e8e9e9,
+  vaaleempi-pinkki: #f29fc5,
+  tummempi-pinkki: #d33b6f,
+  turkoosi: #10a2dd,
+);
+
+/*
+Iha OK pinkki vaalee tummal taustal
 $colors: (
-    brand: #660f11,
-    brand-alt: #FFD42A,
+    brand: #f29fc5,
+    brand-alt: #FFFBFC,
     base: #FFFBFC,
-    alt: #660f11,
-    links: #660f11,
-    bg-start: #c21b1d79,
-    bg-end: #ffd42ada,
+    alt: #f29fc5,
+    links: #f29fc5,
+    bare-text: #FFFBFC,
+    bg-start: #084f6bc0,
+    bg-end: #084f6b,
+) !default;
+*/
+
+$colors: (
+    brand: #e84e96,
+    brand-alt: #FFFBFC,
+    base: #FFFBFC,
+    alt: #e84e96,
+    links: #f29fc5,
+    bare-text: #FFFBFC,
+    bg-start: #084f6bc0,
+    bg-end: #084f6b,
 ) !default;
 
 @if $brand == 'aprilli' {
