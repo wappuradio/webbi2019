@@ -14,7 +14,7 @@
   }
   .logo {
     @include transition(fill);
-    fill: c(alt, 0.25);
+    fill: c(bare-text, 0.25);
     fill-rule: evenodd;
   }
   .img {
