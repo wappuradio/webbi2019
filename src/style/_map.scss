@@ -144,6 +144,10 @@
 		font-size:1.5rem;
 	}
 
+	.map-tooltip-content > .info-item-container > .info-item
+	{
+		margin: 0px 0px 0px 0px;
+	}
 
 	.map-program:hover{
 		background-color: c(brand);
