@@ -1,5 +1,7 @@
+@use "vars";
+
 .top-bar {
-  background: c(brand);
+  background: vars.c(brand);
   position: fixed;
   top: 0;
   left: 0;
@@ -15,7 +17,7 @@
     height: 32px;
     margin: auto 7px;
     
-    @include responsive-to(small2LinesTop) {
+    @include vars.responsive-to(small2LinesTop) {
       position: absolute;
       width: 94%;
       top: 100px;
@@ -26,7 +28,7 @@
   }
 
   nav {
-    @include t(caps);
+    @include vars.t(caps);
     display: flex;
     flex:auto;
     align-items: end;
@@ -35,29 +37,29 @@
     &.-main {
       max-width: 100%;
       a {
-        @include transition('background');
+        @include vars.transition('background');
         padding: 0.25em 0.5em;
         margin: 0.25em;
         border-radius: 0.25em;
         &:hover {
-          background: c(brand-alt, 0.9);
+          background: vars.c(brand-alt, 0.9);
         }
         &:focus {
-          background: c(brand-alt, 0.8);
+          background: vars.c(brand-alt, 0.8);
         }
         &.active {
-          background: c(brand-alt);
-          color: c(brand);
+          background: vars.c(brand-alt);
+          color: vars.c(brand);
         }
       }
-      @include responsive(mediumTop) {
+      @include vars.responsive(mediumTop) {
         a {
           padding: 1em 2em;
           margin: 0;
           border-radius: 0;
         }
       }
-      @include responsive(smallTop, max) {
+      @include vars.responsive(smallTop, max) {
         li:first-child{
           max-width: calc(100% - 277px);
         }
@@ -68,7 +70,7 @@
         }
         justify-content: center;
       }
-      @include responsive(extraSmallTop, max) {
+      @include vars.responsive(extraSmallTop, max) {
         font-size: 75%;
         li:first-child{
           display: block;
@@ -98,7 +100,7 @@
         display: flex;
         align-items: center;
         span, .icon {
-          color: c(brand);
+          color: vars.c(brand);
           white-space: nowrap;
         }
         .icon {
@@ -107,12 +109,12 @@
           padding-right: 0.25em;
         }
       }
-      @include responsive-to(smallTop) {
+      @include vars.responsive-to(smallTop) {
         .icontext span {
           font-size: 0.75em;
         }
       }
-      @include responsive(mediumTop) {
+      @include vars.responsive(mediumTop) {
         a {
           padding: 1em 0.5em;
         }
@@ -123,20 +125,20 @@
           margin: 1em 0.5em;
         }
       }
-      @include responsive(smallTop, max){
+      @include vars.responsive(smallTop, max){
         justify-content: center;
       }
     }
   }
   a {
     display: block;
-    color: c(base);
+    color: vars.c(base);
     text-decoration: none;
     &:hover {
-      color: c(base, 0.1);
+      color: vars.c(base, 0.1);
     }
     &:focus {
-      color: c(base, 0.2);
+      color: vars.c(base, 0.2);
     }
     &:focus {
       outline: none;

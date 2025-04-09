@@ -1,3 +1,5 @@
+@use "vars";
+
 .logo {
   fill: currentColor;
   &.-nav {
@@ -6,7 +8,7 @@
   }
   &.-side {
     display: none;
-    @include responsive(medium) {
+    @include vars.responsive(medium) {
       display: block;
       position: fixed;
       width: 18.4em;
@@ -14,7 +16,7 @@
       right: 0.5em;
       bottom: 1.5em;
     }
-    @include responsive(large) {
+    @include vars.responsive(large) {
       width: 23em;
       height: 44em;
     }

@@ -1,3 +1,6 @@
+@use "sass:color";
+@use "sass:list";
+@use "sass:map";
 $brand: 'default' !default;
 
 $colors: (
@@ -117,8 +120,8 @@ $breakpoints: (
 );
 
 @function get-from-map($map, $name) {
-  @if map-has-key($map, $name) {
-    @return map-get($map, $name);
+  @if map.has-key($map, $name) {
+    @return map.get($map, $name);
   }
   @else {
     @warn "No value for `#{$name}`";
@@ -126,14 +129,14 @@ $breakpoints: (
 }
 
 @function c($name, $transparency: 0) {
-  @return transparentize(get-from-map($colors, $name), $transparency);
+  @return color.adjust(get-from-map($colors, $name), $alpha: -$transparency);
 }
 
 @mixin transition($properties, $duration: 0.2) {
   $list: ();
 
   @each $property in $properties {
-    $list: append($list, #{$property} #{$duration}s ease-in-out, comma);
+    $list: list.append($list, #{$property} #{$duration}s ease-in-out, comma);
   }
 
   transition: $list;
