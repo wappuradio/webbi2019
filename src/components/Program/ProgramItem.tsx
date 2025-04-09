@@ -37,11 +37,11 @@ const datesString = (dates: Program["dates"], name:Program["name"], activeDay?:s
   return dates.map((d, i) =>
     {
 	  var classes = cmp !== undefined && cmp.isSame(d.start, "date")?"date activeDate" : "date";
-      return <Link to={`/programs/p/${name}/${d.start.format("DDMM")}`} className={classes}>
+      return <span key={i} className={classes}>
         <time dateTime={d.start.toISOString()} key={i}>{`${d.start.format('dd D.M. H:mm')}`}</time>
         –
         <time dateTime={d.end.toISOString()}>{`${d.end.format('H:mm')}`}</time>
-      </Link>;
+      </span>;
     }
   );
 }

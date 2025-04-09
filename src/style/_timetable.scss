@@ -1,3 +1,5 @@
+@use "vars";
+
 .timetable-nav {
   list-style: none;
   margin: 1rem 0;
@@ -36,7 +38,7 @@
       }
     }
   }
-  @include responsive(small) {
+  @include vars.responsive(small) {
     .navitem {
       &.-prev {
         flex: 2 1;
