@@ -1,22 +1,22 @@
 // $brand: 'aprilli';
 
-@import 'vars';
-@import 'basics/normalize';
-@import 'basics/basics';
-@import 'basics/typography';
+@use 'vars';
+@use 'basics/normalize';
+@use 'basics/basics';
+@use 'basics/typography';
 
-@import 'icon';
-@import 'logo';
+@use 'icon';
+@use 'logo';
 
-@import 'play-button';
-@import 'radio-player';
-@import 'info-item';
-@import 'timetable';
-@import 'map';
+@use 'play-button';
+@use 'radio-player';
+@use 'info-item';
+@use 'timetable';
+@use 'map';
 
-@import 'bottom-bar';
-@import 'top-bar';
-@import 'view';
+@use 'bottom-bar';
+@use 'top-bar';
+@use 'view';
 
-@import 'friends';
-@import 'feedback';
+@use 'friends';
+@use 'feedback';

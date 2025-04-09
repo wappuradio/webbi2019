@@ -1,3 +1,5 @@
+@use "../vars";
+
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,800');
 
 $gilroy: '../files/gilroy-extrabold';
@@ -14,46 +16,46 @@ html {
 }
 
 body {
-  @include t(body);
-  color: c(bare-text);
+  @include vars.t(body);
+  color: vars.c(bare-text);
   font-size: 100%;
   min-height: 100%;
-  background: linear-gradient(0deg, c(bg-end) 0%, c(bg-start) 100%), url('../files/bg.svg') center center / cover no-repeat fixed;
+  background: linear-gradient(0deg, vars.c(bg-end) 0%, vars.c(bg-start) 100%), url('../files/bg.svg') center center / cover no-repeat fixed;
 }
 
 h1 {
-  @include t((caps, level1s));
+  @include vars.t((caps, level1s));
 }
 
 h2 {
-  @include t((caps, level2s));
+  @include vars.t((caps, level2s));
 }
 
 h3 {
-  @include t((caps, level3s));
+  @include vars.t((caps, level3s));
 }
 
-@include responsive(small) {
+@include vars.responsive(small) {
   h1 {
-    @include t((caps, level1m));
+    @include vars.t((caps, level1m));
   }
   h2 {
-    @include t((caps, level2m));
+    @include vars.t((caps, level2m));
   }
   h3 {
-    @include t((caps, level3m));
+    @include vars.t((caps, level3m));
   }
 }
 
-@include responsive(medium) {
+@include vars.responsive(medium) {
   h1 {
-    @include t((caps, level1));
+    @include vars.t((caps, level1));
   }
   h2 {
-    @include t((caps, level2));
+    @include vars.t((caps, level2));
   }
   h3 {
-    @include t((caps, level3));
+    @include vars.t((caps, level3));
   }
 }
 

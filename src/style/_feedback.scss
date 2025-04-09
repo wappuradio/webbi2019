@@ -1,3 +1,5 @@
+@use "vars";
+
 .layout_container {
   position:fixed;
   z-index: 1;
@@ -9,8 +11,8 @@
 }
 .feedback_modal {
   position: absolute;
-  background-color: c(alt);
-  color: c(base); 
+  background-color: vars.c(alt);
+  color: vars.c(base); 
   top: 50%;
   left: 50%;
   height: 300px;
@@ -28,8 +30,8 @@
 }
 .feedback_rating label {
     display: inline-block;
-    background-color: c(alt);
-    color: c(base);
+    background-color: vars.c(alt);
+    color: vars.c(base);
     padding: 10px 20px;
     font-family: sans-serif, Arial;
     font-size: 16px;
@@ -38,13 +40,13 @@
 }
 .feedback_rating input[type="radio"]:checked + label {
     border: 2px solid #444;
-    background-color:c(brand);
-    border-color: c(brand-alt);
+    background-color:vars.c(brand);
+    border-color: vars.c(brand-alt);
 }
 .feedback_rating input[type="radio"]:focus + label {
     border: 2px solid #444;
-    background-color:c(brand);
-    border-color: c(brand-alt);
+    background-color:vars.c(brand);
+    border-color: vars.c(brand-alt);
 }
 
 .feedback_modal input[type="text"] {
@@ -52,12 +54,12 @@
 }
 
 .feedback_modal input[type="submit"] {
-    background-color: c(brand);
+    background-color: vars.c(brand);
     color: #FAFAFA;
 }
 .closeModal {
     float:right;
-    background-color: c(brand);
+    background-color: vars.c(brand);
     color: #FAFAFA;
     border:1px 1px 1px 1px;
 }

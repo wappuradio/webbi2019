@@ -1,3 +1,5 @@
+@use "vars";
+
 .map {
   display:grid;
   grid-template-columns: 40px repeat(auto-fit, minmax(20px, 1fr));
@@ -6,12 +8,12 @@
   justify-items:center;
   align-items:center;
   
-  @include responsive(medium,max){
+  @include vars.responsive(medium,max){
 	font-size: 80%;
 	grid-template-rows: repeat(25, 20px);
   }
 
-  @include responsive(small,max){
+  @include vars.responsive(small,max){
 	font-size: 60%;
 	grid-template-rows: repeat(25, 16px);
   }
@@ -19,7 +21,7 @@
   .map-day
   {
 	  color:white;
-	  background:c(brand);
+	  background:vars.c(brand);
 	  width:100%;
 	  text-align:center;
 	  border-radius:1em;
@@ -29,24 +31,24 @@
   {
 	display:none;
 	margin-right:3px;
-	@include responsive(medium) {
+	@include vars.responsive(medium) {
       display:inline-block;
 	}
-	@include responsive(large) {
+	@include vars.responsive(large) {
 	  display:inline-block;
 	}
   }
 
   .map-hour
   {
-    background:c(brand);
+    background:vars.c(brand);
 	border-radius:1em;
 	color:white;
 	width:100%;
 	height:100%;
 	display:inline-grid;
 	justify-items:center;
-	@include responsive(small,max){
+	@include vars.responsive(small,max){
 		line-height: 16px;
 	}
 	
@@ -68,10 +70,10 @@
 
 	font-size:70%;
 	font-weight:200;
-	@include responsive(small,max){
+	@include vars.responsive(small,max){
 		font-size: 90%;
 	}
-	@include responsive(medium,max){
+	@include vars.responsive(medium,max){
 		font-size: 90%;
 	}
 	
@@ -87,8 +89,8 @@
 
   @keyframes active-program
   {
-	  from{background-color:c(brand);}
-	  to{background-color:c(brand-alt);}
+	  from{background-color:vars.c(brand);}
+	  to{background-color:vars.c(brand-alt);}
   }
 
   .map-program a
@@ -121,12 +123,12 @@
 		display: block;
 		min-width:350px;
 
-		@include responsive-to(small){
+		@include vars.responsive-to(small){
 			display:none;
 		}
 
 	}
-	@include responsive(small){
+	@include vars.responsive(small){
 			.map-tooltip-content.right{
 				left:auto;
 				right:100%;
@@ -134,7 +136,7 @@
 		}
 
 	.map-tooltip-content > div {
-		border: 8px solid c(brand);
+		border: 8px solid vars.c(brand);
 		margin-bottom:0px;
 		margin-right:0em !important;
 		max-width:100%;
@@ -150,7 +152,7 @@
 	}
 
 	.map-program:hover{
-		background-color: c(brand);
+		background-color: vars.c(brand);
 		cursor:pointer;
 		text-decoration:underline;
 	}
