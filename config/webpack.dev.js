@@ -1,11 +1,12 @@
 const path = require("path");
 const rootPath = path.resolve(__dirname, "../");
-const webpack = require("webpack");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { merge } = require('webpack-merge');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
-module.exports = function (_, args) {
-  return {
+const common = require('./webpack.common');
+
+const devConfig =
+{
     devServer: {
       hot: true,
       port: 3000,
@@ -23,60 +24,13 @@ module.exports = function (_, args) {
         ]
       },
     },
-    devtool: "source-map",
-    module: {
-      rules: [
-        {
-          test: /\.(t|j)sx?$/,
-          use: {
-            loader: "swc-loader",
-            options: {
-              module: {
-                type: "es6",
-              },
-              jsc: {
-                parser: {
-                  syntax: "typescript",
-                },
-                target: "es2019",
-              },
-            },
-          },
-          exclude: function (modulePath) {
-            return /(node_modules|build|dist)/.test(modulePath);
-          },
-        },
-        {
-          test: /\.svg$/,
-          use: ["url-loader"],
-        },
-        {
-          test: /\.scss$/,
-          use: [
-            {
-              loader: "style-loader",
-            },
-            {
-              loader: "css-loader",
-            },
-            { loader: "resolve-url-loader" },
-            { loader: "sass-loader" },
-          ],
-        },
-      ],
-    },
-    resolve: {
-      extensions: [".tsx", ".ts", ".js", ".jsx"],
-    },
     plugins: [
-      new HtmlWebpackPlugin({
-        template: "public/index.html",
-        publicPath: '/'
-      }),
-      new webpack.ProvidePlugin({
-        React: "react",
-      }),
       new ReactRefreshWebpackPlugin()
     ],
   };
+
+const merged = merge(common, devConfig)
+
+module.exports = function (_, _) {
+  return merged;
 };
