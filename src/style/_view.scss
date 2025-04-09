@@ -1,12 +1,15 @@
+@use "vars";
+@use "play-button";
+
 .view-container {
   padding: 6em 1em 6em;
-  @include responsive-to(small) {
-    padding-top: 7.5em;
-  }
   max-width: 40em;
   margin: auto;
+  @include vars.responsive-to(small) {
+    padding-top: 7.5em;
+  }
   &.-start {
-    @include responsive-to(small) {
+    @include vars.responsive-to(small) {
       h1 {
         display: none;
       }
@@ -17,10 +20,10 @@
     .play-button {
       @extend %play-button-huge;
       margin-right: 2em;
-      @include responsive-to(medium) {
+      @include vars.responsive-to(medium) {
         margin-top: 3em;
       }
-      @include responsive-to(small) {
+      @include vars.responsive-to(small) {
         margin-right: 0;
         margin-top: 1.5em;
       }
@@ -34,7 +37,7 @@
           text-decoration: none;
         }
         &.active {
-          color: c(alt);
+          color: vars.c(alt);
           text-decoration: none;
         }
       }
@@ -50,13 +53,13 @@
           }
         }
       //}
-      @include responsive-to(small) {
+      @include vars.responsive-to(small) {
         font-size: 0.85em;
       }
     }
 
 	h2{
-		@include responsive-to(small){
+		@include vars.responsive-to(small){
 			font-size:1.4rem;
 		}
 	}
@@ -72,13 +75,13 @@
   .player-area {
     margin-top: 1em;
   }
-  @include responsive(medium) {
+  @include vars.responsive(medium) {
     padding: 5em 20em 6em 1em;
   }
-  @include responsive(large) {
+  @include vars.responsive(large) {
     padding: 5em 24em 6em 1em;
   }
-  @include responsive(xlarge) {
+  @include vars.responsive(xlarge) {
     padding: 5em 20em 6em 1em;
   }
 }

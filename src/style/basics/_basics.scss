@@ -1,15 +1,17 @@
+@use "../vars";
+
 a, .back-button {
-  @include transition(color);
-  color: c(links);
+  @include vars.transition(color);
+  color: vars.c(links);
   text-decoration: underline;
   &:hover {
-    color: c(brand, 0.2);
+    color: vars.c(brand, 0.2);
     text-decoration: none;
   }
 }
 
 .back-button {
-  @include t((caps, level3));
+  @include vars.t((caps, level3));
   border: none;
   background: none;
   padding: 0;
@@ -22,16 +24,16 @@ a, .back-button {
 }
 
 %inverted {
-  color: c(base);
-  background: c(alt);
+  color: vars.c(base);
+  background: vars.c(alt);
   a {
-    color: c(brand-alt);
+    color: vars.c(brand-alt);
     &:hover {
-      color: c(brand-alt, 0.2);
+      color: vars.c(brand-alt, 0.2);
     }
   }
 }
 
 :focus {
-  outline: 2px dotted c(brand);
+  outline: 2px dotted vars.c(brand);
 }

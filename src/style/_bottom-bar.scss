@@ -1,4 +1,9 @@
-$bottom-bar-border: 1px solid c(base, 0.8);
+@use "vars";
+@use "basics/basics";
+@use "info-item";
+@use "play-button";
+
+$bottom-bar-border: 1px solid vars.c(base, 0.8);
 
 .bottom-bar {
   @extend %inverted;
@@ -11,14 +16,14 @@ $bottom-bar-border: 1px solid c(base, 0.8);
   border-top: $bottom-bar-border;
   z-index: 1;
   :focus {
-    outline-color: c(brand-alt);
+    outline-color: vars.c(brand-alt);
   }
   a {
     flex: 1 1;
     max-width: 20em;
     text-decoration: none!important;
-    color: c(base)!important;
-	@include responsive-to(small) {
+    color: vars.c(base)!important;
+	@include vars.responsive-to(small) {
 	  display: none;
 	}
   }
@@ -30,7 +35,7 @@ $bottom-bar-border: 1px solid c(base, 0.8);
     text-align: center;
     &:first-child {
       text-align: left;
-	  @include responsive-to(small) {
+	  @include vars.responsive-to(small) {
 		display: none;
 	  }
     }
@@ -39,7 +44,7 @@ $bottom-bar-border: 1px solid c(base, 0.8);
       text-align: right;
       flex-direction: row-reverse;
     }
-	@include responsive-to(small){
+	@include vars.responsive-to(small){
 		  border-right: none;
 	}
   }

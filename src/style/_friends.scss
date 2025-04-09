@@ -1,3 +1,6 @@
+@use "sass:list";
+@use "vars";
+
 .friends-container {
   display: flex;
   flex-wrap: wrap;
@@ -5,16 +8,16 @@
   margin: 0em -1em 2em;
   .friend {
     width: 8em;
-    @include responsive(small) {
+    @include vars.responsive(small) {
       width: 10em;
     }
-    @include responsive(medium) {
+    @include vars.responsive(medium) {
       width: 12em;
     }
   }
   .logo {
-    @include transition(fill);
-    fill: c(bare-text, 0.25);
+    @include vars.transition(fill);
+    fill: vars.c(bare-text, 0.25);
     fill-rule: evenodd;
   }
   .img {
@@ -82,10 +85,10 @@ $friends: (
 @each $name, $colors in $friends {
   ##{$name} {
     &:hover, &:focus {
-      @for $i from 1 through length($colors) {
+      @for $i from 1 through list.length(vars.$colors) {
         .f#{$i} {
-          @include transition(fill);
-          $c: nth($colors, $i);
+          @include vars.transition(fill);
+          $c: list.nth(vars.$colors, $i);
           fill: $c;
         }
       }

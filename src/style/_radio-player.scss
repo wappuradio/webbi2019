@@ -1,10 +1,12 @@
+@use "vars";
+
 .radio-player {
   display: flex;
   align-items: center;
-  @include responsive-to(medium) {
+  @include vars.responsive-to(medium) {
     flex-wrap: wrap;
   }
-  @include responsive-to(small) {
+  @include vars.responsive-to(small) {
     justify-content: center;
   }
   .info {
