@@ -154,7 +154,10 @@ const Programs: FunctionComponent<ProgramsProps> = ({ programs }) => {
         />
       </Switch>
       <p>
-        <a href="https://wappuradio.fi/wappuradio.ics">Lataa ohjelmakartta vaikkapa Google-kalenteriin tästä!</a> (.ics)
+        Lisää ohjelmakartta kalenteriisi!<br />
+        <a href="webcal://wappuradio.fi/wappuradio.ics">Webcal</a> <small>(iOS / Apple)</small><span> // </span>
+        <a href="https://calendar.google.com/calendar/r?cid=webcal%3A%2F%2Fwappuradio.fi%2Fwappuradio.ics">Google calendar</a><span> // </span>
+        <a href="https://wappuradio.fi/wappuradio.ics">.ics</a> <small>(lataa tai kopioi URL)</small>
       </p>
       
       <p className='timezone-info'>
