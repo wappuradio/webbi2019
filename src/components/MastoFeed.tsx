@@ -50,6 +50,7 @@ const MastoFeed = () => {
       return;
     }
     // Using interval to force re-render of mastofeed. This works due to intervalId changing and being marked in our effect deps
+    // This is needed since we have no other easy way to hook into emfed mastodon calls at component level
     intervalId.current = setTimeout(() => {
       if(findToots()){
         // Toots loaded, clearing interval 
