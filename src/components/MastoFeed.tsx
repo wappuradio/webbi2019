@@ -61,7 +61,12 @@ const MastoFeed = () => {
     
     // Creating the actual side-dom
     createMastodonDom();
-
+    return () => {
+      // clearing timeout if it is still present
+      if(intervalId && intervalId.current != 0){
+        clearTimeout(intervalId.current)
+      }
+    }
   }, [intervalId.current])
 
   return (
