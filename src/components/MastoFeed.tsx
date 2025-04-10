@@ -8,14 +8,14 @@ const createMastodonDom = () => {
   // Side-dom outside of our react app
   const placeholder = document.createElement('div')
   placeholder.id = 'mastodon-loader'
-  placeholder.style = 'display:none'
+  placeholder.setAttribute('style', 'display:none');
   document.body.appendChild(placeholder)
   
   // The link element below is a magic element which emfed locates & replaces with fetched list
   var link = document.createElement('a');
   link.href = 'https://mementomori.social/@wappuradio'
   link.setAttribute('data-toot-limit', '8')
-  link.className = 'mastodon-feed'
+  link.setAttribute('class', 'mastodon-feed')
   placeholder.appendChild(link)  
 
   // Dynamically appending emfed script to trigger loading
@@ -32,7 +32,7 @@ const MastoFeed = () => {
   const intervalId = useRef(null as any)
   
   useEffect(() => {
-    if(intervalId.current == 0){
+    if(intervalId.current === 0){
       return;
     }
     // emfed directly changes DOM. This effect renders mastodon feed to hidden dom element, which is then displayed for react to render
@@ -51,23 +51,26 @@ const MastoFeed = () => {
     }
     // Using interval to force re-render of mastofeed. This works due to intervalId changing and being marked in our effect deps
     // This is needed since we have no other easy way to hook into emfed mastodon calls at component level
-    intervalId.current = setTimeout(() => {
+    const checkToots = () => {
       if(findToots()){
         // Toots loaded, clearing interval 
         clearTimeout(intervalId.current)
         intervalId.current = 0;
+        return;
       }
-    }, 100)
+      setTimeout(() => checkToots(), 100)
+    }
+    intervalId.current = setTimeout(() => checkToots(), 100)
     
     // Creating the actual side-dom
     createMastodonDom();
     return () => {
       // clearing timeout if it is still present
-      if(intervalId && intervalId.current != 0){
+      if(intervalId && intervalId.current !== 0){
         clearTimeout(intervalId.current)
       }
     }
-  }, [intervalId.current])
+  }, [])
 
   return (
     <>  
