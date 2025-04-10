@@ -57,7 +57,7 @@ const Start: FunctionComponent<StartProps> = ({infoData, programs}) => (
     <h2>Striimilinkit</h2>
     <ul>
       <li>
-Ääni:
+Ääni:&nbsp;
 <a href="http://stream1.wappuradio.fi/wappuradio.opus">Opus-1</a>,
 <a href="http://stream2.wappuradio.fi/wappuradio.opus">Opus-2</a>,
 <a href="http://stream1.wappuradio.fi/wappuradio.ogg">Vorbis-1</a>,

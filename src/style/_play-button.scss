@@ -1,13 +1,15 @@
+@use "vars";
+
 .play-button {
-  @include transition('background');
+  @include vars.transition('background');
   border-radius: 50%;
   border: none;
   cursor: pointer;
   padding: 0.25em;
-  color: c(brand-alt);
-  background: c(brand);
+  color: vars.c(brand-alt);
+  background: vars.c(brand);
   &:hover {
-    background: c(brand, 0.1);
+    background: vars.c(brand, 0.1);
   }
   .icon {
     width: 2.5em;
@@ -24,10 +26,10 @@
   }
 
   &%play-button-inverted {
-    color: c(brand);
-    background: c(brand-alt);
+    color: vars.c(brand);
+    background: vars.c(brand-alt);
     &:hover {
-      background: c(brand-alt, 0.1);
+      background: vars.c(brand-alt, 0.1);
     }
   }
 }
