@@ -25,7 +25,6 @@ const createMastodonDom = () => {
   script.crossOrigin = 'anonymous'
   script.async = true
   placeholder.appendChild(script)
-  console.log("Loaded masto script")
 }
 
 const MastoFeed = () => {
