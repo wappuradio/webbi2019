@@ -1,83 +1,77 @@
-import React, { Component, FunctionComponent } from 'react';
-import { Helmet } from "react-helmet";
+import React, {
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
-// Very ugly method to fix the issue where emfed doesnt
-// rerender correctly if page is changed.
-// TODO - someone who knows how to do this properly with React fix this.
-// Current solution is very bad but works from browsers point of view -- Henri
+const createMastodonDom = () => {
+  // Side-dom outside of our react app
+  const placeholder = document.createElement('div')
+  placeholder.id = 'mastodon-loader'
+  placeholder.style = 'display:none'
+  document.body.appendChild(placeholder)
+  
+  // The link element below is a magic element which emfed locates & replaces with fetched list
+  var link = document.createElement('a');
+  link.href = 'https://mementomori.social/@wappuradio'
+  link.setAttribute('data-toot-limit', '8')
+  link.className = 'mastodon-feed'
+  placeholder.appendChild(link)  
 
-// Correct way to use this would be:
-// - import loadToots
-// - use it to load the feed & render it
-// However emfed is not compatible with react+webpack -setup so this insanity is done.
-// And the dynamic script import has a immediate side effect of looking up an element and setting feed to it.
-let first = true;
-let toots:HTMLElement | undefined = undefined;
-let elementToLink:HTMLElement|undefined;
-let fakedElementInUse = false;
-class MastoFeed extends Component {
-  state = {}
-  containerRef = React.createRef<HTMLElement>();
-  componentWillUnmount(): void {
-    // Component is unmounting. Check if toots is not yet found, if so, emfed import is not yet done
-    // and we need to create a fake <a> mastodon-feed to document so content can be found.
-    if(!toots)
-    {
-      elementToLink = (document.getElementsByClassName("mastodon-feed").item(0) as HTMLElement).parentElement!;
-      elementToLink.style.display = "none";
-      document.body.appendChild(elementToLink);
-    }
-  }
-  componentDidMount(): void {
-    if(first)
-    {
-      elementToLink = (document.getElementsByClassName("mastodon-feed").item(0) as HTMLElement).parentElement!;
-      first = false;
-      let interval = 0;
-      const findToots = ()=>{
-        console.log("Finding toots");
-        const tootsOl = elementToLink!.getElementsByClassName("toots");
-        if(tootsOl.length>0)
-        {
-          console.log("Found toots");
-          toots = tootsOl.item(0)?.parentElement as HTMLElement;
-          window.clearInterval(interval);
-        }
-      }
-      interval = window.setInterval(findToots, 100);
-    }
-    else if(toots){
-      this.containerRef.current!.innerHTML = toots.innerHTML;
-    }
-  }
-  render() {
-    if(toots)
-    {
-      return React.createElement("section", {ref: this.containerRef}, null)
-    }
-    else
-    {
-      return (
-        <section>
-        <Helmet>
-            <script type="module" src="https://esm.sh/emfed@1" crossOrigin="anonymous" async></script>
-        </Helmet>
-        <a className="mastodon-feed" href="https://mementomori.social/@wappuradio" data-toot-limit="8"></a>
-        <link rel="stylesheet" type="text/css" href="/toots.css"></link>
-        </section>
-      )
-    }
-  }
+  // Dynamically appending emfed script to trigger loading
+  var script = document.createElement('script');
+  script.type = 'module'
+  script.src =  'https://esm.sh/emfed@1'
+  script.crossOrigin = 'anonymous'
+  script.async = true
+  placeholder.appendChild(script)
+  console.log("Loaded masto script")
 }
 
-// const MastoFeed: FunctionComponent = () => (
-//     <section>
-//     <Helmet>
-//         <script type="module" src="https://esm.sh/emfed@1" crossOrigin="anonymous" async></script>
-//     </Helmet>
-//     <a className="mastodon-feed" href="https://mementomori.social/@wappuradio" data-toot-limit="8"></a>
-//     <link rel="stylesheet" type="text/css" href="/toots.css"></link>
-//     </section>
-//   );
+const MastoFeed = () => {
+  const [feedDom, setFeedDom] = useState('');
+  const intervalId = useRef(null as any)
+  
+  useEffect(() => {
+    if(intervalId.current == 0){
+      return;
+    }
+    // emfed directly changes DOM. This effect renders mastodon feed to hidden dom element, which is then displayed for react to render
+    // This is due to two things:
+    // - if user would navigate between routes fast enough, then the dom element might be missing when script is loaded
+    // - since emfed is es6 module, side-effects only get triggered when module is evaluated. Re-evaluation doesn't happen if script is removed & re-added
+    const findToots = () => {
+      return document.querySelectorAll("#mastodon-loader .toots .toot").length > 0
+    }
+    
+    if(findToots()){
+      // We have our side dom loaded, we can safely set toots
+      const mastodonLoader = document.getElementById('mastodon-loader')!;
+      setFeedDom(mastodonLoader.innerHTML);
+      return;
+    }
+    // Using interval to force re-render of mastofeed. This works due to intervalId changing and being marked in our effect deps
+    intervalId.current = setTimeout(() => {
+      if(findToots()){
+        // Toots loaded, clearing interval 
+        clearTimeout(intervalId.current)
+        intervalId.current = 0;
+      }
+    }, 100)
+    
+    // Creating the actual side-dom
+    createMastodonDom();
+
+  }, [intervalId.current])
+
+  return (
+    <>  
+      <section id="mastodon-feed">
+        <div dangerouslySetInnerHTML={{ __html: feedDom}}></div>
+        <link rel="stylesheet" type="text/css" href="/toots.css"></link>
+      </section>
+    </>
+  );
+};
 
 export default MastoFeed;
