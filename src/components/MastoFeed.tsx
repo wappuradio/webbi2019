@@ -62,7 +62,7 @@ class MastoFeed extends Component {
         <Helmet>
             <script type="module" src="https://esm.sh/emfed@1" crossOrigin="anonymous" async></script>
         </Helmet>
-        <a className="mastodon-feed" href="https://mementomori.social/@wappuradio" data-toot-limit="8"></a>
+        <a className="mastodon-feed" href="https://mementomori.social/@wappuradio" data-toot-limit="8" data-exclude-replies="true" data-exclude-reblogs="true"></a>
         <link rel="stylesheet" type="text/css" href="/toots.css"></link>
         </section>
       )
