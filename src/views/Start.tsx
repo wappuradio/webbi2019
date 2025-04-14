@@ -48,7 +48,7 @@ const Start: FunctionComponent<StartProps> = ({infoData, programs}) => (
         </div>
       }/>
       <Route path="/watch/" exact render={() =>
-        <Tube videoId="Iwa6X6BMqKw" />
+        <Tube videoId="ooM5hmfsfG0" />
       }/>
     </Switch>
     {/* <MastoFeed /> */}
