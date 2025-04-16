@@ -11,6 +11,8 @@ import { ProgramListItem } from '../components/Program/ProgramItem';
 import { Program, getCurrentProgram, getNextProgramItem } from '../logic/Program';
 import MastoFeed from '../components/MastoFeed';
 
+const youtubeVideoId = "wBgKORj-ltc";
+
 interface StartProps {
   infoData: string,
   programs: Program[]
@@ -48,7 +50,7 @@ const Start: FunctionComponent<StartProps> = ({infoData, programs}) => (
         </div>
       }/>
       <Route path="/watch/" exact render={() =>
-        <Tube videoId="ooM5hmfsfG0" />
+        <Tube videoId=youtubeVideoId />
       }/>
     </Switch>
     {/* <MastoFeed /> */}
@@ -65,7 +67,7 @@ const Start: FunctionComponent<StartProps> = ({infoData, programs}) => (
 <a href="http://stream1.wappuradio.fi/wappuradio.mp3">MP3-1</a>,
 <a href="http://stream2.wappuradio.fi/wappuradio.mp3">MP3-2</a>,
 </li>
-      <li>Kuva: <a href="https://youtu.be/ooM5hmfsfG0">YouTube</a></li>
+      <li>Kuva: <a href="https://youtu.be/"youtubeVideoId>YouTube</a></li>
     </ul>
     <a rel="me" href="https://mementomori.social/@wappuradio"></a>
   </section>
