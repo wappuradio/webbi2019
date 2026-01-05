@@ -28,7 +28,7 @@ const Info: FunctionComponent<InfoProps> = ({infoData, licenseData}) => (
     <p>Päätoimitus / Editors: <a href='mailto:wappuradio@wappuradio.fi'>wappuradio@wappuradio.fi</a><br />
             Mainosmyynti / Advertisements: <a href='mailto:mainosmyynti@wappuradio.fi'>mainosmyynti@wappuradio.fi</a><br />
             Webmaster: <a href='mailto:webmaster@wappuradio.fi'>webmaster@wappuradio.fi</a></p>
-    <p>Päätoimitus 2025: Aatos Mickelsson, Ale Kemppainen, Hannu Vuolasaho, Jemina Raukamo, Jussi Lähteenmäki</p>
+    <p>Päätoimitus 2026: Alexander Lindholm, Paju Tella, Aatos Mickelsson, Lassi Alm</p>
     <div className='licenses'>
       <h3>Lisenssit</h3>
       <p>Radiossa saatetaan käyttää seuraavia lisenssin alaisia äänitteitä:</p>
