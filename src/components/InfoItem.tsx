@@ -16,13 +16,17 @@ const InfoItem: FunctionComponent<InfoItemProps> =
         {children}
       </div>
     )}
-    <div className='content'>
-      <h2>{title}</h2>
-      <p className='main'>
-        {link ? (<a href={link}>{content}</a>) : (<span>{content}</span>)}
-      </p>
-      <p className='sub'>{subcontent}</p>
-    </div>
+    {(title !== '' || content !== '' || subcontent !== '') && (
+      <div className='content'>
+        <h2>{title}</h2>
+        {content !== '' && (
+          <p className='main'>
+            {link ? (<a href={link}>{content}</a>) : (<span>{content}</span>)}
+          </p>
+        )}
+        {subcontent !== '' && <p className='sub'>{subcontent}</p>}
+      </div>
+    )}
   </div>
 );
 

@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react';
 import moment from 'moment';
 import { NavLink, Link } from 'react-router-dom';
 
-import { Program, sortAndGroupForMap } from '../../logic/Program';
+import { Program, radioStart, sortAndGroupForMap } from '../../logic/Program';
 import ProgramMapTooltip from './ProgramMapTooltip';
 
 const hours: Array<number> = [];
@@ -26,7 +26,6 @@ const ProgramMap: FunctionComponent<{ programs: Program[], week: string }> = ({ 
       "gridRowEnd": rowEnd
     }
   };
-  const radioStart = moment("14.04.2026", "DD.MM.YYYY");
   const now = moment();
 
   //Second week of program. This could be done with dates also but week number sounded better for short time radio.

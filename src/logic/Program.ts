@@ -1,6 +1,8 @@
 import moment, { Moment } from 'moment';
 import * as R from 'ramda';
 
+export const radioStart = moment("14.04.2026", "DD.MM.YYYY");
+
 export interface Program {
   name: string,
 
