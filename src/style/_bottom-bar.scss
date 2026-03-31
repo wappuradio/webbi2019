@@ -18,9 +18,9 @@ $bottom-bar-border: 1px solid c(base, 0.8);
     max-width: 20em;
     text-decoration: none!important;
     color: c(base)!important;
-	@include responsive-to(small) {
-	  display: none;
-	}
+    @include responsive-to(small) {
+      display: none;
+    }
   }
   .info-item {
     @extend %info-item-tiny;
@@ -30,18 +30,18 @@ $bottom-bar-border: 1px solid c(base, 0.8);
     text-align: center;
     &:first-child {
       text-align: left;
-	  @include responsive-to(small) {
-		display: none;
-	  }
+      @include responsive-to(small) {
+        display: none;
+      }
     }
     &:last-child {
       border: none;
       text-align: right;
       flex-direction: row-reverse;
     }
-	@include responsive-to(small){
-		  border-right: none;
-	}
+    @include responsive-to(small){
+      border-right: none;
+    }
   }
   .play-button {
     @extend %play-button-inverted;
@@ -52,5 +52,12 @@ $bottom-bar-border: 1px solid c(base, 0.8);
     margin: -15px auto;
     border-radius: 50%;
   }
-  
+
+  // If radio has not yet started, we won't show the 'now playing' element.
+  // Thus hide the bottom bar on mobile entirely.
+  @include responsive-to(small) {
+    &.bottom-bar--before {
+      display: none;
+    }
+  }
 }
