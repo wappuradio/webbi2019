@@ -30,7 +30,6 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.16",
     "@swc/core": "^1.11.18",
     "@types/jest": "29.5.14",
