@@ -27,7 +27,7 @@ module.exports = {
       },
       {
         test: /\.svg$/,
-        use: ["url-loader"],
+        type: "asset/resource",
       },
       {
         test: /\.scss$/,
