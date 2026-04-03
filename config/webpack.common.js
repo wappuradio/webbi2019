@@ -1,5 +1,6 @@
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   devtool: "source-map",
@@ -32,7 +33,11 @@ module.exports = {
       {
         test: /\.scss$/,
         use: [
-          { loader: "style-loader" },
+          {
+            loader: process.env.NODE_ENV !== "production"
+              ? "style-loader"
+              : MiniCssExtractPlugin.loader,
+          },
           { loader: "css-loader" },
           { loader: "resolve-url-loader" },
           { loader: "sass-loader" },
