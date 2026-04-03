@@ -1,5 +1,4 @@
 import moment, { Moment } from 'moment';
-import * as R from 'ramda';
 
 export const radioStart = moment("14.04.2026", "DD.MM.YYYY");
 
@@ -71,30 +70,21 @@ export const fetchProgramArray: Promise<Program[]> =
       return asPrograms;
     });
 
-// TODO: Make this prettier
 export const sortAndGroupForAlphabetical = (programs: Program[]) => {
-  const sortedDate = R.sort((a: Program, b: Program) =>
-    a.date.start.isBefore(b.date.start) ? -1 : 1, programs);
+  const sortedName = programs
+    .sort((a: Program, b: Program) => a.date.start.isBefore(b.date.start) ? -1 : 1)
+    .sort((a: Program, b: Program) => a.title.localeCompare(b.title, 'fi', {sensitivity: 'base'}));
 
-  const sortedName = R.sort((a: Program, b: Program) =>
-    a.title.localeCompare(b.title, 'fi', {sensitivity: 'base'}), sortedDate);
+  const byName = Object.values(
+    Object.groupBy(
+      sortedName,
+      (program) => program.title,
+    )
+  );
 
-  const byName = R.values((R as any).groupBy(R.prop('title'), sortedName))
-
-  const datesAsArrays = byName.map(d => {
-    let first = d.shift();
-
-    /*d.map((e: Program) => {
-      if (first.dates.indexOf(...e.dates) === -1)
-        first.dates.push(...e.dates)
-    })*/
-
-    return first;
-  })
-
-  return datesAsArrays;
-
-  //return byName;
+  return byName
+    .filter(d => !!d)
+    .map(d => d.shift());
 };
 
 interface ForTimetable {
@@ -112,30 +102,30 @@ export const sortAndGroupForTimetable = (programs: Program[], date: Moment): For
   }
 
   if (programs.length > 0) {
-    const sorted = R.sort((a: Program, b: Program) =>
-      a.date.start.isBefore(b.date.start) ? -1 : 1, programs);
+    const sorted = programs.sort((a: Program, b: Program) =>
+      a.date.start.isBefore(b.date.start) ? -1 : 1);
 
-    const byDate = R.filter((a: Program) => isSameDate(a.date.start, date), sorted);
+    const byDate = sorted.filter((a: Program) => isSameDate(a.date.start, date));
 
     if (byDate.length > 0) {
       const prev = moment(date).subtract(1, 'days');
       const next = moment(date).add(1, 'days');
-      const prevByDate = R.filter((a: Program) => isSameDate(a.date.start, prev), sorted);
-      const nextByDate = R.filter((a: Program) => isSameDate(a.date.start, next), sorted);
+      const prevByDate = sorted.some((a: Program) => isSameDate(a.date.start, prev));
+      const nextByDate = sorted.some((a: Program) => isSameDate(a.date.start, next));
 
       return {
         programs: byDate,
         date: date,
-        prev: prevByDate.length > 0 ? prev : null,
-        next: nextByDate.length > 0 ? next : null
+        prev: prevByDate ? prev : null,
+        next: nextByDate ? next : null
       };
     } else {
       const first = sorted[0].dates[0].start;
-      const last = sorted[sorted.length - 1].dates[0].start;
 
       if (date.isBefore(first)) {
         return sortAndGroupForTimetable(programs, moment(first));
       } else {
+        const last = sorted[sorted.length - 1].dates[0].start;
         return sortAndGroupForTimetable(programs, moment(last));
       }
     }
@@ -195,30 +185,30 @@ export const sortAndGroupForMap = (programs: Program[], date: Moment): ForMap =>
   }
   splitProgramByMidnight(programs);
   if (programs.length > 0) {
-    const sorted = R.sort((a: Program, b: Program) =>
-      a.date.start.isBefore(b.date.start) ? -1 : 1, programs);
+    const sorted = programs
+      .sort((a: Program, b: Program) => a.date.start.isBefore(b.date.start) ? -1 : 1);
 
-    const byWeek = R.filter((a: Program) => isSameWeek(a.date.start, date), sorted);
+    const byWeek = sorted.filter((a: Program) => isSameWeek(a.date.start, date));
 
     if (byWeek.length > 0) {
       const prev = moment(date).subtract(1, 'weeks');
       const next = moment(date).add(1, 'weeks');
-      const prevByWeek = R.filter((a: Program) => isSameWeek(a.date.start, prev), sorted);
-      const nextByWeek = R.filter((a: Program) => isSameWeek(a.date.start, next), sorted);
+      const prevByWeek = sorted.some((a: Program) => isSameWeek(a.date.start, prev));
+      const nextByWeek = sorted.some((a: Program) => isSameWeek(a.date.start, next));
 
       return {
         programs: byWeek,
         date: date,
-        prev: prevByWeek.length > 0 ? prev : null,
-        next: nextByWeek.length > 0 ? next : null
+        prev: prevByWeek ? prev : null,
+        next: nextByWeek ? next : null
       };
     } else {
       const first = sorted[0].dates[0].start;
-      const last = sorted[sorted.length - 1].dates[0].start;
 
       if (date.isBefore(first)) {
         return sortAndGroupForMap(programs, moment(first));
       } else {
+        const last = sorted[sorted.length - 1].dates[0].start;
         return sortAndGroupForMap(programs, moment(last));
       }
     }
@@ -240,8 +230,8 @@ export const getProgramByName = (name: string, programs: Program[], date: Moment
 
 export const getCurrentProgram = (programs: Program[]): Program => {
   if(!programs.length) return {name: '', title: '', date: {start: moment(), end: moment()}, dates: [], imgSrc: '', thumbSrc: '' };
-  const sorted = R.sort((a: Program, b: Program) =>
-    a.date.start.isBefore(b.date.start) ? -1 : 1, programs);
+  const sorted = programs.sort((a: Program, b: Program) =>
+    a.date.start.isBefore(b.date.start) ? -1 : 1);
   var p = sorted[0];
   var now = moment();
   for(var i of sorted) {
@@ -253,8 +243,8 @@ export const getCurrentProgram = (programs: Program[]): Program => {
 
 export const getNextProgramItem = (programs: Program[]): Program => {
   if(!programs.length) return {name: '', title: '', date: {start: moment(), end: moment()}, dates: [], imgSrc: '', thumbSrc: '' };
-  const sorted = R.sort((a: Program, b: Program) =>
-    a.date.start.isBefore(b.date.start) ? -1 : 1, programs);
+  const sorted = programs.sort((a: Program, b: Program) =>
+    a.date.start.isBefore(b.date.start) ? -1 : 1);
   var p = sorted[0];
   var current = getCurrentProgram(programs);
   var now = current.date.end;
@@ -269,10 +259,10 @@ export const getNextProgram = (programs: Program[], program: Program, date:Momen
   if(!programs.length) return null;
   if(!program) return null;
   
-  let sorted = R.sort((a: Program, b: Program) =>
-    a.date.start.isBefore(b.date.start) ? -1 : 1, programs);
+  const sorted = programs
+    .sort((a: Program, b: Program) => a.date.start.isBefore(b.date.start) ? -1 : 1)
+    .filter( (a:Program) => a.date.start.isSameOrAfter(date, "date"));
 
-  sorted = sorted.filter( (a:Program) => a.date.start.isSameOrAfter(date, "date"));
   if(sorted.length===null) return null;
 
   var ci = sorted.findIndex( (p) => p && p.name===program.name);
@@ -286,10 +276,10 @@ export const getPreviousProgram = (programs:Program[], program: Program, date:Mo
   if(!programs.length) return null;
   if(!program) return null;
 
-  let sorted = R.sort((a: Program, b: Program) =>
-    a.date.start.isBefore(b.date.start) ? -1 : 1, programs);
+  const sorted = programs
+    .sort((a: Program, b: Program) => a.date.start.isBefore(b.date.start) ? -1 : 1)
+    .filter( (a:Program) => a.date.start.isSameOrBefore(date, "date"));
 
-  sorted = sorted.filter( (a:Program) => a.date.start.isSameOrBefore(date, "date"));
   if(sorted.length===null) return null;
 
   var ci = sorted.reverse().findIndex( (p) => p && p.name===program.name);
