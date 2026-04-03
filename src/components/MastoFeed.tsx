@@ -1,4 +1,4 @@
-import React, { Component, FunctionComponent } from 'react';
+import React, { Component } from 'react';
 import { Helmet } from "react-helmet";
 
 // Very ugly method to fix the issue where emfed doesnt

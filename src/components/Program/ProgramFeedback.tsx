@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import ReactModal from 'react-modal'; 
 import { submitFeedback } from '../../logic/Program';
 
-const Hypher = require('hypher');
-const fiPatterns = require('hyphenation.fi');
-
 ReactModal.setAppElement("#root");
 
 interface FeedbackProps {
