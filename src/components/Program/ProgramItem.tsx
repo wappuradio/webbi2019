@@ -1,6 +1,5 @@
 import React, { FunctionComponent, Component } from 'react';
 import { Link } from 'react-router-dom';
-import LazyLoad from 'react-lazyload';
 import moment from 'moment';
 import { Program } from '../../logic/Program';
 import { FeedbackModal } from '../../components/Program/ProgramFeedback';
@@ -48,10 +47,9 @@ const datesString = (dates: Program["dates"], name:Program["name"], activeDay?:s
 const ProgramImg: FunctionComponent<ProgramImgProps> =
   ({ title, src }) => (
     <div className='img'>
-      <LazyLoad height={200}>
-      <img src={src} alt={ title } title={ title } />
-      </LazyLoad>
-    </div> );
+      <img src={src} alt={ title } title={ title } loading="lazy" />
+    </div>
+  );
 
 export const ProgramListItem: FunctionComponent<Program> =
   ({
