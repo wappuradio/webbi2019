@@ -1,6 +1,7 @@
 import moment, { Moment } from 'moment';
 
-export const radioStart = moment("14.04.2026", "DD.MM.YYYY");
+// Clone to prevent mutation after an import site affecting other uses
+export const radioStart = () => moment("14.04.2026", "DD.MM.YYYY").clone();
 
 export interface Program {
   name: string,

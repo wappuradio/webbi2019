@@ -13,7 +13,7 @@ interface BottomBarProps {
 }
 
 const BottomBar: FunctionComponent<BottomBarProps> = ({programs}) => {
-  const hasStarted = radioStart.isBefore(moment());
+  const hasStarted = radioStart().isBefore(moment());
   const className = hasStarted ? 'bottom-bar' : 'bottom-bar bottom-bar--before';
 
   return (

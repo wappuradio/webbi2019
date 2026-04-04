@@ -26,15 +26,15 @@ const ProgramMap: FunctionComponent<{ programs: Program[], week: string }> = ({ 
       "gridRowEnd": rowEnd
     }
   };
+  const currentWeek = radioStart();
   const now = moment();
 
   //Second week of program. This could be done with dates also but week number sounded better for short time radio.
-  if (week === "2") radioStart.add(7, "days");
-  else if (week === "3") radioStart.add(14, "days");
+  if (week === "2") currentWeek.add(7, "days");
+  else if (week === "3") currentWeek.add(14, "days");
   
-  const weekPrograms = sortAndGroupForMap(programs, radioStart);
-  //console.log(weekPrograms);
-  const weekStart = radioStart.startOf("isoWeek");
+  const weekPrograms = sortAndGroupForMap(programs, currentWeek);
+  const weekStart = currentWeek.startOf("isoWeek");
 
   const weekdays: Array<any> = [];
   for (var i = 0; i < 7; i++) {
