@@ -52,6 +52,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "public/index.html",
       publicPath: "/",
+      favicon: "public/favicon.ico",
     }),
     new webpack.ProvidePlugin({
       React: "react",
