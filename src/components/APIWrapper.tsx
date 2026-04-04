@@ -1,6 +1,10 @@
 import React, { FunctionComponent, PureComponent } from 'react';
 import { BrowserRouter as Router, Route, RouteComponentProps } from 'react-router-dom';
 
+// This is the first loaded piece of JavaScript in the bundle,
+// load Moment locales here
+import '../moment';
+
 import { Program, fetchProgramArray } from '../logic/Program';
 import { fetchNews } from '../logic/Info';
 import { fetchLicenses } from '../logic/License';
