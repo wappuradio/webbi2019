@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Helmet } from "react-helmet";
+import '../style/toots.scss';
 
 // Very ugly method to fix the issue where emfed doesnt
 // rerender correctly if page is changed.
@@ -59,25 +60,14 @@ class MastoFeed extends Component {
     {
       return (
         <section>
-        <Helmet>
+          <Helmet>
             <script type="module" src="https://esm.sh/emfed@1" crossOrigin="anonymous" async></script>
-        </Helmet>
-        <a className="mastodon-feed" href="https://mementomori.social/@wappuradio" data-toot-limit="8" data-exclude-replies="true" data-exclude-reblogs="true"></a>
-        <link rel="stylesheet" type="text/css" href="/toots.css"></link>
+          </Helmet>
+          <a className="mastodon-feed" href="https://mementomori.social/@wappuradio" data-toot-limit="8" data-exclude-replies="true" data-exclude-reblogs="true"></a>
         </section>
       )
     }
   }
 }
-
-// const MastoFeed: FunctionComponent = () => (
-//     <section>
-//     <Helmet>
-//         <script type="module" src="https://esm.sh/emfed@1" crossOrigin="anonymous" async></script>
-//     </Helmet>
-//     <a className="mastodon-feed" href="https://mementomori.social/@wappuradio" data-toot-limit="8"></a>
-//     <link rel="stylesheet" type="text/css" href="/toots.css"></link>
-//     </section>
-//   );
 
 export default MastoFeed;
