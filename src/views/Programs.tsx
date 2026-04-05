@@ -103,7 +103,7 @@ const Programs: FunctionComponent<ProgramsProps> = ({ programs }) => {
   const sortedPrograms = programs.sort((x, y) => x.date.start.toISOString().localeCompare(y.date.start.toISOString()));
   const firstWeek = programs.length > 0 ? sortedPrograms[0].date.start.week() : curWeek;
   const delta = curWeek - firstWeek + 1;
-  const mapWeek = "/programs/map/" + delta;
+  const mapWeek = "/programs/map/" + Math.max(1, Math.min(delta, 3));
   const timeZoneOffset = -new Date().getTimezoneOffset()/60
   const timezone = `UTC${Math.sign(timeZoneOffset)<0?'':'+'}${timeZoneOffset}`;
   
