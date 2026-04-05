@@ -77,10 +77,11 @@ export const sortAndGroupForAlphabetical = (programs: Program[]) => {
     .sort((a: Program, b: Program) => a.title.localeCompare(b.title, 'fi', {sensitivity: 'base'}));
 
   const byName = Object.values(
-    Object.groupBy(
-      sortedName,
-      (program) => program.title,
-    )
+    sortedName.reduce((grouped, program) => {
+        grouped[program.title] ??= [];
+        grouped[program.title].push(program);
+        return grouped;
+    }, {})
   );
 
   return byName
