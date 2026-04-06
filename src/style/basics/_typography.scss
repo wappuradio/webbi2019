@@ -1,6 +1,15 @@
 @use "../vars";
 
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,800');
+$open-sans: '../files/open-sans/open-sans-v44-latin';
+
+@each $i in 400, 600, 800 {
+  @font-face {
+    font-family: 'Open Sans';
+    src: url('#{$open-sans}-#{$i}.woff2') format('woff2');
+    font-weight: #{$i};
+    font-style: normal;
+  }
+}
 
 $gilroy: '../files/gilroy-extrabold';
 @font-face {
