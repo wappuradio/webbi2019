@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Helmet } from "react-helmet";
+import * as emfed from 'emfed/dist/core.js';
+
 import '../style/toots.scss';
 
 // Very ugly method to fix the issue where emfed doesnt
@@ -13,9 +14,9 @@ import '../style/toots.scss';
 // However emfed is not compatible with react+webpack -setup so this insanity is done.
 // And the dynamic script import has a immediate side effect of looking up an element and setting feed to it.
 let first = true;
-let toots:HTMLElement | undefined = undefined;
-let elementToLink:HTMLElement|undefined;
-let fakedElementInUse = false;
+let toots: HTMLElement | undefined = undefined;
+let elementToLink: HTMLElement | undefined = undefined;
+
 class MastoFeed extends Component {
   state = {}
   containerRef = React.createRef<HTMLElement>();
@@ -46,6 +47,7 @@ class MastoFeed extends Component {
         }
       }
       interval = window.setInterval(findToots, 100);
+      emfed.loadAll();
     }
     else if(toots){
       this.containerRef.current!.innerHTML = toots.innerHTML;
@@ -60,9 +62,6 @@ class MastoFeed extends Component {
     {
       return (
         <section>
-          <Helmet>
-            <script type="module" src="https://esm.sh/emfed@1" crossOrigin="anonymous" async></script>
-          </Helmet>
           <a className="mastodon-feed" href="https://mementomori.social/@wappuradio" data-toot-limit="8" data-exclude-replies="true" data-exclude-reblogs="true"></a>
         </section>
       )
