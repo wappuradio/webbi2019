@@ -3,7 +3,6 @@ import { NavLink, Route, Switch } from 'react-router-dom';
 import Interval from 'react-interval-rerender';
 import ReactMarkdown from 'react-markdown';
 
-
 import Tube from '../views/Tube';
 import Friends from '../components/Friends';
 import PlayButton from '../components/PlayButton';
@@ -11,7 +10,7 @@ import { ProgramListItem } from '../components/Program/ProgramItem';
 import { Program, getCurrentProgram, getNextProgramItem } from '../logic/Program';
 import MastoFeed from '../components/MastoFeed';
 
-const youtubeVideoId = "wBgKORj-ltc";
+const youtubeVideoId = "st6-l5M72rk";
 
 interface StartProps {
   infoData: string,
