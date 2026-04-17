@@ -9,6 +9,7 @@ import PlayButton from '../components/PlayButton';
 import { ProgramListItem } from '../components/Program/ProgramItem';
 import { Program, getCurrentProgram, getNextProgramItem } from '../logic/Program';
 import MastoFeed from '../components/MastoFeed';
+import { getStreams } from '../logic/Streams';
 
 const youtubeVideoId = "st6-l5M72rk";
 
@@ -57,15 +58,15 @@ const Start: FunctionComponent<StartProps> = ({infoData, programs}) => (
     <h2>Striimilinkit</h2>
     <ul>
       <li>
-Ääni:&nbsp;
-<a href="http://stream1.wappuradio.fi/wappuradio.opus">Opus-1</a>,
-<a href="http://stream2.wappuradio.fi/wappuradio.opus">Opus-2</a>,
-<a href="http://stream1.wappuradio.fi/wappuradio.ogg">Vorbis-1</a>,
-<a href="http://stream2.wappuradio.fi/wappuradio.ogg">Vorbis-2</a>,
-<a href="http://stream1.wappuradio.fi/wappuradio.mp3">MP3-1</a>,
-<a href="http://stream2.wappuradio.fi/wappuradio.mp3">MP3-2</a>,
-</li>
-      <li>Kuva: <a href={"https://youtu.be/" + youtubeVideoId}>YouTube</a></li>
+        Ääni:{' '}
+        {getStreams().map((stream, i) =>
+          <React.Fragment key={i}>
+            {i === 0 ? '' : ', '}
+            <a href={stream.url}>{stream.name}</a>
+          </React.Fragment>
+        )}
+      </li>
+      <li>Kuva: <a href={`https://youtu.be/${youtubeVideoId}`}>YouTube</a></li>
     </ul>
     <a rel="me" href="https://mementomori.social/@wappuradio"></a>
   </section>
