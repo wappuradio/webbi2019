@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import Logo from '../Logo';
+import { getStreams } from '../../logic/Streams';
 
 const MainNav: FunctionComponent = () => (
   <nav className='-main'>
@@ -23,12 +24,7 @@ const MainNav: FunctionComponent = () => (
       <NavLink to='/news/'>Uutiset</NavLink>
     </li>
     <audio id='audio' controls preload='none'>
-      <source src="https://stream1.wappuradio.fi/wappuradio.opus" type="audio/ogg; codecs=opus"/>
-      <source src="https://stream1.wappuradio.fi/wappuradio.ogg" type="audio/ogg; codecs=vorbis"/>
-      <source src="https://stream1.wappuradio.fi/wappuradio.mp3" type="audio/mpeg"/>
-      <source src="https://stream2.wappuradio.fi/wappuradio.opus" type="audio/ogg; codecs=opus"/>
-      <source src="https://stream2.wappuradio.fi/wappuradio.ogg" type="audio/ogg; codecs=vorbis"/>
-      <source src="https://stream2.wappuradio.fi/wappuradio.mp3" type="audio/mpeg"/>
+      {getStreams().map((stream, i) => <source key={i} src={stream.url} type={stream.contentType} />)}
     </audio>
   </nav>
 );
