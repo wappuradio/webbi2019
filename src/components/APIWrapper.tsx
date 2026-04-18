@@ -7,7 +7,6 @@ import '../moment';
 
 import { Program, fetchProgramArray } from '../logic/Program';
 import { fetchNews } from '../logic/Info';
-import { fetchLicenses } from '../logic/License';
 import Start from '../views/Start';
 import Programs from '../views/Programs';
 import Info from '../views/Info';
@@ -22,7 +21,6 @@ import Logo from './Logo';
 interface APIWrapperState {
   programs: Program[],
   infoData: string,
-  licenseData: string
 }
 
 const LogoWrapper: FunctionComponent<RouteComponentProps> = ({ location }) => {
@@ -39,7 +37,6 @@ export default class APIWrapper extends PureComponent<{}, APIWrapperState> {
     this.state = {
       programs: [],
       infoData: "",
-      licenseData: ""
     };
   };
 
@@ -48,12 +45,10 @@ export default class APIWrapper extends PureComponent<{}, APIWrapperState> {
       .then((pArray: Program[]) => this.setState({programs: pArray}));
     fetchNews
       .then((data: string) => this.setState({infoData: data}));
-    fetchLicenses
-      .then((data: string) => this.setState({licenseData: data}));
   }
 
   render() {
-    const { programs, infoData, licenseData } = this.state;
+    const { programs, infoData } = this.state;
 
     return (
       <Router>
@@ -63,7 +58,7 @@ export default class APIWrapper extends PureComponent<{}, APIWrapperState> {
             <Start {...{infoData}} {...{programs}} />
            }/>
           <Route path="/info/" exact render={() =>
-            <Info {...{infoData}} {...{licenseData}} />
+            <Info />
           }/>
           <Route path="/programs/" render={() =>
             <Programs {...{programs}} />
