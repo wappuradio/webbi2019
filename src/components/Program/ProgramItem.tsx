@@ -1,4 +1,4 @@
-import React, { FunctionComponent, Component } from 'react';
+import React, { FunctionComponent, useState } from 'react';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 import { Program } from '../../logic/Program';
@@ -111,48 +111,47 @@ export const ProgramTimetableItem: FunctionComponent<Program> =
   );
 
 
-export class ProgramSingleItem extends Component<ProgramSingleItemProps, ProgramSingleItemState> {
-  constructor(props, context) {
-    super(props, context);
-    this.state = {
-      isModalOpen: false,
-    };
-  }
+export const ProgramSingleItem: FunctionComponent<ProgramSingleItemProps> = ({
+  title,
+  name,
+  date,
+  dates,
+  host,
+  prod,
+  desc,
+  imgSrc,
+  showImg = true,
+  activeDay = undefined,
+  next = undefined,
+  previous = undefined,
+  hasAired = false,
+}) => {
+  const [isOpen, setIsOpen] = useState( false );
+  const showFeedback = () => { setIsOpen(true) };
+  const closeFeedback = () => { setIsOpen(false) };
 
-  render() {
-    const { title, name, date, dates, host, prod, desc, imgSrc,
-      showImg = true,
-      activeDay = undefined,
-      next = undefined,
-      previous = undefined,
-      hasAired = false
-    } = this.props;
-        
-    const showFeedback = () => { this.setState({ isModalOpen: true }) };
-    const closeFeedback = () => { this.setState({ isModalOpen: false }) };
-
-    return (
-      <div className='info-item-container'>
-        { previous && <Link className="previousNextLink previousLink" to={previous}>◄Edellinen</Link>}
-        { next && <Link className="previousNextLink nextLink" to={next}>Seuraava►</Link>}
-        <div className='info-item -program -single'>
-          <FeedbackModal isOpen={this.state.isModalOpen} title={title} closeModal={closeFeedback} />
-          {showImg && <ProgramImg {...{title}} src={ imgSrc } size={{w: 480, h: 480}} />}
-          <div className='content'>
-            <h2 className='main'>
-              { hypher.hyphenateText(title) }
-            </h2>
-            <p className='dates'>{ datesString(dates, name, activeDay) }</p>
-            <p className='sub'>
-              { host && <span><span className='label'>Äänessä</span> <strong>{ host }</strong></span> }
-              { prod && <span><span className='label'>Tuottaja</span> <strong>{ prod }</strong></span> }
-            </p>
-            { desc && <div className='desc'>
-              <ReactMarkdown children={desc} />
-            </div> }
-            { hasAired && <a className="feedbackLink" onClick={showFeedback}>Anna palautetta</a> }
-          </div>
+  return (
+    <div className='info-item-container'>
+      { previous && <Link className="previousNextLink previousLink" to={previous}>◄Edellinen</Link>}
+      { next && <Link className="previousNextLink nextLink" to={next}>Seuraava►</Link>}
+      <div className='info-item -program -single'>
+        <FeedbackModal isOpen={isOpen} title={title} closeModal={closeFeedback} />
+        {showImg && <ProgramImg {...{title}} src={ imgSrc } size={{w: 480, h: 480}} />}
+        <div className='content'>
+          <h2 className='main'>
+            { hypher.hyphenateText(title) }
+          </h2>
+          <p className='dates'>{ datesString(dates, name, activeDay) }</p>
+          <p className='sub'>
+            { host && <span><span className='label'>Äänessä</span> <strong>{ host }</strong></span> }
+            { prod && <span><span className='label'>Tuottaja</span> <strong>{ prod }</strong></span> }
+          </p>
+          { desc && <div className='desc'>
+            <ReactMarkdown children={desc} />
+          </div> }
+          { hasAired && <a className="feedbackLink" onClick={showFeedback}>Anna palautetta</a> }
         </div>
-      </div> );
-        };
+      </div>
+    </div>
+  );
 }
