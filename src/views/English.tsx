@@ -1,10 +1,6 @@
 import React, { FunctionComponent } from 'react';
 
-interface EnglishProps {
-    infoData: string
-}
-
-const English: FunctionComponent<EnglishProps> = ({ infoData }) => (
+const English: FunctionComponent<{}> = () => (
     <section className='view-container -english'>
         <h1>Rakkauden Wappuradio</h1>
         <p><strong>Rakkauden Wappuradio&trade;</strong> is a student radio station based in Tampere, Finland.

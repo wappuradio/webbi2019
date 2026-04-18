@@ -67,7 +67,7 @@ export default class APIWrapper extends PureComponent<{}, APIWrapperState> {
             <Start {...{infoData}} {...{programs}} />
           }/>
           <Route path="/en/" exact render={() =>
-            <English {...{ infoData }} />
+            <English />
           }/>
           <Route path="/ry/" exact render={() =>
             <Association />
