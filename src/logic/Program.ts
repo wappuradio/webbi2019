@@ -298,21 +298,8 @@ export const hasAlreadyAired = (program: Program): boolean => {
   return false;
 }
 
-export const submitFeedback = (e: React.SyntheticEvent): void => {
-    const target = e.target as typeof e.target & {
-        rating: { value: number }
-        feedback: { value: string }
-        show: { value: string }
-    }
-    const rating = target.rating.value;
-    const feedback = target.feedback.value;
-    const program = target.show.value;
-    sendFeedback(program, rating, feedback);
-    e.preventDefault();
-}
-
-export const sendFeedback = (title: string, rating: number, feedback?: string): boolean => {
-  if(title===undefined) {
+export const sendFeedback = (show: string, rating: number, feedback?: string): boolean => {
+  if(show===undefined) {
     return false;
   }
   if(rating > 10 || rating < 0) {
@@ -320,7 +307,7 @@ export const sendFeedback = (title: string, rating: number, feedback?: string): 
   }
   const req = {
     method: "POST",
-    body: JSON.stringify({show: title, rating: rating, feedback: feedback})
+    body: JSON.stringify({ show, rating, feedback }),
   };
   fetch("/api/feedback", req);
   return true;
