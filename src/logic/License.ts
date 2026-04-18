@@ -1,5 +1,5 @@
-export const fetchLicenses: Promise<string> =
-    fetch('https://wappuradio.fi/api/licenses')
+export const fetchLicenses: () => Promise<string> = () => {
+    return fetch('https://wappuradio.fi/api/licenses')
         .then(response => {
             if (response.body != null) {
                 const reader = response.body.getReader();
@@ -13,7 +13,7 @@ export const fetchLicenses: Promise<string> =
                 return Promise.resolve(textFromIntra);
             }
             return Promise.resolve("Tietoja ei voitu ladata.");
-
         }).catch(() => {
             return Promise.resolve("Tietoja ei voitu ladata.")
         });
+}
