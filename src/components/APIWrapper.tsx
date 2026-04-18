@@ -1,4 +1,4 @@
-import React, { FunctionComponent, PureComponent } from 'react';
+import React, { FunctionComponent, useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, RouteComponentProps } from 'react-router-dom';
 
 // This is the first loaded piece of JavaScript in the bundle,
@@ -17,10 +17,6 @@ import BottomBar from './BottomBar';
 import TopBar from './TopBar';
 import Logo from './Logo';
 
-interface APIWrapperState {
-  programs: Program[],
-}
-
 const LogoWrapper: FunctionComponent<RouteComponentProps> = ({ location }) => {
   if (location.pathname.search('programs/p/') > 0) {
     return (<div></div>);
@@ -28,54 +24,45 @@ const LogoWrapper: FunctionComponent<RouteComponentProps> = ({ location }) => {
   return (<Logo type='side' />);
 }
 
-export default class APIWrapper extends PureComponent<{}, APIWrapperState> {
-  constructor(props: {}) {
-    super(props);
+const APIWrapper: React.FC = () => {
+  const [programs, setPrograms] = useState<Program[]>([]);
 
-    this.state = {
-      programs: [],
-    };
-  };
+  useEffect(() => {
+    fetchProgramArray().then(setPrograms);
+  }, [setPrograms]);
 
-  componentDidMount() {
-    fetchProgramArray
-      .then((pArray: Program[]) => this.setState({programs: pArray}));
-  }
-
-  render() {
-    const { programs } = this.state;
-
-    return (
-      <Router>
-        <div className='layout-container'>
-          <TopBar />
-          <Route path="/" exact render={() =>
-            <Start {...{programs}} />
-           }/>
-          <Route path="/info/" exact render={() =>
-            <Info />
+  return (
+    <Router>
+      <div className='layout-container'>
+        <TopBar />
+        <Route path="/" exact render={() =>
+          <Start {...{programs}} />
           }/>
-          <Route path="/programs/" render={() =>
-            <Programs {...{programs}} />
-          }/>
-          <Route path="/watch/" exact render={() =>
-            <Start {...{programs}} />
-          }/>
-          <Route path="/en/" exact render={() =>
-            <English />
-          }/>
-          <Route path="/ry/" exact render={() =>
-            <Association />
-          }/>
-          <Route path="/news/" exact render={() =>
-            <News />
-          }/>
-          <BottomBar {...{programs}} />
-          <Route path='/' render={(route) =>
-            <LogoWrapper {...route} />
-          } />
-        </div>
-      </Router>
-    );
-  }
+        <Route path="/info/" exact render={() =>
+          <Info />
+        }/>
+        <Route path="/programs/" render={() =>
+          <Programs {...{programs}} />
+        }/>
+        <Route path="/watch/" exact render={() =>
+          <Start {...{programs}} />
+        }/>
+        <Route path="/en/" exact render={() =>
+          <English />
+        }/>
+        <Route path="/ry/" exact render={() =>
+          <Association />
+        }/>
+        <Route path="/news/" exact render={() =>
+          <News />
+        }/>
+        <BottomBar {...{programs}} />
+        <Route path='/' render={(route) =>
+          <LogoWrapper {...route} />
+        } />
+      </div>
+    </Router>
+  );
 }
+
+export default APIWrapper;

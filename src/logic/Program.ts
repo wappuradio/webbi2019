@@ -40,8 +40,8 @@ interface APIProgram {
   thumb: string
 }
 
-export const fetchProgramArray: Promise<Program[]> =
-  fetch('https://wappuradio.fi/api/programs')
+export const fetchProgramArray: () => Promise<Program[]> = () => {
+  return fetch('https://wappuradio.fi/api/programs')
     .then(results => results.json())
     .then((data: APIProgram[]) => {
       const asPrograms: Program[] = data.map((d: APIProgram, i: number) => {
@@ -70,6 +70,7 @@ export const fetchProgramArray: Promise<Program[]> =
       });
       return asPrograms;
     });
+};
 
 export const sortAndGroupForAlphabetical = (programs: Program[]) => {
   const sortedName = programs
