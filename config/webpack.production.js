@@ -7,12 +7,14 @@ const common = require('./webpack.common');
 
 const prodConfig = {
     output: {
-        filename: '[name].[contenthash].js',
+        assetModuleFilename: 'assets/[name]-[hash][ext]',
+        clean: true,
+        filename: 'assets/[name]-[contenthash].js',
         path: path.resolve(rootPath, 'build'),
     },
     plugins: [
         new MiniCssExtractPlugin({
-            filename: '[name].[contenthash].css',
+            filename: 'assets/[name]-[contenthash].css',
         }),
     ],
 }
