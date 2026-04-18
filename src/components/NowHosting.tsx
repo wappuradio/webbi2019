@@ -21,7 +21,7 @@ export const NowHosting: FunctionComponent<Program> =
     <NavLink to={`/programs/p/${name}`}>
       <InfoItem title={date.start > moment()?'HYPE':'Nyt esiintyy'} content={title} subcontent={dateString(date)}>
         <div className='current'>
-          <img src={thumbSrc} />
+          <img src={thumbSrc} width={64} height={64} />
         </div>
       </InfoItem>
     </NavLink>

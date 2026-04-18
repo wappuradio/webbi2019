@@ -45,9 +45,9 @@ const datesString = (dates: Program["dates"], name:Program["name"], activeDay?:s
   );
 }
 const ProgramImg: FunctionComponent<ProgramImgProps> =
-  ({ title, src }) => (
+  ({ title, src, size }) => (
     <div className='img'>
-      <img src={src} alt={ title } title={ title } loading="lazy" />
+      <img src={src} alt={ title } title={ title } width={size.w} height={size.w} loading="lazy" />
     </div>
   );
 
