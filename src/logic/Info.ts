@@ -1,5 +1,5 @@
-export const fetchNews: Promise<string> =
-    fetch('https://wappuradio.fi/api/news')
+export const fetchNews: () => Promise<string> = () => {
+    return fetch('https://wappuradio.fi/api/news')
         .then(response => {
             if (response.body != null) {
                 const reader = response.body.getReader();
@@ -25,3 +25,4 @@ export const fetchNews: Promise<string> =
         }).catch(() => {
             return Promise.resolve("Tietoja ei voitu ladata.")
         });
+};
