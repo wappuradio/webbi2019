@@ -1,24 +1,22 @@
 import React, { FunctionComponent } from 'react';
 import { NavLink, Route, Switch } from 'react-router-dom';
 import Interval from 'react-interval-rerender';
-import ReactMarkdown from 'react-markdown';
 
 import Tube from '../views/Tube';
 import Friends from '../components/Friends';
 import PlayButton from '../components/PlayButton';
 import { ProgramListItem } from '../components/Program/ProgramItem';
 import { Program, getCurrentProgram, getNextProgramItem } from '../logic/Program';
-import MastoFeed from '../components/MastoFeed';
 import { getStreams } from '../logic/Streams';
+import { News } from '../components/News';
 
 const youtubeVideoId = "st6-l5M72rk";
 
 interface StartProps {
-  infoData: string,
   programs: Program[]
 }
 
-const Start: FunctionComponent<StartProps> = ({infoData, programs}) => (
+const Start: FunctionComponent<StartProps> = ({programs}) => (
   <section className='view-container -start'>
     <h1>Rakkauden Wappuradio</h1>
     <section className='radio-player'>
@@ -37,13 +35,7 @@ const Start: FunctionComponent<StartProps> = ({infoData, programs}) => (
     <Switch>
       <Route path="/" exact render={() =>
         <div>
-          {infoData.trim().length > 0 && (
-            <div>
-              <p>
-                <ReactMarkdown children={infoData} />
-              </p>
-            </div>
-          )}
+          <News />
           {
             <h2><NavLink to='/watch/' exact>Kurkista studioon</NavLink></h2>
           }

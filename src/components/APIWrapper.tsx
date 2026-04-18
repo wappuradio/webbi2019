@@ -6,7 +6,6 @@ import { BrowserRouter as Router, Route, RouteComponentProps } from 'react-route
 import '../moment';
 
 import { Program, fetchProgramArray } from '../logic/Program';
-import { fetchNews } from '../logic/Info';
 import Start from '../views/Start';
 import Programs from '../views/Programs';
 import Info from '../views/Info';
@@ -20,7 +19,6 @@ import Logo from './Logo';
 
 interface APIWrapperState {
   programs: Program[],
-  infoData: string,
 }
 
 const LogoWrapper: FunctionComponent<RouteComponentProps> = ({ location }) => {
@@ -36,26 +34,23 @@ export default class APIWrapper extends PureComponent<{}, APIWrapperState> {
 
     this.state = {
       programs: [],
-      infoData: "",
     };
   };
 
   componentDidMount() {
     fetchProgramArray
       .then((pArray: Program[]) => this.setState({programs: pArray}));
-    fetchNews
-      .then((data: string) => this.setState({infoData: data}));
   }
 
   render() {
-    const { programs, infoData } = this.state;
+    const { programs } = this.state;
 
     return (
       <Router>
         <div className='layout-container'>
           <TopBar />
           <Route path="/" exact render={() =>
-            <Start {...{infoData}} {...{programs}} />
+            <Start {...{programs}} />
            }/>
           <Route path="/info/" exact render={() =>
             <Info />
@@ -64,7 +59,7 @@ export default class APIWrapper extends PureComponent<{}, APIWrapperState> {
             <Programs {...{programs}} />
           }/>
           <Route path="/watch/" exact render={() =>
-            <Start {...{infoData}} {...{programs}} />
+            <Start {...{programs}} />
           }/>
           <Route path="/en/" exact render={() =>
             <English />
