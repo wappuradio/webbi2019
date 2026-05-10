@@ -3,9 +3,12 @@ import socketIOClient from 'socket.io-client';
 import InfoItem from './InfoItem';
 
 const IS_DEV = ['webbi-beta.wappuradio.fi', 'webbi-test.wappuradio.fi'].includes(window.location.host);
-const SOCKET_IO_URL = IS_DEV ? 'https://wappuradio.fi/test/api/' : 'https://wappuradio.fi/';
+const SOCKET_IO_PATH = IS_DEV ? '/test/api/socket.io' : '/socket.io';
 
-const socket = socketIOClient(SOCKET_IO_URL);
+const socket = socketIOClient(
+  'https://wappuradio.fi/',
+  { path: SOCKET_IO_PATH }
+);
 
 type Song = { artist: string; title: string; };
 type SongMessage = { song: string; };
