@@ -3,7 +3,7 @@ import socketIOClient from 'socket.io-client';
 import InfoItem from './InfoItem';
 
 const IS_DEV = ['webbi-beta.wappuradio.fi', 'webbi-test.wappuradio.fi'].includes(window.location.host);
-const SOCKET_IO_PATH = IS_DEV ? '/test/api/socket.io' : '/socket.io';
+const SOCKET_IO_PATH = IS_DEV ? '/test/api/socket.io' : '/api/socket.io';
 
 const socket = socketIOClient(
   'https://wappuradio.fi/',
