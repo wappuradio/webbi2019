@@ -1,4 +1,5 @@
-FROM node:22 AS build
+# temporary mirror from varesa to circumvent dockerhub ratelimit
+FROM registry.acl.fi/mirror/node:22 AS build
 
 WORKDIR /app
 COPY . .
@@ -6,7 +7,8 @@ COPY . .
 RUN yarn install --frozen-lockfile
 RUN yarn build
 
-FROM nginx:1.25
+# temporary mirror from varesa to circumvent dockerhub ratelimit
+FROM registry.acl.fi/mirror/nginx:1.25
 
 COPY --from=build /app/build/ /usr/share/nginx/html
 COPY public/manifest.json /usr/share/nginx/html
