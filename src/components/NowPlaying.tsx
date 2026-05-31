@@ -6,9 +6,11 @@ const IS_DEV = ['webbi-beta.wappuradio.fi', 'webbi-test.wappuradio.fi'].includes
 const SOCKET_IO_PATH = IS_DEV ? '/test/api/socket.io' : '/socket.io';
 
 const socket = socketIOClient(
-  withCredentials: false,
   'https://wappuradio.fi/',
-  { path: SOCKET_IO_PATH }
+  {
+    withCredentials: false,
+    path: SOCKET_IO_PATH
+  }
 );
 
 type Song = { artist: string; title: string; };
